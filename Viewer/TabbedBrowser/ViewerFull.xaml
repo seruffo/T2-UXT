@@ -1,0 +1,101 @@
+﻿<Window x:Class="EO.TabbedBrowser.ViewerFull"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EO.TabbedBrowser"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="768" Width="1360" ContentRendered="Window_ContentRendered" KeyDown="Window_KeyDown" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize">
+    <Grid x:Name="grd_viewer" Background="Black">
+        <Image x:Name="img_read" Stretch="UniformToFill" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0"/>
+        <Canvas x:Name="cnv_viewer" Margin="0" Opacity="0.75" Background="Blue"/>
+        <Grid Margin="0,0,-1,80" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="889" Height="71">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="303*"/>
+                <ColumnDefinition Width="113*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Grid x:Name="grd_newGrid" Height="60" VerticalAlignment="Bottom" Margin="0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF7F9FF" Offset="0"/>
+                    <GradientStop Color="#FF425270" Offset="1"/>
+                    <GradientStop Color="#FF737A89" Offset="0.9"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Rectangle Height="1" Margin="0" VerticalAlignment="Top" Fill="#33000000"/>
+
+            <Grid Margin="0,10,705,10" VerticalAlignment="Center" Width="655" HorizontalAlignment="Left">
+                <Ellipse Margin="0,7,74,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="26" Height="27">
+                    <Ellipse.Stroke>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#3F000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Stroke>
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="Magenta" Offset="0"/>
+                            <GradientStop Offset="1"/>
+                            <GradientStop Color="Magenta" Offset="0.25"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Label Content="Waiting" Margin="0,5,13,0" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                <Rectangle HorizontalAlignment="Right" Height="40" Margin="344,0,0,0" VerticalAlignment="Center" Width="1" Fill="#7F000000" Stroke="#3F000000"/>
+                <Rectangle HorizontalAlignment="Left" Height="40" Margin="-18,0,0,0" VerticalAlignment="Center" Width="1" Fill="#7F000000" Stroke="#3F000000"/>
+                <Grid Margin="148,-8,111,6">
+                    <Rectangle Margin="7,23,6,0" Height="19">
+                        <Rectangle.Stroke>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <LinearGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                        <RotateTransform Angle="180" CenterY="0.5" CenterX="0.5"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </LinearGradientBrush.RelativeTransform>
+                                <GradientStop Color="White" Offset="0"/>
+                                <GradientStop Color="#3F000000" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Stroke>
+                        <Rectangle.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <LinearGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                        <RotateTransform Angle="-90" CenterY="0.5" CenterX="0.5"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </LinearGradientBrush.RelativeTransform>
+                                <GradientStop Color="Cyan" Offset="0"/>
+                                <GradientStop Color="Red" Offset="1"/>
+                                <GradientStop Color="Lime" Offset="0.33"/>
+                                <GradientStop Color="Yellow" Offset="0.66"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Label x:Name="lbl_max" Margin="0,0,0,13" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="3" HorizontalContentAlignment="Right"/>
+                    <Label x:Name="lbl_min" Margin="0,0,0,13" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="1"/>
+                    <Label x:Name="lbl_mid" Margin="0,0,0,13" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="2" Width="50" HorizontalContentAlignment="Center"/>
+                    <Label x:Name="lbl_mid2" Margin="75,0,271,13" FontSize="14" VerticalAlignment="Bottom" Content="2" Width="50" HorizontalContentAlignment="Center"/>
+                    <Label x:Name="lbl_mid3" Margin="267,0,79,13" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="2" Width="50" HorizontalContentAlignment="Center"/>
+                </Grid>
+                <Label Content="Click concentration:" Margin="11,10,0,2" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+            <Grid Margin="667,16,0,15" HorizontalAlignment="Left" Width="620">
+                <Label Content="Clicks:" Margin="0,0,0,1" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock x:Name="txb_click" HorizontalAlignment="Left" Margin="51,5,0,5" TextWrapping="Wrap" Text="Loading..." VerticalAlignment="Center" FontSize="14"/>
+                <Label Content="Time:" Margin="118,0,0,0" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock x:Name="txb_time" HorizontalAlignment="Left" Margin="165,5,0,5" TextWrapping="Wrap" Text="Loading..." VerticalAlignment="Center" FontSize="14"/>
+                <Label Content="Mouse Stopped:" Margin="232,0,0,0" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock x:Name="txb_freeze" HorizontalAlignment="Left" Margin="348,5,0,5" TextWrapping="Wrap" Text="Loading..." VerticalAlignment="Center" FontSize="14"/>
+                <Label Content="Mouse Moving:" Margin="415,0,0,0" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock x:Name="txb_move" HorizontalAlignment="Left" Margin="527,5,0,5" TextWrapping="Wrap" Text="Loading..." VerticalAlignment="Center" FontSize="14"/>
+            </Grid>
+            <Image Margin="0,10,11,10" Source="ufpaLogoBlack.png" Stretch="Fill" Opacity="0.35" Width="32" Height="40" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-16"?>
+<DockContainer Version="1">
+  <Views>
+    <DockView IsActive="true" IsDocumentView="true">
+      <Items>
+        <Item ItemId="WebView:" StateData="https://www.essentialobjects.com/" />
+      </Items>
+    </DockView>
+  </Views>
+</DockContainer>

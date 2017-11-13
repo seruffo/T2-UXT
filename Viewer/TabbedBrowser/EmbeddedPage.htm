@@ -1,0 +1,88 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>Embedded Page Test</title>
+    <style type="text/css">
+        body
+        {
+            background-color: #fff;
+            color: #333;
+            font-size: .85em;
+            font-family: "Segoe UI" , Verdana, Helvetica, Sans-Serif;
+        }
+        
+        h5
+        {
+            font-size: 1em;
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+        }
+    </style>
+    <script type="text/javascript">
+        //Remember the total number of times displayDotNetVersion has been called
+        var g_dotNetVersionUpdateCount = 0;
+
+        //Sample code calls this function from .NET code
+        function displayDotNetVersion(version)
+        {
+            //Display the version information
+            g_dotNetVersionUpdateCount++;
+            var panDotNetVersion = document.getElementById("panDotNetVersion");
+            panDotNetVersion.innerHTML = ".Net Verion is: " + version + ", updated " + g_dotNetVersionUpdateCount + " time(s).";
+
+            //Return call count to the .NET code
+            return g_dotNetVersionUpdateCount;
+        }
+
+        function aboutBox()
+        {
+            try
+            {
+                eoWebBrowser.extInvoke("demoAbout", [window.navigator.appVersion]);
+            }
+            catch (e)
+            {
+                alert(e);
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>
+        This page demonstrates the following features:
+    </p>
+    <ul>
+        <li>
+            <h5>
+                Custom schemes (protocol) and dynamic resource support</h5>
+            <p>
+                The Url of this page is "sample://embedded_page". Here "sample" is a custom scheme
+                and the page is served by a "custom request handler" by code. The related source
+                code is inside class <i>SampleHandler</i> in <i>WebViewItem.cs/WebViewItem.vb</i>;
+            </p>
+        </li>
+        <li>
+            <h5>
+                JavaScript Extensions</h5>
+            <p>
+                JavaScript extensions allow you to "implement" a JavaScript function with .NET code.
+                In another word, it allows JavaScript code to call .NET code. 
+                Click <a href="javascript:aboutBox();">here</a> to call JavaScript function
+                <i>aboutBox</i>, which calls this sample application's "About" box.
+            </p>
+        </li>
+        <li>
+            <h4>
+                JavaScript Interface</h4>
+            <p>
+                JavaScript Interface allows you to call JavaScript code from your .NET code. Select 
+                "Call JavaScript Function Sample" from the menu to invoke JavaScript function
+                <i>displayDotNetVersion</i> in this page. The function displays .NET version information
+                below and returns the total number of times that this information has been updated.
+            </p>
+            <p id="panDotNetVersion">
+            </p>
+        </li>
+    </ul>
+</body>
+</html>

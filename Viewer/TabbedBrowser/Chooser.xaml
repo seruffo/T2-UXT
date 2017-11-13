@@ -1,0 +1,18 @@
+﻿<Window x:Class="EO.TabbedBrowser.Chooser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EO.TabbedBrowser"
+        mc:Ignorable="d"
+        Title="Chooser" Height="354" Width="508" WindowStyle="ToolWindow" Background="#FF002B83" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Image Source="SPLASH.png" Stretch="Fill" HorizontalAlignment="Left" Width="500" Height="280" Margin="0,14,0,30"/>
+        <Image Source="SPLASH.png" Stretch="Fill" HorizontalAlignment="Left" Width="500" Height="280" Margin="0,-35,0,79"/>
+        <Rectangle HorizontalAlignment="Left" Height="77" Margin="0,155,0,0" VerticalAlignment="Top" Width="500" Fill="#FF002B83"/>
+        <Button Content="Browser" HorizontalAlignment="Left" Margin="47,172,0,0" VerticalAlignment="Top" Width="126" Height="36" Click="Button_Click"/>
+        <Button Content="Single View" HorizontalAlignment="Left" Margin="179,172,0,0" VerticalAlignment="Top" Width="126" Height="36" Click="Button_Click_1"/>
+        <Button x:Name="Cmd_comp" Content="Compilation" HorizontalAlignment="Left" Margin="310,172,0,0" VerticalAlignment="Top" Width="126" Height="36" Click="Cmd_comp_Click_1"/>
+
+    </Grid>
+</Window>

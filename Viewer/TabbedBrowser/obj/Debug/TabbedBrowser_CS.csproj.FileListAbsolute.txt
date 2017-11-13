@@ -1,0 +1,479 @@
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\TabbedBrowser.exe
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\TabbedBrowser.exe.config
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\EO.Base.dll
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.dll
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.Wpf.dll
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\EO.WebEngine.dll
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\EO.Wpf.dll
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\EO.Base.xml
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\EO.Wpf.xml
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\EO.WebEngine.xml
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.xml
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.Wpf.xml
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\About.baml
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.baml
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.baml
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.baml
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.baml
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.baml
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.baml
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\About.g.cs
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.g.cs
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.g.cs
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.g.cs
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.g.cs
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.g.cs
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.g.cs
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\App.g.cs
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_MarkupCompile.cache
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser.g.resources
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser.exe
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser.pdb
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\bin\Debug\TabbedBrowser.pdb
+C:\Program Files (x86)\Essential Objects\EO.Total 2016\Samples\CS\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_CS.csprojResolveAssemblyReference.cache
+D:\WebBrowser\TabbedBrowser\bin\Debug\TabbedBrowser.exe.config
+D:\WebBrowser\TabbedBrowser\bin\Debug\TabbedBrowser.exe
+D:\WebBrowser\TabbedBrowser\bin\Debug\TabbedBrowser.pdb
+D:\WebBrowser\TabbedBrowser\obj\Debug\About.baml
+D:\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.baml
+D:\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.baml
+D:\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.baml
+D:\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.baml
+D:\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.baml
+D:\WebBrowser\TabbedBrowser\obj\Debug\About.g.cs
+D:\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.g.cs
+D:\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.g.cs
+D:\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.g.cs
+D:\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.g.cs
+D:\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.g.cs
+D:\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.g.cs
+D:\WebBrowser\TabbedBrowser\obj\Debug\App.g.cs
+D:\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_MarkupCompile.cache
+D:\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.baml
+D:\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser.g.resources
+D:\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser.exe
+D:\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser.pdb
+D:\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_CS.csprojResolveAssemblyReference.cache
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe.config
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.baml
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.baml
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.baml
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.baml
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.baml
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.baml
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.baml
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\App.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.cache
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.lref
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.baml
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.baml
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.baml
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.baml
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.g.resources
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.exe
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.pdb
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe.config
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.pdb
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.baml
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.baml
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.baml
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.baml
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.baml
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.baml
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.baml
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.g.cs
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.g.cs
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.g.cs
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.g.cs
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.g.cs
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.g.cs
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.g.cs
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.g.cs
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.g.cs
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.g.cs
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.g.cs
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\App.g.cs
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.cache
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.lref
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.baml
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.baml
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.baml
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.baml
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.g.resources
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.exe
+C:\Users\waves\Projetos Git\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.pdb
+J:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe.config
+J:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe
+J:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.pdb
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\App.g.cs
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.cache
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.lref
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.baml
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.g.resources
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.exe
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.pdb
+J:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_CS.csprojResolveAssemblyReference.cache
+H:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe.config
+H:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe
+H:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.pdb
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_CS.csprojResolveAssemblyReference.cache
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\App.g.cs
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.cache
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.lref
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.baml
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.g.resources
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.exe
+H:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.pdb
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.pdb
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_CS.csprojResolveAssemblyReference.cache
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.g.cs
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.baml
+C:\Users\waves\Google Drive\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\App.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.cache
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.lref
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.exe
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.pdb
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe.config
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.pdb
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Base.dll
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Classic.dll
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.dll
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Mvc.dll
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.Design.dll
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.dll
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.dll
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.Wpf.dll
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebEngine.dll
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Wpf.dll
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Base.xml
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.xml
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Mvc.xml
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.xml
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.xml
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.Wpf.xml
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebEngine.xml
+L:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Wpf.xml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.g.resources
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_CS.csprojResolveAssemblyReference.cache
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe.config
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.pdb
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Base.dll
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Classic.dll
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.dll
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Mvc.dll
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.Design.dll
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.dll
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.dll
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.Wpf.dll
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebEngine.dll
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Wpf.dll
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Base.xml
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.xml
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Mvc.xml
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.xml
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.xml
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.Wpf.xml
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebEngine.xml
+F:\Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Wpf.xml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_CS.csprojResolveAssemblyReference.cache
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\App.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.cache
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.lref
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.baml
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.g.resources
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.exe
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.pdb
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MaxSelector.g.cs
+F:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MaxSelector.baml
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MaxSelector.g.cs
+L:\Tracer\WebBrowser\TabbedBrowser\obj\Debug\MaxSelector.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe.config
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.pdb
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Base.dll
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Classic.dll
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.dll
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Mvc.dll
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.Design.dll
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.dll
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.dll
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.Wpf.dll
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebEngine.dll
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Wpf.dll
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Base.xml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.xml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Mvc.xml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.xml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.xml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.Wpf.xml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebEngine.xml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Wpf.xml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\MaxSelector.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\App.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.cache
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.lref
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\MaxSelector.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.g.resources
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.exe
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.pdb
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_CS.csprojResolveAssemblyReference.cache
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.baml
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_CS.csproj.CoreCompileInputs.cache
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_CS.csprojResolveAssemblyReference.cache
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\MaxSelector.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\App.g.cs
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.cache
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.lref
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.exe
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.pdb
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe.config
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.pdb
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Base.dll
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Classic.dll
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.dll
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Mvc.dll
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.Design.dll
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.dll
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.dll
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.Wpf.dll
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebEngine.dll
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Wpf.dll
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Base.xml
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.xml
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Mvc.xml
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.xml
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.xml
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.Wpf.xml
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebEngine.xml
+E:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Wpf.xml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\MaxSelector.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.baml
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.g.resources
+E:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_CS.csproj.CoreCompileInputs.cache
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\TabbedBrowser_CS.csprojResolveAssemblyReference.cache
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\About.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ConsolePane.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\DevToolsWindow.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\DownloadsPane.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\JSPrompt.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\MainWindow.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\MaxSelector.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ObjectsPane.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\App.g.cs
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.cache
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer_MarkupCompile.lref
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.exe
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.pdb
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe.config
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.exe
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\WEBTracer.pdb
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Base.dll
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Classic.dll
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.dll
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Mvc.dll
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.Design.dll
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.dll
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.dll
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.Wpf.dll
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebEngine.dll
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Wpf.dll
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Base.xml
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.xml
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Pdf.Mvc.xml
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Web.xml
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.xml
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebBrowser.Wpf.xml
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.WebEngine.xml
+L:\Web Tracer\WebBrowser\TabbedBrowser\bin\Debug\EO.Wpf.xml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Chooser.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\MaxSelector.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Splash.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Viewer.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewerFull.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\Views.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\ViewsMulti.baml
+L:\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\WEBTracer.g.resources
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\NameSelector.g.cs
+C:\Users\waves\Google Drive\Web Tracer\WebBrowser\TabbedBrowser\obj\Debug\NameSelector.baml

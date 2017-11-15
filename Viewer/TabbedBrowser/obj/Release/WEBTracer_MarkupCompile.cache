@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\waves\OneDrive\Documents\Source\Repos\WebTracer\Viewer\TabbedBrowser\obj\Debug\
+C:\Users\waves\OneDrive\Documents\Source\Repos\WebTracer\Viewer\TabbedBrowser\obj\Release\
 EO.TabbedBrowser
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\waves\OneDrive\Documents\Source\Repos\WebTracer\Viewer\TabbedBrowser\App.xaml
 15375396227
 

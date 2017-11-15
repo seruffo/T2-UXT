@@ -24,9 +24,8 @@ namespace EO.TabbedBrowser
         {
             InitializeComponent();
         }
-        string[] trace;
-        string[] keylogger;
         List<int> keyloggerTimes = new List<int>();
+        List<Node> node = new List<Node>();
         int freeze = 0;
         int clickQuant = 0;
         int time = 0;
@@ -81,6 +80,7 @@ namespace EO.TabbedBrowser
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
+            node = Node.LoadNodes(App.CurrentTrace + "\\trace.xml");
             trace = File.ReadAllLines(App.CurrentTrace + "\\trace.txt");
             keylogger = File.ReadAllLines(App.CurrentTrace + "\\traceKey.txt");
             img_read.Width = System.Windows.SystemParameters.WorkArea.Width;
@@ -110,44 +110,42 @@ namespace EO.TabbedBrowser
         private void nextScene()
         {
             if (count < 0) count = 0;
-            System.Drawing.Image img = System.Drawing.Image.FromFile(App.CurrentTrace + "\\trace" + count + ".png");
+            System.Drawing.Image img = System.Drawing.Image.FromFile(App.CurrentTrace + "//"+node[count].ImgPath);
             img_read.Width = img.Width;
             img_read.Height = img.Height;
-            img_read.Source = LoadBitmapImage(App.CurrentTrace + "\\trace" + count + ".png");
+            img_read.Source = LoadBitmapImage(App.CurrentTrace + "//" + node[count].ImgPath);
 
             circle.Add(new Ellipse());
             number.Add(new Label());
             number[count].Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
             number[count].Content = count;
             number[count].FontSize = 10;
-            if (trace[countLines].Contains("_Click"))
+            if (node[count].Type == "click" /*trace[countLines].Contains("_Click")*/)
             {
-                pos[0] = Convert.ToInt32(trace[countLines].Replace("_Click", ""));
                 circle[count].Fill = new SolidColorBrush(Color.FromArgb(64, 255, 0, 0));
                 clickQuant++;
             }
-            if (trace[countLines].Contains("_lag"))
+            if (node[count].Type == "freeze" /*trace[countLines].Contains("_lag")*/)
             {
-                pos[0] = Convert.ToInt32(trace[countLines].Replace("_lag", ""));
                 circle[count].Fill = new SolidColorBrush(Color.FromArgb(64, 0, 0, 255));
                 freeze += 3;
             }
             //TRACELOG
-            int separador = Find(trace[countLines + 1], "||");
-            time = Convert.ToInt32(trace[countLines + 1].Substring(separador + 2, trace[countLines + 1].Length - (separador + 2)));
+            time = node[count].Time;
             txb_time.Text = time.ToString() + " S";
-            pos[1] = Convert.ToInt32(trace[countLines + 1].Substring(0, separador));
-            if (keylogger[countLines] != String.Empty)
+            pos[0] = node[count].X;
+            pos[1] = node[count].Y;
+            if (node[count].Keys != String.Empty)
             {
-                ltb_keylogger.Items.Add(keylogger[countLines]);
+                ltb_keylogger.Items.Add(node[count].Keys);
                 keyloggerTimes.Add(time);
             }
             ltb_keylogger.ScrollIntoView(ltb_keylogger.Items.GetItemAt(ltb_keylogger.Items.Count - 1));
-            Console.WriteLine("line1 " + trace[countLines]);
-            Console.WriteLine(" x " + pos[0]);
-            Console.WriteLine("line2 " + trace[countLines + 1]);
-            Console.WriteLine(" y " + trace[countLines + 1].Substring(0, separador));
-            Console.WriteLine(" time " + trace[countLines + 1].Substring(separador + 2, trace[countLines + 1].Length - (separador + 2)));
+            //Console.WriteLine("line1 " + trace[countLines]);
+            //Console.WriteLine(" x " + pos[0]);
+            //Console.WriteLine("line2 " + trace[countLines + 1]);
+            //Console.WriteLine(" y " + trace[countLines + 1].Substring(0, separador));
+            //Console.WriteLine(" time " + trace[countLines + 1].Substring(separador + 2, trace[countLines + 1].Length - (separador + 2)));
 
             circle[count].Height = circle[count].Width = 100;
             //canvas_generator.Children.Add(circle);
@@ -274,37 +272,37 @@ namespace EO.TabbedBrowser
                     try
                     {
                         count--;
-                        countLines -= 2;
-                        System.Drawing.Image img = System.Drawing.Image.FromFile(App.CurrentTrace + "\\trace" + count + ".png");
+                        System.Drawing.Image img = System.Drawing.Image.FromFile(App.CurrentTrace + "\\" + node[count].ImgPath);
                         img_read.Width = img.Width;
                         img_read.Height = img.Height;
-                        img_read.Source = LoadBitmapImage(App.CurrentTrace + "\\trace" + count + ".png");
-                        if (trace[countLines].Contains("_Click"))
+                        img_read.Source = LoadBitmapImage(App.CurrentTrace + "\\" + node[count].ImgPath);
+
+
+                        time = node[count].Time;
+                        txb_time.Text = time.ToString() + " S";
+
+                        if (node[count].Keys != String.Empty)
                         {
-                            pos[0] = Convert.ToInt32(trace[countLines].Replace("_Click", ""));
+                            ltb_keylogger.Items.Add(node[count].Keys);
+                            keyloggerTimes.Add(time);
+                        }
+
+                        if (node[count].Type == "click"/*trace[countLines].Contains("_Click")*/)
+                        {
                             clickQuant--;
                         }
-                        if (trace[countLines].Contains("_lag"))
+                        if (node[count].Type == "freeze")
                         {
-                            pos[0] = Convert.ToInt32(trace[countLines].Replace("_lag", ""));
                             freeze -= 3;
                         }
+                        pos[0] = node[count].X;
+                        pos[1] = node[count].Y;
                         //TRACELOG
-                        int separador = Find(trace[countLines + 1], "||");
                         if (time == keyloggerTimes[keyloggerTimes.Count - 1])
                         {
                             keyloggerTimes.RemoveAt(keyloggerTimes.Count - 1);
                             ltb_keylogger.Items.RemoveAt(ltb_keylogger.Items.Count - 1);
-                        }
-                        time = Convert.ToInt32(trace[countLines + 1].Substring(separador + 2, trace[countLines + 1].Length - (separador + 2)));
-                        txb_time.Text = time.ToString() + " S";
-                        pos[1] = Convert.ToInt32(trace[countLines + 1].Substring(0, separador));                       
-                        ltb_keylogger.ScrollIntoView(ltb_keylogger.Items.GetItemAt(ltb_keylogger.Items.Count - 1));
-                        Console.WriteLine("line1 " + trace[countLines]);
-                        Console.WriteLine(" x " + pos[0]);
-                        Console.WriteLine("line2 " + trace[countLines + 1]);
-                        Console.WriteLine(" y " + trace[countLines + 1].Substring(0, separador));
-                        Console.WriteLine(" time " + trace[countLines + 1].Substring(separador + 2, trace[countLines + 1].Length - (separador + 2)));
+                        } 
 
                         oldPos[0] = (int)line[count].X2;
                         oldPos[1] = (int)line[count].Y2;

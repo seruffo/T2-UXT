@@ -104,6 +104,7 @@
     <Compile Include="NameSelector.xaml.cs">
       <DependentUpon>NameSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Node.cs" />
     <Compile Include="ScreenCapture.cs" />
     <Compile Include="Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>

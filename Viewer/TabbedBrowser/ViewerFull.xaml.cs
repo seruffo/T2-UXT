@@ -149,7 +149,7 @@ namespace EO.TabbedBrowser
         {
             for (int x = 0; x < App.CurrentTraceList.Count; x++)
             {
-                List <HeatPoint> response = ConvertArrayToHeatPointList(File.ReadAllLines(App.CurrentTraceList[x] + "\\trace.txt"));
+                List <HeatPoint> response = ConvertArrayToHeatPointList(App.CurrentTraceList[x] + "\\trace.xml");
                 Fulltime += time;
                 foreach (HeatPoint point in response)
                     positionsFinal.Add(point);
@@ -193,28 +193,27 @@ namespace EO.TabbedBrowser
             }
             return -1;
         }
-        private List<HeatPoint> ConvertArrayToHeatPointList(string[] source)
+        private List<HeatPoint> ConvertArrayToHeatPointList(string source)
         {
-            List<HeatPoint> result = new List<HeatPoint>();
-            for (int countLines = 0; countLines < source.Length; countLines += 2)
+            List<Node> node = Node.LoadNodes(source);
+            List <HeatPoint> result = new List<HeatPoint>();
+            foreach (Node loaded in node)
             {
                 result.Add(new HeatPoint());
-                if (source[countLines].Contains("_Click"))
+                if (loaded.Type == "click")
                 {
-                    result[result.Count-1].X= Convert.ToInt32(source[countLines].Replace("_Click", ""));
                     result[result.Count - 1].Z = 1;
                     clickQuant++;
                 }
-                if (source[countLines].Contains("_lag"))
+                if (loaded.Type == "lag")
                 {
-                    result[result.Count - 1].X = Convert.ToInt32(source[countLines].Replace("_lag", ""));
                     result[result.Count - 1].Z = -1;
                     freeze += 3;
                 }
-                int separador = Find(source[countLines + 1], "||");
-                time = Convert.ToInt32(source[countLines + 1].Substring(separador + 2, source[countLines + 1].Length - (separador + 2)));
+                result[result.Count - 1].X = loaded.X;
+                result[result.Count - 1].Y = loaded.Y;
+                time = loaded.Time;
                 txb_time.Text = time.ToString();
-                result[result.Count - 1].Y = Convert.ToInt32(source[countLines + 1].Substring(0, separador));
             }
             return result;
         }

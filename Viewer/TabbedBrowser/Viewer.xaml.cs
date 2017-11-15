@@ -81,8 +81,6 @@ namespace EO.TabbedBrowser
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             node = Node.LoadNodes(App.CurrentTrace + "\\trace.xml");
-            trace = File.ReadAllLines(App.CurrentTrace + "\\trace.txt");
-            keylogger = File.ReadAllLines(App.CurrentTrace + "\\traceKey.txt");
             img_read.Width = System.Windows.SystemParameters.WorkArea.Width;
             img_read.Height = System.Windows.SystemParameters.WorkArea.Height;
         }

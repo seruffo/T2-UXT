@@ -6,23 +6,19 @@
 	}
 	if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
-		$imageData = $_POST["image"];
-		$Sample = clean($_POST["sample"]);
-		$userId = $_POST["userId"];
-		$type = $_POST["type"];
-		$posx = $_POST["posx"];
-		$posy = $_POST["posy"];
-		$time = $_POST["time"];
-		$keys = $_POST["keys"];
+	
+		$data = json_decode($_POST["data"]);
+		$Sample = clean($data->$sample);
+
 		if($imageData != null)
 		{
-			$imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $imageData));
+			$imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data->$imageData));
 			$source = imagecreatefromstring($imageData);
-			$imageSave = imagejpeg($source,'Samples/'.$Sample.'/'.$userId.'/'.$time.".jpg",100);
+			$imageSave = imagejpeg($source,'Samples/'.$Sample.'/'.$data->$userId.'/'.$data->$time.".jpg",100);
 			imagedestroy($source);
-			$txt = "<trace type=\"".$type."\" image=\"".$time.".jpg\" time=\"".$time."\" x=\"".$posx."\" y=\"".$posy."\" keys=\"".$keys."\"\>";
-			file_put_contents('Samples/'.$Sample.'/'.$userId.'/trace.xml', $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
-			$handle = fopen('Samples/'.$Sample.'/'.$userId.'/lastTime.txt',"w");
+			$txt = "<trace type=\"".$data->$type."\" image=\"".$data->$time.".jpg\" time=\"".$data->$time."\" mouseId=\"".$data->$mouse->$id." mouseX=\"".$data->$mouse->$X."\" mouseY=\"".$data->$mouse->$Y."\" keyId=\"".$data->$keyboard->$id."\" keys=\"".$data->$keyboard->$typed."\" keyX=\"".$data->$keyboard->$X."\" keyY=\"".$data->$keyboard->$Y."\"\>";
+			file_put_contents('Samples/'.$Sample.'/'.$data->$userId.'/trace.xml', $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
+			$handle = fopen('Samples/'.$Sample.'/'.$data->$userId.'/lastTime.txt',"w");
 			$content = fwrite($handle,$time);
 			fclose($handle);
 		}

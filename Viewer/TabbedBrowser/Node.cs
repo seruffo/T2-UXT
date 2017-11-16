@@ -13,9 +13,13 @@ namespace EO.TabbedBrowser
         public string Type{get; set;}
         public string ImgPath{get; set;}
         public int Time{get; set;}
-        public int X{get; set;}
-        public int Y{get; set;}
-        public string Keys{get; set;}
+        public string mouseId{get; set;}
+        public int mouseX{get; set;}
+        public int mouseY{get; set;}
+        public string keyId{get; set;}
+        public int keyX{get; set;}
+        public int keyY{get; set;}
+        public string keyText{get; set;}
 
         public Node()
         {
@@ -45,9 +49,13 @@ namespace EO.TabbedBrowser
                     tempNode.Type = node.Attributes["type"].Value;
                     tempNode.ImgPath = node.Attributes["image"].Value;
                     tempNode.Time = int.Parse(node.Attributes["time"].Value);
-                    tempNode.X = int.Parse(node.Attributes["x"].Value);
-                    tempNode.Y = int.Parse(node.Attributes["y"].Value);
-                    tempNode.Keys = node.Attributes["keys"].Value;
+                    tempNode.mouseId = node.Attributes["mouseId"].Value;
+                    tempNode.mouseX = int.Parse(node.Attributes["mouseX"].Value);
+                    tempNode.mouseY = int.Parse(node.Attributes["mouseY"].Value);
+                    tempNode.keyId = node.Attributes["keyId"].Value;
+                    tempNode.keyX = int.Parse(node.Attributes["keyX"].Value);
+                    tempNode.keyY = int.Parse(node.Attributes["keyY"].Value);
+                    tempNode.keyText = node.Attributes["keys"].Value;
                     result.Add(tempNode);
                 }
             }

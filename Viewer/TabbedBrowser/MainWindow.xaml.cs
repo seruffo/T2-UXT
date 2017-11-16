@@ -52,7 +52,7 @@ namespace EO.TabbedBrowser
 
         #region Window Related Functions/Handlers
         System.Windows.Threading.DispatcherTimer timer;
-        int keyCount=0;
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             timer = new System.Windows.Threading.DispatcherTimer();

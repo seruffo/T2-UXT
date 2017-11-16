@@ -78,70 +78,70 @@ namespace EO.TabbedBrowser
             value *= 120;
             value = 120 - value;
             result.A = 255;
-            if (false)
+            //if (false)
+            //{
+            //    if (value > 119)
+            //    {
+            //        result.R = 0;
+            //        result.G = 255;
+            //        result.B = 0;
+            //        result.A = 64;
+            //        return result;
+            //    }
+            //    if (value > 79)
+            //    {
+            //        result.R = 0;
+            //        result.G = 255;
+            //        result.B = 0;
+            //        result.A = 64;
+            //        return result;
+            //    }
+            //    if (value > 39)
+            //    {
+            //        result.R = 255;
+            //        result.G = 255;
+            //        result.B = 0;
+            //        return result;
+            //    }
+            //    if (value > -1)
+            //    {
+            //        result.R = 255;
+            //        result.G = 0;
+            //        result.B = 0;
+            //        return result;
+            //    }
+            //}
+            //else
+            //{
+            if (value > 119)
             {
-                if (value > 119)
-                {
-                    result.R = 0;
-                    result.G = 255;
-                    result.B = 0;
-                    result.A = 64;
-                    return result;
-                }
-                if (value > 79)
-                {
-                    result.R = 0;
-                    result.G = 255;
-                    result.B = 0;
-                    result.A = 64;
-                    return result;
-                }
-                if (value > 39)
-                {
-                    result.R = 255;
-                    result.G = 255;
-                    result.B = 0;
-                    return result;
-                }
-                if (value > -1)
-                {
-                    result.R = 255;
-                    result.G = 0;
-                    result.B = 0;
-                    return result;
-                }
+                result.R = 0;
+                result.G = (byte)Math.Floor((255 - (((value - 120) / 40) * 255f)));
+                result.B = 255;
+                return result;
             }
-            else
+            if (value > 79)
             {
-                if (value > 119)
-                {
-                    result.R = 0;
-                    result.G = (byte)Math.Floor((255 - (((value - 120) / 40) * 255f)));
-                    result.B = 255;
-                    return result;
-                }
-                if (value > 79)
-                {
-                    result.R = 0;
-                    result.G = 255;
-                    result.B = (byte)Math.Floor((((value - 80) / 40) * 255f));
-                    return result;
-                }
-                if (value > 39)
-                {
-                    result.R = (byte)Math.Floor((255 - (((value - 40) / 40) * 255f)));
-                    result.G = 255;
-                    result.B = 0;
-                    return result;
-                }
-                if (value > -1)
-                {
-                    result.R = 255;
-                    result.G = (byte)Math.Floor(((value / 40) * 255f));
-                    result.B = 0;
-                    return result;
-                }
+                result.R = 0;
+                result.G = 255;
+                result.B = (byte)Math.Floor((((value - 80) / 40) * 255f));
+                return result;
             }
+            if (value > 39)
+            {
+                result.R = (byte)Math.Floor((255 - (((value - 40) / 40) * 255f)));
+                result.G = 255;
+                result.B = 0;
+                return result;
+            }
+            if (value > -1)
+            {
+                result.R = 255;
+                result.G = (byte)Math.Floor(((value / 40) * 255f));
+                result.B = 0;
+                return result;
+            }
+            //}
             return result;
         }
 
@@ -210,8 +210,8 @@ namespace EO.TabbedBrowser
                     result[result.Count - 1].Z = -1;
                     freeze += 3;
                 }
-                result[result.Count - 1].X = loaded.X;
-                result[result.Count - 1].Y = loaded.Y;
+                result[result.Count - 1].X = loaded.mouseX;
+                result[result.Count - 1].Y = loaded.mouseY;
                 time = loaded.Time;
                 txb_time.Text = time.ToString();
             }

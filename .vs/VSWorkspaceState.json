@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Client",
+    "\\Server",
+    "\\Server\\WebTracer",
+    "\\Viewer",
+    "\\Viewer\\TabbedBrowser"
   ],
+  "SelectedNode": "\\Viewer\\TabbedBrowser\\Viewer.xaml.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -131,11 +131,11 @@ namespace EO.TabbedBrowser
             //TRACELOG
             time = node[count].Time;
             txb_time.Text = time.ToString() + " S";
-            pos[0] = node[count].X;
-            pos[1] = node[count].Y;
-            if (node[count].Keys != String.Empty)
+            pos[0] = node[count].mouseX;
+            pos[1] = node[count].mouseY;
+            if (node[count].keyText != String.Empty)
             {
-                ltb_keylogger.Items.Add(node[count].Keys);
+                ltb_keylogger.Items.Add(node[count].keyText);
                 keyloggerTimes.Add(time);
             }
             ltb_keylogger.ScrollIntoView(ltb_keylogger.Items.GetItemAt(ltb_keylogger.Items.Count - 1));
@@ -279,9 +279,9 @@ namespace EO.TabbedBrowser
                         time = node[count].Time;
                         txb_time.Text = time.ToString() + " S";
 
-                        if (node[count].Keys != String.Empty)
+                        if (node[count].keyText != String.Empty)
                         {
-                            ltb_keylogger.Items.Add(node[count].Keys);
+                            ltb_keylogger.Items.Add(node[count].keyText);
                             keyloggerTimes.Add(time);
                         }
 
@@ -293,8 +293,8 @@ namespace EO.TabbedBrowser
                         {
                             freeze -= 3;
                         }
-                        pos[0] = node[count].X;
-                        pos[1] = node[count].Y;
+                        pos[0] = node[count].mouseX;
+                        pos[1] = node[count].mouseY;
                         //TRACELOG
                         if (time == keyloggerTimes[keyloggerTimes.Count - 1])
                         {

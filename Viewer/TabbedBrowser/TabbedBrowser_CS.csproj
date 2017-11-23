@@ -94,7 +94,12 @@
     <Compile Include="Chooser.xaml.cs">
       <DependentUpon>Chooser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FuzzySearch.cs" />
     <Compile Include="HeatPoint.cs" />
+    <Compile Include="KeyGroup.cs" />
+    <Compile Include="KeyloggerShow.xaml.cs">
+      <DependentUpon>KeyloggerShow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -105,6 +110,9 @@
       <DependentUpon>NameSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Node.cs" />
+    <Compile Include="OpenKeylog.xaml.cs">
+      <DependentUpon>OpenKeylog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ScreenCapture.cs" />
     <Compile Include="Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>
@@ -168,6 +176,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Page Include="KeyloggerShow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -188,6 +200,10 @@
     </Compile>
     <EmbeddedResource Include="EmbeddedPage.htm">
     </EmbeddedResource>
+    <Page Include="OpenKeylog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Splash.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

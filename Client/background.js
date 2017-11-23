@@ -22,18 +22,20 @@ function capture(type, mouse, time, keyboard)
             domain = url.hostname;
         chrome.tabs.captureVisibleTab(win.id, { format: "jpeg", quality: 75 }, function (screenshotUrl)
         {
-            //alert(screenshotUrl);
+
             $.post("http://localhost/WebTracer/receiver.php",
                 {
-                    data: {
-                        imageData: screenshotUrl,
-                        sample: domain,
-                        userId: userId,
-                        type: type,
-                        mouse: mouse,
-                        time: time + timeInternal,
-                        keyboard: keyboard
-                    }
+                    type: "captura",
+                    metadata: JSON.stringify({
+                            imageData: screenshotUrl,
+                            sample: domain,
+                            userId: userId,
+                            type: type,
+                            time: time + timeInternal,
+                    }),
+                    mouse: JSON.stringify(mouse),
+                    keyboard: JSON.stringify(keyboard)
+
             }
             ).done(function (data) {
                 //alert(type+" "+data);

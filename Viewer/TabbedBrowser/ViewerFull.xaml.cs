@@ -32,6 +32,30 @@ namespace EO.TabbedBrowser
         private List<HeatPoint> positions = new List<HeatPoint>();
         private List<HeatPoint> positionsFinal = new List<HeatPoint>();
         private List<HeatPoint> positionsTops = new List<HeatPoint>();
+        private List<KeyGroup> keylogging = new List<KeyGroup>();
+
+        public bool AddToKeylogging(Node node)
+        {
+            if (node.keyText == "")
+                return true;
+            if (keylogging.Count < 1)
+            {
+                keylogging.Add(new KeyGroup(node));
+                return true;
+            }
+            for(int y =0; y < keylogging.Count; y++)
+            {
+                if(keylogging[y].Name == node.keyId)
+                {
+                    keylogging[y].Text+=node.keyText;
+                    return true;
+                }
+            }
+            keylogging.Add(new KeyGroup(node));
+            return true;
+        }
+
+
         public static BitmapImage LoadBitmapImage(string path)
         {
             string skinpath = path;
@@ -199,6 +223,7 @@ namespace EO.TabbedBrowser
             List <HeatPoint> result = new List<HeatPoint>();
             foreach (Node loaded in node)
             {
+                AddToKeylogging(loaded);
                 result.Add(new HeatPoint());
                 if (loaded.Type == "click")
                 {
@@ -323,6 +348,17 @@ namespace EO.TabbedBrowser
                     circle.OpacityMask = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/mask.png", UriKind.RelativeOrAbsolute)));
                     cnv_viewer.Children.Add(circle);
                     await Task.Delay(25);
+                }
+                foreach (KeyGroup grupo in keylogging)
+                {
+                    OpenKeylog keylogger = new OpenKeylog(grupo);
+                    keylogger.Width = 25;
+                    keylogger.Height = 25;
+                    Thickness pos = new Thickness();
+                    pos.Left = grupo.X - 35;
+                    pos.Top = grupo.Y;
+                    keylogger.Margin = pos;
+                    cnv_viewer.Children.Add(keylogger);
                 }
                 txb_freeze.Text = freeze.ToString() + " S";
                 txb_move.Text = (Fulltime - freeze) + " S";

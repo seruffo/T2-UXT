@@ -8,7 +8,7 @@ using System.IO;
 
 namespace EO.TabbedBrowser
 {
-    class Node
+    public class Node
     {
         public string Type{get; set;}
         public string ImgPath{get; set;}

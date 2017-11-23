@@ -19,19 +19,22 @@ function getRandomToken() {
     //return 'db18458e2782b2b77e36769c569e263a53885a9944dd0a861e5064eac16f1a';
 }
 
-var cumulativeOffset = function (element) {
-    var top = 0, left = 0;
-    do {
-        top += element.offsetTop || 0;
-        left += element.offsetLeft || 0;
-        element = element.offsetParent;
-    } while (element);
-
-    return {
-        top: top,
-        left: left
-    };
-};
+function GetScreenCordinates(obj) {
+    var p = {};
+    p.x = obj.offsetLeft;
+    p.y = obj.offsetTop;
+    while (obj.offsetParent) {
+        p.x = p.x + obj.offsetParent.offsetLeft;
+        p.y = p.y + obj.offsetParent.offsetTop;
+        if (obj == document.getElementsByTagName("body")[0]) {
+            break;
+        }
+        else {
+            obj = obj.offsetParent;
+        }
+    }
+    return p;
+}
 
 function startAgain() {
     chrome.runtime.sendMessage(
@@ -90,7 +93,8 @@ function KeyCheck(event) {
 
 document.onkeypress = function (e) {
     idType = e.target.id;
-    console.log('id ' + idType);
+    var obj = GetScreenCordinates(document.getElementById(idType));
+    console.log('Press id ' + idType + " pos "+ obj.x + " | "+obj.y);
     var get = window.event ? event : e;
     var key = get.keyCode ? get.keyCode : get.charCode;
     key = String.fromCharCode(key);
@@ -113,6 +117,7 @@ startTimer();
 
 function sendMessage() {
     console.log(keys);
+    var pos = GetScreenCordinates(document.getElementById(idType));
     chrome.runtime.sendMessage({
         type: type,
         data: {
@@ -125,7 +130,8 @@ function sendMessage() {
             keyboard: {
                 id: idType,
                 typed: keys,
-                posType: cumulativeOffset(document.getElementById(idType))
+                x: pos.x,
+                y: pos.y
             }
         }
     });

@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.IO;
 
-namespace EO.TabbedBrowser
+namespace Lades.WebTracer
 {
     /// <summary>
     /// Interaction logic for Splash.xaml

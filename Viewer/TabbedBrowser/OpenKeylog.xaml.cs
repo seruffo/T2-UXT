@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EO.TabbedBrowser
+namespace Lades.WebTracer
 {
     /// <summary>
     /// Interaction logic for OpenKeylog.xaml
@@ -25,12 +25,18 @@ namespace EO.TabbedBrowser
             InitializeComponent();
             this.grupo = grupo;
         }
-        KeyloggerShow shower;
+
         KeyGroup grupo;
         private void Cmd_open_Click(object sender, RoutedEventArgs e)
         {
+            var source = App.vieweFull.img_read.Source;
+            System.Drawing.Image img = System.Drawing.Image.FromFile(grupo.path+ "\\" + grupo.Time + ".jpg");
+            App.vieweFull.img_read.Width = img.Width;
+            App.vieweFull.img_read.Height = img.Height;
+            App.vieweFull.img_read.Source = ViewerFull.LoadBitmapImage(grupo.path + "\\" + grupo.Time + ".jpg");
             KeyloggerShow show = new KeyloggerShow(grupo);
             show.ShowDialog();
+            App.vieweFull.img_read.Source = source;
         }
     }
 }

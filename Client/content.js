@@ -1,11 +1,24 @@
-var posX = 0;
-var posY = 0;
-var type = " ";
+var mouse = {
+    Id:"",
+    X: 0,
+    Y: 0,
+    Typed: "",
+    Time:0
+}
+
+var lastX = 0;
+var lastY = 0;
+var keyboard = {
+    Id: "",
+    X: 0,
+    Y: 0,
+    Typed: "",
+    Time:0
+}
 var freeze = 0;
 var time = 0;
-var keys = "";
-var idClick = "";
-var idType = "";
+var lastKeyId = "";
+
 function getRandomToken() {
     // E.g. 8 * 32 = 256 bits token
     var randomPool = new Uint8Array(32);
@@ -21,6 +34,11 @@ function getRandomToken() {
 
 function GetScreenCordinates(obj) {
     var p = {};
+    if (obj == null || (typeof obj == 'undefined')) {
+        p.x = 0;
+        p.y = 0;
+        return p;
+    }
     p.x = obj.offsetLeft;
     p.y = obj.offsetTop;
     while (obj.offsetParent) {
@@ -47,8 +65,9 @@ function startAgain() {
 
 
 $(document).mousemove(function (event) {
-    posX = event.pageX;
-    posY = event.pageY;
+    mouse.X = event.pageX;
+    mouse.Y = event.pageY;
+    freeze = 0;
 });
 
 function startTimer(secs) {
@@ -68,10 +87,16 @@ document.addEventListener("mouseout", function (e) {
 document.addEventListener('click', function (e) {
     idClick = e.target.id;
     console.log("click " + e.pageX + " | " + e.pageY);
-    posX = e.pageX;
-    posY = e.pageY;
-    type = "click";
-    sendMessage();
+    mouse.X = e.pageX;
+    mouse.Y = e.pageY;
+    freeze = 0;
+    if (typing) {
+        sendMessage("keyboard");
+        keyboard.Typed = "";
+        keyboard.Id = e.target.id;
+        typing = false;
+    }
+    sendMessage("click");
 });
 
 document.addEventListener("keydown", KeyCheck);
@@ -80,25 +105,33 @@ function KeyCheck(event) {
     switch (KeyID) {
         case 8:
             //backspace
-            keys = keys.slice(0, -1);
+            keyboard.Typed = keyboard.Typed.slice(0, -1);
             break;
         case 46:
             //delete
-            keys += "-!-";
+            keyboard.Typed += "-!-";
             break;
         default:
             break;
     }
 }
-
+var typing = false;
 document.onkeypress = function (e) {
-    idType = e.target.id;
-    var obj = GetScreenCordinates(document.getElementById(idType));
-    console.log('Press id ' + idType + " pos "+ obj.x + " | "+obj.y);
+    typing = true;
+    var obj = GetScreenCordinates(document.getElementById(e.target.id));
+    console.log('Press id ' + e.target.id + " pos "+ obj.x + " | "+obj.y);
     var get = window.event ? event : e;
     var key = get.keyCode ? get.keyCode : get.charCode;
     key = String.fromCharCode(key);
-    keys += key;
+    if (e.target.id != keyboard.Id) {
+        sendMessage("keyboard");
+        keyboard.Typed = "";
+        keyboard.Id = e.target.id;
+    } else {
+        keyboard.X=obj.x;
+        keyboard.Y=obj.y;
+    }
+    keyboard.Typed += key;
 }
 
 function tick() {
@@ -107,33 +140,29 @@ function tick() {
     if (freeze == 4) {
         console.log('freeze');
         freeze = 0;
-        type = "freeze";
-        idClick: idClick,
-        sendMessage();
+        idClick: mouse.Id,
+        sendMessage("freeze");
     }
 }
 startAgain();
 startTimer();
 
-function sendMessage() {
-    console.log(keys);
-    var pos = GetScreenCordinates(document.getElementById(idType));
+function sendMessage(type)
+{
+    var data = {};
+    if (type == "keyboard") {
+        data = keyboard;
+        if (data.X == 0 && data.Y == 0)
+        {
+            data.X = mouse.X;
+            data.Y = mouse.Y;
+        }
+    } else {
+        data = mouse;
+    }
+    data.Time = time;
     chrome.runtime.sendMessage({
         type: type,
-        data: {
-            mouse: {
-                id: idClick,
-                X: posX,
-                Y: posY,
-            },
-            time: time,
-            keyboard: {
-                id: idType,
-                typed: keys,
-                x: pos.x,
-                y: pos.y
-            }
-        }
+        data: data
     });
-    keys = "";
 }

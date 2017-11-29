@@ -9,12 +9,12 @@ chrome.runtime.onMessage.addListener(function (request, sender) {
     }
     else
     {
-        capture(request.type, request.data.mouse, request.data.time, request.data.keyboard);
+        capture(request.type, request.data);
     }
     //sendResponse({ farewell: "goodbye" });
 });
 
-function capture(type, mouse, time, keyboard)
+function capture(type, data)
 {
     chrome.windows.getCurrent(function (win) {   
         chrome.tabs.getSelected(null, function (tab) {
@@ -25,20 +25,18 @@ function capture(type, mouse, time, keyboard)
 
             $.post("http://localhost/WebTracer/receiver.php",
                 {
-                    type: "captura",
                     metadata: JSON.stringify({
                             imageData: screenshotUrl,
                             sample: domain,
                             userId: userId,
                             type: type,
-                            time: time + timeInternal,
+                            time: data.Time + timeInternal,
                     }),
-                    mouse: JSON.stringify(mouse),
-                    keyboard: JSON.stringify(keyboard)
+                    data: JSON.stringify(data)
 
             }
             ).done(function (data) {
-                //alert(type+" "+data);
+                alert(type+" "+data);
                 }
             );
             });

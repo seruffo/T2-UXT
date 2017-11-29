@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.IO;
 
-namespace EO.TabbedBrowser
+namespace Lades.WebTracer
 {
     /// <summary>
     /// Interaction logic for Chooser.xaml
@@ -43,8 +43,8 @@ namespace EO.TabbedBrowser
                     else
                         App.CurrentTrace = System.IO.Path.Combine(fbd.SelectedPath, App.CurrentTrace);
                     Directory.CreateDirectory(App.CurrentTrace);
-                    MainWindow browser = new MainWindow();
-                    browser.ShowDialog();
+                    //MainWindow browser = new MainWindow();
+                    //browser.ShowDialog();
                 }
             }
         }

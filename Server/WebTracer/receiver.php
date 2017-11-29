@@ -19,7 +19,7 @@
 			$source = imagecreatefromstring($imageData);
 			$imageSave = imagejpeg($source,'Samples/'.$Sample.'/'.$data->userId.'/'.$data->time.".jpg",100);
 			imagedestroy($source);
-			$txt = "<trace type=\"".$data->type."\" image=\"".$data->time.".jpg\" time=\"".$data->time."\" mouseId=\"".$mouse->id." mouseX=\"".$mouse->X."\" mouseY=\"".$mouse->Y."\" keyId=\"".$keyboard->id."\" keys=\"".$keyboard->typed."\" keyX=\"".$keyboard->x."\" keyY=\"".$keyboard->y."\"\>";
+			$txt = "<rawtrace type=\"".$data->type."\" image=\"".$data->time.".jpg\" time=\"".$data->time."\" mouseId=\"".$mouse->id."\" mouseX=\"".$mouse->X."\" mouseY=\"".$mouse->Y."\" keyId=\"".$keyboard->id."\" keys=\"".$keyboard->typed."\" keyX=\"".$keyboard->x."\" keyY=\"".$keyboard->y."\"/>";
 			file_put_contents('Samples/'.$Sample.'/'.$data->userId.'/trace.xml', $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
 			$handle = fopen('Samples/'.$Sample.'/'.$data->userId.'/lastTime.txt',"w");
 			$content = fwrite($handle,$data->time);

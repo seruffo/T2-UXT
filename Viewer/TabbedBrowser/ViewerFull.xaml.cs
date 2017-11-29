@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 
-namespace EO.TabbedBrowser
+namespace Lades.WebTracer
 {
     /// <summary>
     /// Interaction logic for ViewerFull.xaml
@@ -27,6 +27,7 @@ namespace EO.TabbedBrowser
         int freeze = 0;
         int clickQuant = 0;
         int time = 0;
+        List<int> Times { get; set; } = new List<int>();
         int Fulltime = 0;
         int[] pos = new int[2];
         private List<HeatPoint> positions = new List<HeatPoint>();
@@ -36,7 +37,7 @@ namespace EO.TabbedBrowser
 
         public bool AddToKeylogging(Node node)
         {
-            if (node.keyText == "")
+            if (node.keyText == "" || node.Type!="keyboard")
                 return true;
             if (keylogging.Count < 1)
             {
@@ -45,9 +46,9 @@ namespace EO.TabbedBrowser
             }
             for(int y =0; y < keylogging.Count; y++)
             {
-                if(keylogging[y].Name == node.keyId)
+                if(keylogging[y].Name == node.Id)
                 {
-                    keylogging[y].Text+=node.keyText;
+                    keylogging[y].Text.Add(node.keyText);
                     return true;
                 }
             }
@@ -220,25 +221,34 @@ namespace EO.TabbedBrowser
         private List<HeatPoint> ConvertArrayToHeatPointList(string source)
         {
             List<Node> node = Node.LoadNodes(source);
-            List <HeatPoint> result = new List<HeatPoint>();
+            List<HeatPoint> result = new List<HeatPoint>();
             foreach (Node loaded in node)
             {
-                AddToKeylogging(loaded);
-                result.Add(new HeatPoint());
-                if (loaded.Type == "click")
+                if (loaded.Type != "keyboard")
                 {
-                    result[result.Count - 1].Z = 1;
-                    clickQuant++;
+                    result.Add(new HeatPoint());
+                    if (loaded.Type == "click")
+                    {
+                        result[result.Count - 1].Z = 1;
+                        result[result.Count - 1].X = loaded.X;
+                        result[result.Count - 1].Y = loaded.Y;
+                        clickQuant++;
+                    }
+                    if (loaded.Type == "freeze")
+                    {
+                        result[result.Count - 1].Z = -1;
+                        result[result.Count - 1].X = loaded.X;
+                        result[result.Count - 1].Y = loaded.Y;
+                        freeze += 3;
+                    }
+
+                    Times.Add(time = loaded.Time);
+                    txb_time.Text = time.ToString();
                 }
-                if (loaded.Type == "lag")
+                else
                 {
-                    result[result.Count - 1].Z = -1;
-                    freeze += 3;
+                    AddToKeylogging(loaded);
                 }
-                result[result.Count - 1].X = loaded.mouseX;
-                result[result.Count - 1].Y = loaded.mouseY;
-                time = loaded.Time;
-                txb_time.Text = time.ToString();
             }
             return result;
         }
@@ -277,6 +287,7 @@ namespace EO.TabbedBrowser
 
         private async void Window_ContentRendered(object sender, EventArgs e)
         {
+            App.vieweFull = this;
             //for(int h = 0; h < 100; h++)
             //{
             //    grd_viewer.Background = new SolidColorBrush(getHeat(100, h));
@@ -287,10 +298,10 @@ namespace EO.TabbedBrowser
             img_read.Height = System.Windows.SystemParameters.WorkArea.Height;
             try
             {
-                System.Drawing.Image img = System.Drawing.Image.FromFile(App.CurrentTraceList[0] + "\\trace3.png");
+                System.Drawing.Image img = System.Drawing.Image.FromFile(App.CurrentTraceList[0] + "\\"+ Times[0] + ".jpg");
                 img_read.Width = img.Width;
                 img_read.Height = img.Height;
-                img_read.Source = LoadBitmapImage(App.CurrentTraceList[0] + "\\trace3.png");
+                img_read.Source = LoadBitmapImage(App.CurrentTraceList[0] + "\\" + Times[0] + ".jpg");
                 for (int z = 0; z < positionsFinal.Count; z++)
                 {
                     positionsFinal[z].Z = GetZ(z);

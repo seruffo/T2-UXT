@@ -1,9 +1,9 @@
-﻿<Window x:Class="EO.TabbedBrowser.Views"
+﻿<Window x:Class="Lades.WebTracer.Views"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EO.TabbedBrowser"
+        xmlns:local="clr-namespace:Lades.WebTracer"
         mc:Ignorable="d"
         Title="Clique para selecionar o rastro" Height="300" Width="300" WindowStartupLocation="CenterScreen" ContentRendered="Window_ContentRendered">
     <Grid>

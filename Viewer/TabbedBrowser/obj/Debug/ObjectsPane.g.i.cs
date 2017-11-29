@@ -9,7 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using EO.WebBrowser.Wpf;
 using EO.Wpf;
 using EO.Wpf.Gauge;
 using EO.Wpf.Gauge.Shapes;

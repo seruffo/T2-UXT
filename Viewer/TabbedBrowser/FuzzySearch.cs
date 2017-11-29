@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EO.TabbedBrowser
+namespace Lades.WebTracer
 {
 	/// <summary>
 	/// Provides methods for fuzzy string searching.

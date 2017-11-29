@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 
-namespace EO.TabbedBrowser
+namespace Lades.WebTracer
 {
     /// <summary>
     /// Interaction logic for ViewsMulti.xaml

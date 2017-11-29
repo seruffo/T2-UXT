@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
 
-namespace EO.TabbedBrowser
+namespace Lades.WebTracer
 {
     public class Node
     {
         public string Type{get; set;}
         public string ImgPath{get; set;}
         public int Time{get; set;}
-        public string mouseId{get; set;}
-        public int mouseX{get; set;}
-        public int mouseY{get; set;}
-        public string keyId{get; set;}
-        public int keyX{get; set;}
-        public int keyY{get; set;}
+        public string Id{get; set;}
+        public int X{get; set;}
+        public int Y{get; set;}
         public string keyText{get; set;}
+
+        public string sourcePath { get; set; }
 
         public Node()
         {
@@ -46,22 +45,33 @@ namespace EO.TabbedBrowser
                 {
                     //<trace type="click" image="1.jpg" time="1" x="321" y="184" keys=""\>
                     Node tempNode = new Node();
-                    tempNode.Type = node.Attributes["type"].Value;
-                    tempNode.ImgPath = node.Attributes["image"].Value;
-                    tempNode.Time = int.Parse(node.Attributes["time"].Value);
-                    tempNode.mouseId = node.Attributes["mouseId"].Value;
-                    tempNode.mouseX = int.Parse(node.Attributes["mouseX"].Value);
-                    tempNode.mouseY = int.Parse(node.Attributes["mouseY"].Value);
-                    tempNode.keyId = node.Attributes["keyId"].Value;
-                    tempNode.keyX = int.Parse(node.Attributes["keyX"].Value);
-                    tempNode.keyY = int.Parse(node.Attributes["keyY"].Value);
-                    tempNode.keyText = node.Attributes["keys"].Value;
+                    tempNode.Type = LoadAttribute(node,"type","click");
+                    tempNode.ImgPath = LoadAttribute(node, "image", "");
+                    tempNode.Time = int.Parse(LoadAttribute(node, "time","0"));
+                    tempNode.Id = LoadAttribute(node, "Id","");
+                    tempNode.X = int.Parse(LoadAttribute(node, "X","0"));
+                    tempNode.Y = int.Parse(LoadAttribute(node, "Y","0"));
+                    tempNode.keyText = LoadAttribute(node, "Typed","0");
+                    tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
                     result.Add(tempNode);
                 }
             }
             return result;
         }
-
+        private static string LoadAttribute(XmlNode node, string attr, string defaultValue)
+        {
+            string result;
+            try
+            {
+                result = node.Attributes[attr].Value;
+                return result;
+            }
+            catch
+            {
+                //Console.WriteLine("erro no atributo " + attr);
+                return defaultValue;
+            }
+        }
 
     }
 }

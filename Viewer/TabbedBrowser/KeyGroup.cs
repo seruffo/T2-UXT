@@ -4,21 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EO.TabbedBrowser
+namespace Lades.WebTracer
 {
     public class KeyGroup
     {
         public string Name { get; }
-        public string Text { get; set; }
+        public List<string> Text { get; set; } = new List<string>();
         public int X { get; set; }
         public int Y { get; set; }
 
+        public int Time { get; set; }
+
+        public string path { get; set; }
+
         public KeyGroup(Node node)
         {
-            Name = node.keyId;
-            X = node.keyX;
-            Y = node.keyY;
-            Text = node.keyText;
+            Name = node.Id;
+            X = node.X;
+            Y = node.Y;
+            Text.Add(node.keyText);
+            Time = node.Time;
+            path = node.sourcePath;
         }
     }
 }

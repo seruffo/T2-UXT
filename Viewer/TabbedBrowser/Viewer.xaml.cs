@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 
-namespace EO.TabbedBrowser
+namespace Lades.WebTracer
 {
     /// <summary>
     /// Interaction logic for Viewer.xaml
@@ -108,123 +108,132 @@ namespace EO.TabbedBrowser
         private void nextScene()
         {
             if (count < 0) count = 0;
-            System.Drawing.Image img = System.Drawing.Image.FromFile(App.CurrentTrace + "//"+node[count].ImgPath);
-            img_read.Width = img.Width;
-            img_read.Height = img.Height;
-            img_read.Source = LoadBitmapImage(App.CurrentTrace + "//" + node[count].ImgPath);
-
-            circle.Add(new Ellipse());
-            number.Add(new Label());
-            number[count].Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-            number[count].Content = count;
-            number[count].FontSize = 10;
-            if (node[count].Type == "click" /*trace[countLines].Contains("_Click")*/)
+            if (node[count].Type != "keyboard")
             {
-                circle[count].Fill = new SolidColorBrush(Color.FromArgb(64, 255, 0, 0));
-                clickQuant++;
+                System.Drawing.Image img = System.Drawing.Image.FromFile(App.CurrentTrace + "//" + node[count].ImgPath);
+                img_read.Width = img.Width;
+                img_read.Height = img.Height;
+                img_read.Source = LoadBitmapImage(App.CurrentTrace + "//" + node[count].ImgPath);
+
+                circle.Add(new Ellipse());
+                number.Add(new Label());
+                Console.WriteLine("count " + count);
+                number[number.Count-1].Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                number[number.Count - 1].Content = count;
+                number[number.Count - 1].FontSize = 10;
+                if (node[count].Type == "click" /*trace[countLines].Contains("_Click")*/)
+                {
+                    circle[circle.Count-1].Fill = new SolidColorBrush(Color.FromArgb(64, 255, 0, 0));
+                    clickQuant++;
+                }
+                if (node[count].Type == "freeze" /*trace[countLines].Contains("_lag")*/)
+                {
+                    circle[circle.Count - 1].Fill = new SolidColorBrush(Color.FromArgb(64, 0, 0, 255));
+                    freeze += 3;
+                }
+
+                //TRACELOG
+                time = node[count].Time;
+                txb_time.Text = time.ToString() + " S";
+                pos[0] = node[count].X;
+                pos[1] = node[count].Y;
+                //Console.WriteLine("line1 " + trace[countLines]);
+                //Console.WriteLine(" x " + pos[0]);
+                //Console.WriteLine("line2 " + trace[countLines + 1]);
+                //Console.WriteLine(" y " + trace[countLines + 1].Substring(0, separador));
+                //Console.WriteLine(" time " + trace[countLines + 1].Substring(separador + 2, trace[countLines + 1].Length - (separador + 2)));
+
+                circle[circle.Count - 1].Height = circle[circle.Count - 1].Width = 100;
+                //canvas_generator.Children.Add(circle);
+                //Canvas.SetLeft(circle, pos[0]);
+                //Canvas.SetTop(circle, pos[1]);
+                Thickness position = new Thickness();
+                circle[circle.Count - 1].HorizontalAlignment = HorizontalAlignment.Left;
+                circle[circle.Count - 1].VerticalAlignment = VerticalAlignment.Top;
+                position.Left = pos[0] - 50;
+                position.Top = pos[1] - 50;
+                circle[circle.Count - 1].Margin = position;
+                circle[circle.Count - 1].OpacityMask = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/mask.png", UriKind.RelativeOrAbsolute)));
+
+                Thickness positionLabel = new Thickness();
+                positionLabel.Left = pos[0];
+                positionLabel.Top = pos[1];
+                number[number.Count - 1].Margin = positionLabel;
+
+                line.Add(new Line());
+                line[line.Count-1].HorizontalAlignment = HorizontalAlignment.Left;
+                line[line.Count - 1].VerticalAlignment = VerticalAlignment.Center;
+                line[line.Count - 1].Stroke = new SolidColorBrush(Color.FromArgb(255, 14, 175, 255));
+                Console.WriteLine(pos[1]);
+                //if (pos[1] > 539)
+                //{
+                //    int original = pos[1];
+                //    int tryng = pos[1] - 540;
+                //    pos[1] = (tryng * 2) + 540;
+                //    oldPos[1] += (Math.Abs(oldPos[1] - pos[1]));
+                //}
+                line[line.Count - 1].X2 = oldPos[0];
+                line[line.Count - 1].Y2 = oldPos[1];
+                line[line.Count - 1].X1 = pos[0];
+                line[line.Count - 1].Y1 = pos[1];
+                /*if (pos[1] > 539)
+                    pos[1] += 100;*/
+                //if()
+                line[line.Count - 1].StrokeThickness = 2;
+
+
+                triangle.Add(new Image());
+                Thickness posi = new Thickness();
+                triangle[triangle.Count-1].Width = 9;
+                triangle[triangle.Count - 1].Height = 17;
+                Point middle = Fraction(0.5f, (float)line[triangle.Count - 1].X1, (float)line[triangle.Count - 1].Y1, (float)line[triangle.Count - 1].X2, (float)line[triangle.Count - 1].Y2);
+                double angle = getAngle((float)line[triangle.Count - 1  ].X1, (float)line[triangle.Count - 1].X2, (float)line[triangle.Count - 1].Y1, (float)line[triangle.Count - 1].Y2);
+                RotateTransform rotateTransform = new RotateTransform(angle);
+                triangle[triangle.Count - 1].RenderTransform = rotateTransform;
+                posi.Left = (middle.X);
+                posi.Top = (middle.Y - 9);
+                triangle[triangle.Count - 1].Margin = posi;
+                triangle[triangle.Count - 1].Source = new BitmapImage(new Uri("pack://application:,,,/triangle.png", UriKind.RelativeOrAbsolute));
+                triangle[triangle.Count - 1].Opacity = 0.75;
+                try
+                {
+                    canvas.Children.Add(circle[circle.Count-1]);
+                    canvas.Children.Add(number[number.Count-1]);
+                    canvas.Children.Add(triangle[triangle.Count-1]);
+                    canvas.Children.Add(line[line.Count-1]);
+                }
+                catch
+                {
+                    canvas.Children.Remove(circle[circle.Count - 1]);
+                    canvas.Children.Remove(number[number.Count - 1]);
+                    canvas.Children.Remove(triangle[triangle.Count - 1]);
+                    canvas.Children.Remove(line[line.Count - 1]);
+                    nextScene();
+                }
+                for (int x = 0; x < line.Count; x++)
+                {
+                    line[x].Opacity -= 0.025;
+                    triangle[x].Opacity -= 0.025;
+                    number[x].Opacity -= 0.025;
+                }
+                oldPos[0] = pos[0];
+                oldPos[1] = pos[1];
+                txb_freeze.Text = freeze.ToString() + " S";
+                txb_move.Text = (time - freeze) + " S";
+                txb_click.Text = clickQuant.ToString();
             }
-            if (node[count].Type == "freeze" /*trace[countLines].Contains("_lag")*/)
+            else
             {
-                circle[count].Fill = new SolidColorBrush(Color.FromArgb(64, 0, 0, 255));
-                freeze += 3;
-            }
-            //TRACELOG
-            time = node[count].Time;
-            txb_time.Text = time.ToString() + " S";
-            pos[0] = node[count].mouseX;
-            pos[1] = node[count].mouseY;
-            if (node[count].keyText != String.Empty)
-            {
-                ltb_keylogger.Items.Add(node[count].keyText);
-                keyloggerTimes.Add(time);
-            }
-            ltb_keylogger.ScrollIntoView(ltb_keylogger.Items.GetItemAt(ltb_keylogger.Items.Count - 1));
-            //Console.WriteLine("line1 " + trace[countLines]);
-            //Console.WriteLine(" x " + pos[0]);
-            //Console.WriteLine("line2 " + trace[countLines + 1]);
-            //Console.WriteLine(" y " + trace[countLines + 1].Substring(0, separador));
-            //Console.WriteLine(" time " + trace[countLines + 1].Substring(separador + 2, trace[countLines + 1].Length - (separador + 2)));
-
-            circle[count].Height = circle[count].Width = 100;
-            //canvas_generator.Children.Add(circle);
-            //Canvas.SetLeft(circle, pos[0]);
-            //Canvas.SetTop(circle, pos[1]);
-            Thickness position = new Thickness();
-            circle[count].HorizontalAlignment = HorizontalAlignment.Left;
-            circle[count].VerticalAlignment = VerticalAlignment.Top;
-            position.Left = pos[0] - 50;
-            position.Top = pos[1] - 50;
-            circle[count].Margin = position;
-            circle[count].OpacityMask = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/mask.png", UriKind.RelativeOrAbsolute)));
-
-            Thickness positionLabel = new Thickness();
-            positionLabel.Left = pos[0];
-            positionLabel.Top = pos[1];
-            number[count].Margin = positionLabel;
-
-            line.Add(new Line());
-            line[count].HorizontalAlignment = HorizontalAlignment.Left;
-            line[count].VerticalAlignment = VerticalAlignment.Center;
-            line[count].Stroke = new SolidColorBrush(Color.FromArgb(255, 14, 175, 255));
-            Console.WriteLine(pos[1]);
-            //if (pos[1] > 539)
-            //{
-            //    int original = pos[1];
-            //    int tryng = pos[1] - 540;
-            //    pos[1] = (tryng * 2) + 540;
-            //    oldPos[1] += (Math.Abs(oldPos[1] - pos[1]));
-            //}
-            line[count].X2 = oldPos[0];
-            line[count].Y2 = oldPos[1];
-            line[count].X1 = pos[0];
-            line[count].Y1 = pos[1];
-            /*if (pos[1] > 539)
-                pos[1] += 100;*/
-            //if()
-            line[count].StrokeThickness = 2;
-
-
-            triangle.Add(new Image());
-            Thickness posi = new Thickness();
-            triangle[count].Width = 9;
-            triangle[count].Height = 17;
-            Point middle = Fraction(0.5f, (float)line[count].X1, (float)line[count].Y1, (float)line[count].X2, (float)line[count].Y2);
-            double angle = getAngle((float)line[count].X1, (float)line[count].X2, (float)line[count].Y1, (float)line[count].Y2);
-            RotateTransform rotateTransform = new RotateTransform(angle);
-            triangle[count].RenderTransform = rotateTransform;
-            posi.Left = (middle.X);
-            posi.Top = (middle.Y - 9);
-            triangle[count].Margin = posi;
-            triangle[count].Source = new BitmapImage(new Uri("pack://application:,,,/triangle.png", UriKind.RelativeOrAbsolute));
-            triangle[count].Opacity = 0.75;
-            try
-            {
-                canvas.Children.Add(circle[count]);
-                canvas.Children.Add(number[count]);
-                canvas.Children.Add(triangle[count]);
-                canvas.Children.Add(line[count]);
-            }
-            catch
-            {
-                canvas.Children.Remove(triangle[count]);
-                canvas.Children.Remove(line[count]);
-                canvas.Children.Remove(circle[count]);
-                canvas.Children.Remove(number[count]);
-                nextScene();
-            }
-            for (int x = 0; x < line.Count; x++)
-            {
-                line[x].Opacity -= 0.025;
-                triangle[x].Opacity -= 0.025;
-                number[x].Opacity -= 0.025;
+                if (node[count].keyText != String.Empty)
+                {
+                    ltb_keylogger.Items.Add(node[count].keyText);
+                    keyloggerTimes.Add(time);
+                    if (ltb_keylogger.Items.Count > 0)
+                        ltb_keylogger.ScrollIntoView(ltb_keylogger.Items.GetItemAt(ltb_keylogger.Items.Count - 1));
+                }
             }
             countLines += 2;
             count++;
-            oldPos[0] = pos[0];
-            oldPos[1] = pos[1];
-            txb_freeze.Text = freeze.ToString() + " S";
-            txb_move.Text = (time - freeze) + " S";
-            txb_click.Text = clickQuant.ToString();
         }
             
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -256,11 +265,11 @@ namespace EO.TabbedBrowser
             }
             if (e.Key == Key.Right)
             {
-                try
-                {
+                //try
+                //{
                     nextScene();
-                }
-                catch { }
+                //}
+                //catch { }
 
             }
             if (e.Key == Key.Left)
@@ -293,8 +302,8 @@ namespace EO.TabbedBrowser
                         {
                             freeze -= 3;
                         }
-                        pos[0] = node[count].mouseX;
-                        pos[1] = node[count].mouseY;
+                        pos[0] = node[count].X;
+                        pos[1] = node[count].Y;
                         //TRACELOG
                         if (time == keyloggerTimes[keyloggerTimes.Count - 1])
                         {
@@ -302,12 +311,12 @@ namespace EO.TabbedBrowser
                             ltb_keylogger.Items.RemoveAt(ltb_keylogger.Items.Count - 1);
                         } 
 
-                        oldPos[0] = (int)line[count].X2;
-                        oldPos[1] = (int)line[count].Y2;
-                        canvas.Children.Remove(triangle[count]);
-                        canvas.Children.Remove(line[count]);
-                        canvas.Children.Remove(circle[count]);
-                        canvas.Children.Remove(number[count]);
+                        oldPos[0] = (int)line[line.Count-1].X2;
+                        oldPos[1] = (int)line[line.Count-1].Y2;
+                        canvas.Children.Remove(triangle[triangle.Count-1]);
+                        canvas.Children.Remove(line[line.Count-1]);
+                        canvas.Children.Remove(circle[circle.Count-1]);
+                        canvas.Children.Remove(number[number.Count-1]);
                         txb_freeze.Text = freeze.ToString() + " S";
                         txb_move.Text = (time - freeze) + " S";
                         txb_click.Text = clickQuant.ToString();

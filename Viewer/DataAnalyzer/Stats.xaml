@@ -1,0 +1,16 @@
+﻿<Window x:Class="Lades.WebTracer.Stats"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lades.WebTracer"
+        mc:Ignorable="d"
+        Title="Stats" Height="443" Width="691.5" ContentRendered="Window_ContentRendered">
+    <Grid>
+        <ListBox x:Name="Ltb_freq" Height="152" Margin="10,44,10,0" VerticalAlignment="Top" MouseDoubleClick="Ltb_freq_MouseDoubleClick"/>
+        <Label Content="Caminhos frequentes:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Caminhos por Levenshtein:" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <ListBox x:Name="Ltb_Levh" Height="152" Margin="10,249,10,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

@@ -4,21 +4,21 @@
   "description": "Software de captura de dados de interacao.",
   "background": {
     "persistent": false,
-    "scripts": [ "background.js", "JQuery-3.2.1.js" ]
+    "scripts": [ "background.js" ]
   },
   "content_scripts": [
     {
       "matches": [ "<all_urls>", "http://*/*", "https://*/*" ],
-      "js": [ "JQuery-3.2.1.js", "Content.js" ]
+      "js": ["Content.js" ]
     }
   ],
   "browser_action": {
-    "default_icon": "camera.png",
+    "default_icon": "logo.png",
     "default_title": "Obrigado por participar!"
   },
   "permissions": [
     "storage",
-    "activeTab",
+    "captureVisibleTab",
     "webNavigation",
     "tabs",
     "<all_urls>",

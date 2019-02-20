@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="EO.TabbedBrowser.DownloadsPane"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style x:Key="gridHeader" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="Transparent">
+        <ListView x:Name="lstDownloads" BorderThickness="0" SizeChanged="ListView_SizeChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="colUrl" HeaderContainerStyle="{StaticResource gridHeader}"  Header="Url" DisplayMemberBinding="{Binding Url}"></GridViewColumn>
+                    <GridViewColumn x:Name="colFileName" HeaderContainerStyle="{StaticResource gridHeader}"  Header="File Name" DisplayMemberBinding="{Binding FullPath}" Width="200"></GridViewColumn>
+                    <GridViewColumn x:Name="colTotalSize" HeaderContainerStyle="{StaticResource gridHeader}"  Header="Total Size" DisplayMemberBinding="{Binding TotalBytes}" Width="100"></GridViewColumn>
+                    <GridViewColumn x:Name="colPercentage" HeaderContainerStyle="{StaticResource gridHeader}"  Header="Percentage" DisplayMemberBinding="{Binding PercentageComplete, StringFormat={}{0:d}%}"  Width="100"></GridViewColumn>
+                    <GridViewColumn x:Name="colPaused" HeaderContainerStyle="{StaticResource gridHeader}"  Header="State" DisplayMemberBinding="{Binding State}"  Width="80"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu Opened="ContextMenu_Opened">
+                    <MenuItem x:Name="mnuOpenLocation" Header="Open File Location" Click="mnuOpenLocation_Click"></MenuItem>
+                    <MenuItem x:Name="mnuPauseResume" Header="Pause" Click="mnuPauseResume_Click"></MenuItem>
+                    <MenuItem x:Name="mnuCancel" Header="Cancel" Click="mnuCancel_Click"></MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+    </Grid>
+</UserControl>

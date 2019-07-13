@@ -5,14 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lades.WebTracer"
         mc:Ignorable="d"
-        Title="Selecione um dos módulos" Height="354" Width="508" WindowStyle="ToolWindow" Background="#FF002B83" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Image Source="SPLASH.png" Stretch="Fill" HorizontalAlignment="Left" Width="500" Height="280" Margin="0,14,0,30"/>
-        <Image Source="SPLASH.png" Stretch="Fill" HorizontalAlignment="Left" Width="500" Height="280" Margin="0,-35,0,79"/>
-        <Rectangle HorizontalAlignment="Left" Height="77" Margin="0,155,0,0" VerticalAlignment="Top" Width="500" Fill="#FF002B83"/>
-        <Button Content="Compilation" HorizontalAlignment="Left" Margin="178,170,0,0" VerticalAlignment="Top" Width="126" Height="36" Click="Button_Click" ToolTip="O módulo de captura realiza a obtenção de dados de interação através de uma extensão do Google Chrome, que pode ser enviada aos usuários."/>
-        <Button Content="Single View" HorizontalAlignment="Left" Margin="47,170,0,0" VerticalAlignment="Top" Width="126" Height="36" Click="Button_Click_1" ToolTip="O módulo Single View permite visualizar individualmente a interação dos usuários com a aplicação Web, exibindo percurso cognitivo. cliques, esperas, e entradas de teclado."/>
-        <Button x:Name="Cmd_fuzzy" Content="DataFuzzy" HorizontalAlignment="Left" Margin="309,170,0,0" VerticalAlignment="Top" Width="126" Height="36" Click="Cmd_fuzzy_Click" ToolTip="O módulo de captura realiza a obtenção de dados de interação através de uma extensão do Google Chrome, que pode ser enviada aos usuários."/>
+        Title="Selecione um dos módulos" Background="White" WindowStartupLocation="CenterScreen" VerticalAlignment="Center" MinWidth="500" MinHeight="400" HorizontalAlignment="Center" Width="506" Height="463" ResizeMode="NoResize" Icon="aimt-uxt.ico">
+    <Grid MinWidth="500" MinHeight="400">
+        <Button Content="Heatmap" HorizontalAlignment="Left" Margin="192,271,0,0" VerticalAlignment="Top" Width="110" Height="28" Click="Button_Click" ToolTip="O módulo de captura realiza a obtenção de dados de interação através de uma extensão do Google Chrome, que pode ser enviada aos usuários."/>
+        <Button Content="Single-View" HorizontalAlignment="Left" Margin="39,271,0,0" VerticalAlignment="Top" Width="110" Height="28" Click="Button_Click_1" ToolTip="O módulo Single View permite visualizar individualmente a interação dos usuários com a aplicação Web, exibindo percurso cognitivo. cliques, esperas, e entradas de teclado."/>
+        <Button x:Name="Cmd_fuzzy" Content="DataFuzzy" HorizontalAlignment="Left" Margin="346,271,0,0" VerticalAlignment="Top" Width="110" Height="28" Click="Cmd_fuzzy_Click" ToolTip="O módulo de captura realiza a obtenção de dados de interação através de uma extensão do Google Chrome, que pode ser enviada aos usuários."/>
+        <Image HorizontalAlignment="Center" Height="100" Margin="0" VerticalAlignment="Top" Width="500" Source="banner.png"/>
+        <Label Content="Main Modules" HorizontalAlignment="Left" Margin="33,127,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA"/>
+        <Label Content="____________________________________________________________________________________________________________________________________" HorizontalAlignment="Left" Margin="122,123,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA"/>
+        <Image HorizontalAlignment="Left" Height="99" Margin="39,167,0,0" VerticalAlignment="Top" Width="110" Source="singleV.png"/>
+        <Image HorizontalAlignment="Left" Height="95" Margin="346,167,0,0" VerticalAlignment="Top" Width="110" Source="fuzzy.png" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="99" Margin="192,167,0,0" VerticalAlignment="Top" Width="110" Source="heatmap.png"/>
+        <Label Content="Other Modules" HorizontalAlignment="Left" Margin="33,326,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA"/>
+        <Label Content="__________________________________________________________________________________________________________________________________" HorizontalAlignment="Left" Margin="126,322,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA"/>
+        <Button Content="Client" HorizontalAlignment="Left" Margin="192,368,0,0" VerticalAlignment="Top" Width="110" Height="28" Click="Button_Click" ToolTip="O módulo de captura realiza a obtenção de dados de interação através de uma extensão do Google Chrome, que pode ser enviada aos usuários." IsEnabled="False"/>
+        <Button Content="Trace -&gt; CSV" HorizontalAlignment="Left" Margin="39,368,0,0" VerticalAlignment="Top" Width="110" Height="28" Click="Button_Click_1" ToolTip="O módulo Single View permite visualizar individualmente a interação dos usuários com a aplicação Web, exibindo percurso cognitivo. cliques, esperas, e entradas de teclado." IsEnabled="False"/>
 
     </Grid>
 </Window>

@@ -38,6 +38,7 @@ namespace Lades.WebTracer
         public static bool waits = false;
         public static bool scrolls = false;
         public static bool clicks = false;
+        public static bool eyes = false;
         public static List<string> firstImage = new List<string>();
         public static List<int> firstImageScroll = new List<int>();
 
@@ -232,16 +233,24 @@ namespace Lades.WebTracer
                     if (loaded.Type == "click")
                     {
                         result[result.Count - 1].Z = 1;
+                        result[result.Count - 1].type = 1;
                         clickQuant++;
                     }
                     if (loaded.Type == "wheel")
                     {
                         result[result.Count - 1].Z = -2;
+                        result[result.Count - 1].type = -2;
                     }
                     if (loaded.Type == "freeze")
                     {
                         result[result.Count - 1].Z = -1;
+                        result[result.Count - 1].type = -1;
                         freeze += 3;
+                    }
+                    if (loaded.Type == "eye")
+                    {
+                        result[result.Count - 1].type = -3;
+                        result[result.Count - 1].Z = 1;
                     }
                     result[result.Count - 1].X = loaded.X;
                     result[result.Count - 1].Y = loaded.Y;
@@ -280,8 +289,8 @@ namespace Lades.WebTracer
                 cnv_images.Children.Remove(image);
             }
             imgList.Clear();
-            App.maxClicks = 0;
-            maxPoints = 0;
+            //App.maxClicks = 0;
+            //maxPoints = 0;
             freeze = 0;
             clickQuant = 0;
             time = 0;
@@ -351,6 +360,7 @@ namespace Lades.WebTracer
                             }
                         }
                         imgCounter++;
+                        Console.WriteLine("imgCounter " + imgCounter);
                     }
                     catch { }
                 }
@@ -395,24 +405,38 @@ namespace Lades.WebTracer
                     circle.Margin = position;
                     circle.Opacity = 1;
                     bool add = false;
-                    if (point.Z > -1 && clicks)
+                    if (eyes)
                     {
+                        Txt_concentra.Content = "Gaze concentration";
+                    }
+
+                    if (eyes && point.type==-3)
+                    {
+                        Console.WriteLine(point.X+" "+point.Y);
                         circle.Fill = new SolidColorBrush(getHeat(maxPoints, point.Z));
                         add = true;
                     }
                     else
                     {
-                        if (point.Z == -1 && waits)
+                        if (clicks && point.type == 1)
                         {
-                            circle.Fill = new SolidColorBrush(Color.FromArgb(255, 255, 0, 255));
+                            circle.Fill = new SolidColorBrush(getHeat(maxPoints, point.Z));
                             add = true;
                         }
                         else
                         {
-                            if (point.Z == -2 && scrolls)
+                            if (point.Z == -1 && waits)
                             {
-                                circle.Fill = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+                                circle.Fill = new SolidColorBrush(Color.FromArgb(255, 255, 0, 255));
                                 add = true;
+                            }
+                            else
+                            {
+                                if (point.Z == -2 && scrolls)
+                                {
+                                    circle.Fill = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+                                    add = true;
+                                }
                             }
                         }
                     }
@@ -423,6 +447,7 @@ namespace Lades.WebTracer
                     circle.OpacityMask = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/mask.png", UriKind.RelativeOrAbsolute)));
                     if (add)
                     {
+                        Console.WriteLine("add  "+point.X + " " + point.Y);
                         cnv_viewer.Children.Add(circle);
                         //await Task.Delay(25);
                     }
@@ -445,19 +470,36 @@ namespace Lades.WebTracer
             }
             catch(Exception e) { MessageBox.Show(e.ToString()); }
         }
-
+        bool firstTime = true;
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            if (firstTime)
+            {
+                cnv_viewer.Visibility = Visibility.Visible;
+                grd_info.Visibility = Visibility.Collapsed;
+            }
+            
             if(e.Key == Key.Right)
             {
                 if (App.stats.index < App.stats.urls.Length)
                 {
+                    txb_click.Text = txb_freeze.Text = txb_move.Text = txb_time.Text = "LOADING...";
                     Clean();
                     GenHeatmap(App.stats.urls[App.stats.index]);
                     Console.WriteLine(App.stats.urls[App.stats.index]);
                     App.stats.index++;
                 }
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            cnv_viewer.Visibility = Visibility.Collapsed;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

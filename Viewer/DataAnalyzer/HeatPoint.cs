@@ -15,5 +15,6 @@ namespace Lades.WebTracer
         public double X;
         public double Y;
         public double Z;
+        public int type = 0;
     }
 }

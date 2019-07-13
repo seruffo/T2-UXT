@@ -40,6 +40,15 @@ namespace Lades.WebTracer
             int index = Ltb_traces.SelectedIndex;
             App.CurrentTrace = directories[index];
             Viewer viewer = new Viewer();
+            MessageBoxResult result=MessageBox.Show("Show Eye-Tracking?", "AIMT-UXT", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                App.singleViewMouse = false;
+            }
+            else
+            {
+                App.singleViewMouse = true;
+            }
             viewer.ShowDialog();
         }
     }

@@ -25,6 +25,7 @@ namespace Lades.WebTracer
             ViewerFull.clicks = false;
             ViewerFull.scrolls = false;
             ViewerFull.waits = false;
+            ViewerFull.eyes = false;
         }
 
         private void Cmd_set_Click(object sender, RoutedEventArgs e)
@@ -71,6 +72,16 @@ namespace Lades.WebTracer
         private void Chk_waits_Unchecked(object sender, RoutedEventArgs e)
         {
             ViewerFull.waits = false;
+        }
+
+        private void Chk_gaze_Checked(object sender, RoutedEventArgs e)
+        {
+            ViewerFull.eyes = true;
+        }
+
+        private void Chk_gaze_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ViewerFull.eyes = false;
         }
     }
 }

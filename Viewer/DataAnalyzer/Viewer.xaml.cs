@@ -84,7 +84,29 @@ namespace Lades.WebTracer
     
             img_read.Width = System.Windows.SystemParameters.WorkArea.Width;
             img_read.Height = System.Windows.SystemParameters.WorkArea.Height;
-            node = Node.LoadNodes(App.CurrentTrace+"//trace.xml");
+            node = Node.LoadNodes(App.CurrentTrace+"\\trace.xml");
+            for(int x=0;x<node.Count;x++)
+            {
+                bool Analysis = false;
+                if (App.singleViewMouse)
+                    Analysis = (node[x].Type == "eye");
+                else
+                {
+                    Analysis = (node[x].Type != "eye");
+                    Lbl_clickLabel.Content="Gaze";
+                }
+
+                if (!File.Exists(App.CurrentTrace + "\\" + node[x].ImgPath)||Analysis)
+                {
+                    if(node[x].Type != "eye")
+                    {
+                        Console.WriteLine("Removed " + node[x].ImgPath);
+                    }
+                    node.RemoveAt(x);
+                    x--;
+                }
+            }
+            node = App.ordenadorTime(node);
             foreach (Node no in node)
             {
                 height = Math.Max(height, no.Height);
@@ -150,17 +172,18 @@ namespace Lades.WebTracer
                     Thickness position;
                     if (node[count].ImgPath != lastImg)
                     {
-                        System.Drawing.Image img = System.Drawing.Image.FromFile(App.CurrentTrace + "//" + node[count].ImgPath);
+                        System.Drawing.Image img = System.Drawing.Image.FromFile(App.CurrentTrace + "\\" + node[count].ImgPath);
                         img_read.Width = img.Width;
                         img_read.Height = img.Height;
                         image.Add(new Image());
                         //Console.WriteLine("position " + count);
-                        image[image.Count - 1].Source = LoadBitmapImage(App.CurrentTrace + "//" + node[count].ImgPath);
+                        image[image.Count - 1].Source = LoadBitmapImage(App.CurrentTrace + "\\" + node[count].ImgPath);
                         position = img_read.Margin;
                         position.Top = node[count].Scroll;
                         image[image.Count - 1].Margin = position;
                         lastImg = node[count].ImgPath;
                         placeImage = true;
+                        Console.WriteLine("Path " + node[count].ImgPath + " top " + position.Top);
                     }
                     circle.Add(new Ellipse());
                     number.Add(new Label());
@@ -168,7 +191,7 @@ namespace Lades.WebTracer
                     number[number.Count - 1].Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
                     number[number.Count - 1].Content = count;
                     number[number.Count - 1].FontSize = 10;
-                    if (node[count].Type == "click" /*trace[countLines].Contains("_Click")*/)
+                    if (node[count].Type == "click" || node[count].Type == "eye")
                     {
                         circle[circle.Count - 1].Fill = new SolidColorBrush(Color.FromArgb(64, 255, 0, 0));
                         clickQuant++;
@@ -217,7 +240,7 @@ namespace Lades.WebTracer
                     line.Add(new Line());
                     line[line.Count - 1].HorizontalAlignment = HorizontalAlignment.Left;
                     line[line.Count - 1].VerticalAlignment = VerticalAlignment.Center;
-                    line[line.Count - 1].Stroke = new SolidColorBrush(Color.FromArgb(255, 14, 175, 255));
+                    line[line.Count - 1].Stroke = new SolidColorBrush(Color.FromArgb(255, 0, 0, 255));
                     //Console.WriteLine(pos[1]);
                     //if (pos[1] > 539)
                     //{
@@ -233,7 +256,7 @@ namespace Lades.WebTracer
                     /*if (pos[1] > 539)
                         pos[1] += 100;*/
                     //if()
-                    line[line.Count - 1].StrokeThickness = 2;
+                    line[line.Count - 1].StrokeThickness = 4;
 
 
                     triangle.Add(new Triangle());
@@ -250,7 +273,7 @@ namespace Lades.WebTracer
                             canvas.Children.Add(image[image.Count - 1]);
                             Canvas.SetZIndex(image[Math.Max(image.Count - 1, 0)], -3);
                             Canvas.SetZIndex(image[image.Count - 1], -2);
-                            Canvas.SetZIndex(ret_white, -1);
+                            //Canvas.SetZIndex(ret_white, -1);
                         }
                     }
                     catch
@@ -404,6 +427,11 @@ namespace Lades.WebTracer
                     }
                 }
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

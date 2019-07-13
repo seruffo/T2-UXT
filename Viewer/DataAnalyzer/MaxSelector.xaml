@@ -5,14 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lades.WebTracer"
         mc:Ignorable="d"
-        Title="Digite a quantidade máxima de cliques" Height="106.601" Width="340.861" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown">
+        Title="Heatmap Settings" Height="202.951" Width="416.451" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown" ResizeMode="NoResize">
     <Grid>
-        <TextBox x:Name="lbl_max" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="79"/>
-        <Button x:Name="Cmd_set" Content="OK" HorizontalAlignment="Left" Margin="247,42,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="Cmd_set_Click"/>
-        <CheckBox x:Name="Chk_clicks" Content="Clicks" HorizontalAlignment="Left" Margin="101,13,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="Chk_clicks_Unchecked"/>
-        <CheckBox x:Name="Chk_scrolls" Content="Scrolls" HorizontalAlignment="Left" Margin="187,13,0,0" VerticalAlignment="Top" Checked="Chk_scrolls_Checked" Unchecked="Chk_scrolls_Unchecked"/>
-        <CheckBox x:Name="Chk_waits" Content="Waits" HorizontalAlignment="Left" Margin="273,13,0,0" VerticalAlignment="Top" Checked="Chk_waits_Checked" Unchecked="Chk_waits_Unchecked"/>
-        <TextBox x:Name="lbl_size" HorizontalAlignment="Left" Height="23" Margin="10,45,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Width="79"/>
-        <Label Content="Size factor" HorizontalAlignment="Left" Margin="94,45,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="lbl_max" HorizontalAlignment="Left" Height="23" Margin="126,90,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="53"/>
+        <Button x:Name="Cmd_set" Content="OK" HorizontalAlignment="Center" Margin="168,133,168,0" VerticalAlignment="Top" Width="74" Height="23" Click="Cmd_set_Click"/>
+        <CheckBox x:Name="Chk_clicks" Content="Clicks" HorizontalAlignment="Left" Margin="17,32,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="Chk_clicks_Unchecked"/>
+        <CheckBox x:Name="Chk_scrolls" Content="Scrolls" HorizontalAlignment="Left" Margin="231,32,0,0" VerticalAlignment="Top" Checked="Chk_scrolls_Checked" Unchecked="Chk_scrolls_Unchecked"/>
+        <CheckBox x:Name="Chk_waits" Content="Waits" HorizontalAlignment="Left" Margin="342,32,0,0" VerticalAlignment="Top" Checked="Chk_waits_Checked" Unchecked="Chk_waits_Unchecked"/>
+        <TextBox x:Name="lbl_size" HorizontalAlignment="Left" Height="23" Margin="338,90,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Width="53"/>
+        <Label Content="Size factor" HorizontalAlignment="Left" Margin="273,89,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Chk_gaze" Content="Gaze" HorizontalAlignment="Left" Margin="126,32,0,0" VerticalAlignment="Top" Checked="Chk_gaze_Checked" Unchecked="Chk_gaze_Unchecked" RenderTransformOrigin="0.521,1.193"/>
+        <Label Content="Composition" HorizontalAlignment="Left" Margin="12,4,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA"/>
+        <Label Content="________________________________________________________________________________________________________________________" HorizontalAlignment="Left" Margin="87,0,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA"/>
+        <Label Content="Points" HorizontalAlignment="Left" Margin="12,63,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA"/>
+        <Label Content="_____________________________________________________________________________________________________________________________________" HorizontalAlignment="Left" Margin="52,58,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA"/>
+        <Label Content="Max. Concentration" HorizontalAlignment="Left" Margin="12,89,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

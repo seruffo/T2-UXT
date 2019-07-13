@@ -4,10 +4,10 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
-[assembly: AssemblyTitle("EO.WebBrowser TabbedBrowser Sample")]
-[assembly: AssemblyCompany("Essential Objects, Inc.")]
-[assembly: AssemblyCopyright("Copyright (C) 2006 - 2016 Essential Objects, Inc. All rights reserved.")]
-[assembly: AssemblyProduct("EO.WebBrowser")]
+[assembly: AssemblyTitle("AIMT-UXT")]
+[assembly: AssemblyCompany("UFPA/UERJ")]
+[assembly: AssemblyCopyright("Copyright (C) 2019 WAVES Systems")]
+[assembly: AssemblyProduct("AIMT-UXT")]
 [assembly: ComVisible(false)]
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, 

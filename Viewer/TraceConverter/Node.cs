@@ -23,37 +23,12 @@ namespace Lades.WebTracer
         public int Scroll { get; set; }
         public string keyText{get; set;}
         public string sourcePath { get; set; }
-        public string Url { get; set; }  
-        
-        public Node Copy()
-        {
-            return new Node(this.Type, this.ImgPath, this.Time, this.Id, this.Class, this.MouseId, this.MouseClass, this.X, this.Y, this.Height, this.Scroll, this.keyText, this.sourcePath, this.Url);
-        }
+        public string Url { get; set; }    
 
         public Node()
         {
 
         }
-
-        public Node(string Type, string ImgPath, float Time, string Id, string Class, string MouseId, string MouseClass, int X, int Y, int Height, int Scroll, string keyText, string sourcePath, string Url )
-        {
-            this.Type=Type;
-            this.ImgPath=ImgPath;
-            this.Time=Time;
-            this.Id=Id;
-            this.Class=Class;
-            this.MouseId = MouseId;
-            this.MouseClass = MouseClass;
-            this.X =X;
-            this.Y =Y;
-            this.Height =Height;
-            this.Scroll =Scroll;
-            this.keyText =keyText;
-            this.sourcePath = sourcePath;
-            this.Url = Url;
-        }
-
-
         public static List<Node> LoadNodes(string path)
         {
             return LoadNodes(path, false);
@@ -63,6 +38,7 @@ namespace Lades.WebTracer
             {
             List<Node> result = null;
             XmlDocument doc = new XmlDocument();
+            path += "\\trace.xml";
             if (File.Exists(path))
             {
                 try
@@ -109,14 +85,10 @@ namespace Lades.WebTracer
                         tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "");
                         tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
                         if (tempNode.Type == "eye")
-                        {                            
-                            if (tempNode.Y == 256 && tempNode.X == 512)
-                            {
-                                tempNode.X = -1;
-                            }
+                        {
                             tempNode.Y += tempNode.Scroll;
                         }
-                        if (!(tempNode.X < 1 && tempNode.Y < 1))
+                        if ((tempNode.X > 1 && tempNode.Y > 1))
                             result.Add(tempNode);
                     }
                 }
@@ -170,28 +142,7 @@ namespace Lades.WebTracer
                     tempNode.Scroll = int.Parse(LoadAttribute(node, "scroll", "0"));
                     tempNode.keyText = LoadAttribute(node, "keys", "");
                     tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "");
-                    if (URL == "") URL = tempNode.Url;
-                    tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
-                    if (tempNode.Type == "eye")
-                    {
-                        if (tempNode.Y == 256 && tempNode.X == 512)
-                        {
-                            tempNode.X = -1;
-                        }
-                        tempNode.Y += tempNode.Scroll;
-                    }
-                    if ((tempNode.X > 0 && tempNode.Y > 0) && tempNode.Url == URL)
-                    {
-                        result.Add(tempNode);
-                        if (last_img != tempNode.ImgPath && File.Exists(System.IO.Path.Combine(tempNode.sourcePath, tempNode.ImgPath)))
-                        {
-                            ViewerFull.firstImage.Add(System.IO.Path.Combine(tempNode.sourcePath, tempNode.ImgPath));
-                            ViewerFull.firstImageScroll.Add(tempNode.Scroll);
-                            last_img = tempNode.ImgPath;
-                        }
-                        App.scrolls.Add(tempNode.Scroll);
-                    }
-                    Console.WriteLine("result size " + result.Count);
+                    result.Add(tempNode);
                 }
             }
             return result;

@@ -39,7 +39,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>aimt-uxt.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -192,6 +195,17 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ufpaLogoBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="banner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fuzzy.png" />
+    <Resource Include="heatmap.png" />
+    <Resource Include="singleV.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="aimt-uxt.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

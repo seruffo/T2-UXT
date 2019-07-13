@@ -31,6 +31,8 @@ namespace Lades.WebTracer
 
         public static Stats stats;
 
+        public static bool singleViewMouse = true;
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             Splash splash = new Splash();
@@ -51,6 +53,7 @@ namespace Lades.WebTracer
                         major.X = source[x].X;
                         major.Y = source[x].Y;
                         major.Z = source[x].Z;
+                        major.type = source[x].type;
                         pos = x;
                     }
                 }
@@ -58,12 +61,39 @@ namespace Lades.WebTracer
                 heat.X = source[y].X;
                 heat.Y = source[y].Y;
                 heat.Z = source[y].Z;
+                heat.type = source[y].type;
                 source[y].X = major.X;
                 source[y].Y = major.Y;
                 source[y].Z = major.Z;
+                source[y].type = major.type;
                 source[pos].X = heat.X;
                 source[pos].Y = heat.Y;
                 source[pos].Z = heat.Z;
+                source[pos].type = heat.type;
+            }
+            //foreach (HeatPoint point in source) result.Insert(0, point);
+            return source;
+        }
+
+        public static List<Node> ordenadorTime(List<Node> source)
+        {
+            Node major = new Node();
+            int pos = -1;
+            for (int y = source.Count - 1; y > -1; y--)
+            {
+                major.Time = -3;
+                for (int x = 0; x <= y; x++)
+                {
+                    if (major.Time < source[x].Time)
+                    {
+
+                        major = source[x].Copy();
+                        pos = x;
+                    }
+                }
+                Node heat = source[y].Copy();
+                source[y] = major.Copy();
+                source[pos] = heat.Copy();
             }
             //foreach (HeatPoint point in source) result.Insert(0, point);
             return source;

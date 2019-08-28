@@ -28,7 +28,7 @@ namespace TraceConverter
             InitializeComponent();
         }
         List<Node> allNodes = new List<Node>();
-        string finalFile = "TIPO,TEMPO,X,Y\n";
+        string finalFile = "TIPO,TEMPO,X,Y,URL\n";
         string click = "";
         string move = "";
         string scroll = "";
@@ -45,7 +45,7 @@ namespace TraceConverter
                     allNodes = Node.LoadNodes(fbd.SelectedPath, true);
                     foreach(Node node in allNodes)
                     {
-                        string line = node.Type + "," + node.Time + "," + node.X + "," + node.Y + "\n";
+                        string line = node.Type + "," + node.Time + "," + node.X + "," + node.Y + "," + node.Url + "\n";
                         Txt_log.Text += line;
                         if (node.Type == "click")
                         {

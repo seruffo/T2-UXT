@@ -67,7 +67,7 @@ namespace TraceConverter
 
                 if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    if (System.IO.Directory.Exists(Txt_input.Text))
+                    if (System.IO.Directory.Exists(fbd.SelectedPath))
                     {
                         Txt_input.Text = fbd.SelectedPath;
                         Cmd_FIRE.IsEnabled = true;
@@ -81,10 +81,13 @@ namespace TraceConverter
 
         }
 
-        private void Updater(string text)
+        private void Updater(string text, int prg)
         {
             Txt_log.Text += "\n" + text;
+            Txt_log.ScrollToEnd();
+            Pgb_progrress.Value = prg;
             ForceUpdate(Txt_log);
+            ForceUpdate(Pgb_progrress);
         }
 
         public void ForceUpdate(UIElement element)
@@ -92,21 +95,26 @@ namespace TraceConverter
             Action EmptyDelegate = delegate () { };
             element.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Render, EmptyDelegate);
         }
-
+        int counter = 0;
         private void Cmd_FIRE_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (System.IO.Directory.Exists(Txt_input.Text))
                 {
-                    Updater("Converting " + Txt_input.Text + "\\trace.xml...");
+                    counter = 0;
+                    Updater("Converting " + Txt_input.Text + "\\trace.xml...", counter);
                     allNodes = Node.LoadNodes(Txt_input.Text, true);
                     List<Node> ordenados = ordenadorTime(allNodes);
                     allNodes = ordenados;
+                    Pgb_progrress.Maximum = allNodes.Count;
+                    Pgb_progrress.Minimum = 0;
+                    string separator = Txt_separator.Text;
                     foreach (Node node in allNodes)
                     {
-                        string line = node.Type + ";" + node.Time + ";" + node.X + ";" + node.Y + ";" + node.Url + "\n";
-                        Updater(line);
+                        counter++;
+                        string line = node.Type + separator + node.Time + separator + node.X + separator + node.Y + separator + node.Url + "\n";
+                        Updater(line, counter);
                         Txt_log.Text += line;
                         Txt_log.Text += line;
                         if (node.Type == "click")
@@ -131,15 +139,15 @@ namespace TraceConverter
                         }
                     }
                     finalFile += click + move + scroll + freeze + eye;
-                    Updater("Writing " + Txt_input.Text + "\\trace.csv...");
+                    Updater("Writing " + Txt_input.Text + "\\trace.csv...", counter);
                     System.IO.File.WriteAllText(Txt_input.Text + "\\trace.csv", finalFile);
-                    Updater("_________DONE______________");
+                    Updater("_________DONE______________",counter);
                 }
             }
             catch(Exception ex)
             {
-                Updater("Error converting file");
-                Updater(ex.Message);
+                Updater("Error converting file",0);
+                Updater(ex.Message,0);
             }
         }
     }

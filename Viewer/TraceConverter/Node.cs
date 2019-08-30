@@ -29,6 +29,31 @@ namespace Lades.WebTracer
         {
 
         }
+
+        public Node Copy()
+        {
+            return new Node(this.Type, this.ImgPath, this.Time, this.Id, this.Class, this.MouseId, this.MouseClass, this.X, this.Y, this.Height, this.Scroll, this.keyText, this.sourcePath, this.Url);
+        }
+
+        public Node(string Type, string ImgPath, float Time, string Id, string Class, string MouseId, string MouseClass, int X, int Y, int Height, int Scroll, string keyText, string sourcePath, string Url)
+        {
+            this.Type = Type;
+            this.ImgPath = ImgPath;
+            this.Time = Time;
+            this.Id = Id;
+            this.Class = Class;
+            this.MouseId = MouseId;
+            this.MouseClass = MouseClass;
+            this.X = X;
+            this.Y = Y;
+            this.Height = Height;
+            this.Scroll = Scroll;
+            this.keyText = keyText;
+            this.sourcePath = sourcePath;
+            this.Url = Url;
+        }
+
+
         public static List<Node> LoadNodes(string path)
         {
             return LoadNodes(path, false);

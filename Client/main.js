@@ -9,6 +9,7 @@
         .setGazeListener(function(data, clock) {
            if(data!=null) {
             console.log(data.x,data.y);
+            console.log(findDomElementGoogle(data.x,data.y));
             x = data.x; //these x coordinates are relative to the viewport
             y = data.y; //these y coordinates are relative to the viewport
             time = clock;
@@ -27,12 +28,7 @@
         .begin()
         
 
-        .showPredictionPoints(false); /* shows a square every 100 milliseconds where current prediction is */
-		document.onkeyup=function(e){
-if(e.which == 27){
-    webgazer.showPredictionPoints(true);
-}
-} 
+        .showPredictionPoints(true); /* shows a square every 100 milliseconds where current prediction is */
         
         var width = 320;
         var height = 240;
@@ -59,11 +55,11 @@ if(e.which == 27){
             if (webgazer.isReady()) {
                 setup();
             } else {
-                setTimeout(checkIfReady, 100);
+                setTimeout(checkIfReady, 200);
             }
         }
         
-        setTimeout(checkIfReady,100);
+        setTimeout(checkIfReady,200);
 
 
         
@@ -75,7 +71,38 @@ if(e.which == 27){
         };
     };
 
+    //console save salvar os array's de predições
+    console.save = function(data, filename){
 
+if(!data) {
+    console.error('Console.save: No data')
+    return;
+}
 
+if(!filename) filename = 'console.json'
+
+if(typeof data === "object"){
+    data = JSON.stringify(data, undefined, 4)
+}
+
+var blob = new Blob([data], {type: 'text/json'}),
+    e    = document.createEvent('MouseEvents'),
+    a    = document.createElement('a')
+
+a.download = filename
+a.href = window.URL.createObjectURL(blob)
+a.dataset.downloadurl =  ['text/json', a.download, a.href].join(':')
+e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+a.dispatchEvent(e)
+}
+
+document.onkeyup=function(e){
+if(e.which == 27){
+    //Pressionou ESC, aqui vai a função para esta tecla.
+    console.save(Posx,"PosX.txt");
+    console.save(Posy,"PosY.txt");
+    console.save(time,"timestamps.txt"); //elapsed time in milliseconds since webgazer.begin() was called
+}
+}
 
 

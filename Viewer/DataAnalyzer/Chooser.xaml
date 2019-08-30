@@ -18,8 +18,8 @@
         <Image HorizontalAlignment="Left" Height="99" Margin="192,167,0,0" VerticalAlignment="Top" Width="110" Source="heatmap.png"/>
         <Label Content="Other Modules" HorizontalAlignment="Left" Margin="33,326,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA"/>
         <Label Content="__________________________________________________________________________________________________________________________________" HorizontalAlignment="Left" Margin="126,322,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA"/>
-        <Button Content="Client" HorizontalAlignment="Left" Margin="192,368,0,0" VerticalAlignment="Top" Width="110" Height="28" Click="Button_Click" ToolTip="O módulo de captura realiza a obtenção de dados de interação através de uma extensão do Google Chrome, que pode ser enviada aos usuários." IsEnabled="False"/>
-        <Button Content="Trace -&gt; CSV" HorizontalAlignment="Left" Margin="39,368,0,0" VerticalAlignment="Top" Width="110" Height="28" Click="Button_Click_1" ToolTip="O módulo Single View permite visualizar individualmente a interação dos usuários com a aplicação Web, exibindo percurso cognitivo. cliques, esperas, e entradas de teclado." IsEnabled="False"/>
+        <Button x:Name="Cmd_tracecsv" Content="Trace -&gt; CSV" HorizontalAlignment="Left" Margin="192,368,0,0" VerticalAlignment="Top" Width="110" Height="28" ToolTip="O módulo de captura realiza a obtenção de dados de interação através de uma extensão do Google Chrome, que pode ser enviada aos usuários." Click="Cmd_tracecsv_Click"/>
+        <Button Content="Client" HorizontalAlignment="Left" Margin="39,368,0,0" VerticalAlignment="Top" Width="110" Height="28" Click="Button_Click_1" ToolTip="O módulo Single View permite visualizar individualmente a interação dos usuários com a aplicação Web, exibindo percurso cognitivo. cliques, esperas, e entradas de teclado." IsEnabled="False"/>
 
     </Grid>
 </Window>

@@ -9,7 +9,7 @@
     <Grid>
         <Image Source="SPLASH.png" Stretch="Fill" HorizontalAlignment="Left" Width="500" Height="281"/>
         <TextBlock HorizontalAlignment="Left" Margin="50,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF9E9E9E" Height="35" Width="234"><Run Text="Artificial Inteligence Mouse-Tracking Based User eXpericen"/><Run Text="c"/><Run Text="e Evaluation Tool"/></TextBlock>
-        <Label Content="v2.0.1.0" HorizontalAlignment="Left" Margin="4,254,0,0" VerticalAlignment="Top" Height="25" Foreground="#FF5A5A5A"/>
+        <Label Content="v2.0.1.0" HorizontalAlignment="Left" Margin="4,254,0,0" VerticalAlignment="Top" Height="25" Foreground="#FF787878"/>
 
     </Grid>
 </Window>

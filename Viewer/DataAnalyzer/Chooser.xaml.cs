@@ -95,5 +95,10 @@ namespace Lades.WebTracer
                 }
             }
         }
+
+        private void Cmd_tracecsv_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -67,12 +67,47 @@ namespace TraceConverter
 
                 if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    allNodes = Node.LoadNodes(fbd.SelectedPath, true);
+                    if (System.IO.Directory.Exists(Txt_input.Text))
+                    {
+                        Txt_input.Text = fbd.SelectedPath;
+                        Cmd_FIRE.IsEnabled = true;
+                    }                  
+                }
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Updater(string text)
+        {
+            Txt_log.Text += "\n" + text;
+            ForceUpdate(Txt_log);
+        }
+
+        public void ForceUpdate(UIElement element)
+        {
+            Action EmptyDelegate = delegate () { };
+            element.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Render, EmptyDelegate);
+        }
+
+        private void Cmd_FIRE_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (System.IO.Directory.Exists(Txt_input.Text))
+                {
+                    Updater("Converting " + Txt_input.Text + "\\trace.xml...");
+                    allNodes = Node.LoadNodes(Txt_input.Text, true);
                     List<Node> ordenados = ordenadorTime(allNodes);
                     allNodes = ordenados;
-                    foreach(Node node in allNodes)
+                    foreach (Node node in allNodes)
                     {
                         string line = node.Type + ";" + node.Time + ";" + node.X + ";" + node.Y + ";" + node.Url + "\n";
+                        Updater(line);
+                        Txt_log.Text += line;
                         Txt_log.Text += line;
                         if (node.Type == "click")
                         {
@@ -96,12 +131,16 @@ namespace TraceConverter
                         }
                     }
                     finalFile += click + move + scroll + freeze + eye;
-                    Txt_log.Text += "Writing "+ fbd.SelectedPath + "\\trace.csv...";
-                    System.IO.File.WriteAllText(fbd.SelectedPath + "\\trace.csv", finalFile);
-                    Txt_log.Text += "_________DONE______________";
+                    Updater("Writing " + Txt_input.Text + "\\trace.csv...");
+                    System.IO.File.WriteAllText(Txt_input.Text + "\\trace.csv", finalFile);
+                    Updater("_________DONE______________");
                 }
             }
+            catch(Exception ex)
+            {
+                Updater("Error converting file");
+                Updater(ex.Message);
+            }
         }
-
     }
 }

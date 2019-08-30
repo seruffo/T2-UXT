@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TraceConverter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="695.333">
+        Title="Trace Converter v2.0.0.0" Height="600" Width="800" MinWidth="800" MinHeight="600">
     <Grid>
-        <TextBox x:Name="Txt_input" HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" TextWrapping="Wrap" Text="Eye Converter" VerticalAlignment="Top" Width="586"/>
-        <Button x:Name="Cmd_convert" Content="CONVERT!" HorizontalAlignment="Left" Margin="601,10,0,0" VerticalAlignment="Top" Width="75" Click="Cmd_convert_Click"/>
-        <TextBox x:Name="Txt_log" HorizontalAlignment="Left" Height="374" Margin="10,35,0,0" TextWrapping="Wrap" Text="WAVES Systems" VerticalAlignment="Top" Width="666"/>
+        <TextBox x:Name="Txt_input" Height="25" Margin="18,119,183,0" TextWrapping="Wrap" Text="Please click &quot;browse&quot; to set the sample's folder path. Then, click &quot;CONVERT!&quot; to start the process." VerticalAlignment="Top"/>
+        <Button x:Name="Cmd_convert" Content="Browse" HorizontalAlignment="Right" Margin="0,119,100.6,0" VerticalAlignment="Top" Width="75" Click="Cmd_convert_Click" Height="25"/>
+        <TextBox x:Name="Txt_log" Margin="18,163,18,18" TextWrapping="WrapWithOverflow" Text="WAVES Systems" IsReadOnly="True"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="0" VerticalAlignment="Top" Width="500" Source="banner.png"/>
+        <Rectangle Fill="#FF1F1F1F" Height="100" Margin="271,0,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Right" Height="45" Margin="0,28,15,0" TextWrapping="Wrap" Text="TRACE CONVERTER (XML -&gt; CSV)" VerticalAlignment="Top" Width="176" FontWeight="Bold" TextAlignment="Right" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" FontSize="16" TextChanged="TextBox_TextChanged" IsReadOnly="True" IsUndoEnabled="False" AllowDrop="False" Focusable="False" IsTabStop="False" IsEnabled="False"/>
+        <Button x:Name="Cmd_FIRE" Content="CONVERT!" HorizontalAlignment="Right" Margin="0,119,18,0" VerticalAlignment="Top" Width="75" Click="Cmd_FIRE_Click" Foreground="#FFFF0A0A" Height="25" IsEnabled="False"/>
 
     </Grid>
 </Window>

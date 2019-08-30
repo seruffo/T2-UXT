@@ -10654,7 +10654,7 @@ function capture(type, data)
 
 function Post(type, data){
     data.imageName = lastTime+".jpg";
-    $.post("http://localhost/WebTracer/receiver.php",
+    $.post("http://150.162.49.63/WebTracer/receiver.php",
                 {
                     metadata: JSON.stringify({
                             sample: domain,
@@ -10669,7 +10669,7 @@ function Post(type, data){
 
             }
             ).done(function (data) {
-                //alert(type+" "+data);
+                alert(type+" "+data);
                 }
             );
 }

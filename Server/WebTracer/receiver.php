@@ -9,6 +9,17 @@
 		$metadata = json_decode($_POST['metadata']);
 		$data = json_decode($_POST['data']);
 		$Sample = clean($metadata->sample);
+		if(!file_exists("Samples"){
+			mkdir("Samples");
+		}else{
+			if(!file_exists('Samples/'.$Sample){
+				mkdir('Samples/'.$Sample);
+			}else{
+				if(!file_exists('Samples/'.$Sample.'/'.$metadata->userId)){
+					mkdir('Samples/'.$Sample.'/'.$metadata->userId);
+				}
+			}
+		}
 		if($data->imageData != "NO")
 		{
 			if(!(file_exists('Samples/'.$Sample.'/'.$metadata->userId.'/'.$data->imageName)))

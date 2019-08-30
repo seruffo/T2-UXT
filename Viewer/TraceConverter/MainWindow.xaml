@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TraceConverter"
         mc:Ignorable="d"
-        Title="Trace Converter v2.0.0.0" Height="600" Width="800" MinWidth="800" MinHeight="600">
+        Title="Trace Converter v2.0.0.0" Height="600" Width="800" MinWidth="800" MinHeight="600" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBox x:Name="Txt_input" Height="25" Margin="18,119,183,0" TextWrapping="Wrap" Text="Please click &quot;browse&quot; to set the sample's folder path. Then, click &quot;CONVERT!&quot; to start the process." VerticalAlignment="Top"/>
         <Button x:Name="Cmd_convert" Content="Browse" HorizontalAlignment="Right" Margin="0,119,100.6,0" VerticalAlignment="Top" Width="75" Click="Cmd_convert_Click" Height="25"/>

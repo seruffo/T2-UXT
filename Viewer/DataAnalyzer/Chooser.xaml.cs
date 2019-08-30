@@ -98,7 +98,7 @@ namespace Lades.WebTracer
 
         private void Cmd_tracecsv_Click(object sender, RoutedEventArgs e)
         {
-
+            System.Diagnostics.Process.Start(Environment.CurrentDirectory + @"\traceconverter.exe");
         }
     }
 }

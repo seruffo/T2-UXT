@@ -28,14 +28,69 @@ namespace TraceConverter
             InitializeComponent();
         }
         List<Node> allNodes = new List<Node>();
-        string finalFile = "TIPO;TEMPO;X;Y;URL\n";
+        string finalFile;
         string click = "";
         string move = "";
         string scroll = "";
         string freeze = "";
         string eye = "";
+        int statuscleaner = 0;
+        public List<Node> Cleaner(List<Node> source,int phase)
+        {
+            if (phase == 1)
+            {
+                float timer = 0;
+                for (int x = 0; x < source.Count; x++)
+                {
 
-        public static List<Node> ordenadorTime(List<Node> source)
+
+
+                    Updater("Stage 1 | Cleaning " + source[x].Time, x);
+
+                    if (source[x].Time < timer)
+                    {
+
+                            source.RemoveAt(x);
+                            x--;
+                        
+                    }
+                    else
+                    {
+                        timer = source[x].Time;
+                    }
+                }
+            }
+            else
+            {
+                for (int x = 0; x < source.Count; x++)
+                {
+                    try
+                    {
+                        string str1 = source[x - 1].Url;
+                        string str2 = source[x].Url;
+                        string str3 = source[x + 1].Url;
+                        if (str1.Equals(str3))
+                        {
+                            if (!str1.Equals(str2))
+                            {
+                                //System.Windows.MessageBox.Show("str1" + str1 + "\nstr2" + str2 + "\nstr3" + str3);
+                                source.RemoveAt(x);
+                                x--;
+                                continue;
+                            }
+                        }
+                        Updater("Stage 3 | Cleaning " + source[x].Url, x);
+                    }
+                    catch
+                    {
+                        Updater("Processing error", x);
+                    }
+                }
+            }
+            return source;
+        }
+
+        public List<Node> ordenadorTime(List<Node> source)
         {
             Node major = new Node();
             int pos = -1;
@@ -43,7 +98,7 @@ namespace TraceConverter
             {
                 major.Time = -3;
                 for (int x = 0; x <= y; x++)
-                {
+                {                    
                     if (major.Time < source[x].Time)
                     {
 
@@ -54,6 +109,8 @@ namespace TraceConverter
                 Node heat = source[y].Copy();
                 source[y] = major.Copy();
                 source[pos] = heat.Copy();
+                Updater("Stage 2 | Sorting " + source[y].Time, source.Count-y);
+
             }
             //foreach (HeatPoint point in source) result.Insert(0, point);
             return source;
@@ -70,6 +127,7 @@ namespace TraceConverter
                     if (System.IO.Directory.Exists(fbd.SelectedPath))
                     {
                         Txt_input.Text = fbd.SelectedPath;
+                        //Updater(File.ReadLines(Txt_input.Text).Count() + " lines.",0);
                         Cmd_FIRE.IsEnabled = true;
                     }                  
                 }
@@ -83,6 +141,12 @@ namespace TraceConverter
 
         private void Updater(string text, int prg)
         {
+            statuscleaner++;
+            if (statuscleaner > 50)
+            {
+                statuscleaner = 0;
+                Txt_log.Text = "";
+            }
             Txt_log.Text += "\n" + text;
             Txt_log.ScrollToEnd();
             Pgb_progrress.Value = prg;
@@ -105,43 +169,53 @@ namespace TraceConverter
                     counter = 0;
                     Updater("Converting " + Txt_input.Text + "\\trace.xml...", counter);
                     allNodes = Node.LoadNodes(Txt_input.Text, true);
-                    List<Node> ordenados = ordenadorTime(allNodes);
-                    allNodes = ordenados;
                     Pgb_progrress.Maximum = allNodes.Count;
                     Pgb_progrress.Minimum = 0;
-                    string separator = Txt_separator.Text;
-                    foreach (Node node in allNodes)
+                    List<Node> ordenados = Cleaner(allNodes,1);
+                    Pgb_progrress.Maximum = ordenados.Count;
+                    ordenados = ordenadorTime(ordenados);
+                    ordenados = Cleaner(allNodes, 2);
+                    Pgb_progrress.Maximum = ordenados.Count;
+                    allNodes = ordenados;
+                    separator = Txt_separator.Text;
+                    load.SetValue("Separator", separator);
+                    using (StreamWriter writer = new StreamWriter(Txt_input.Text + "\\trace.csv"))
                     {
-                        counter++;
-                        string line = node.Type + separator + node.Time + separator + node.X + separator + node.Y + separator + node.Url + "\n";
-                        Updater(line, counter);
-                        Txt_log.Text += line;
-                        Txt_log.Text += line;
-                        if (node.Type == "click")
+                        writer.Write("TIPO" + separator + "TEMPO" + separator + "X" + separator + "Y" + separator + "URL\n");
+                        foreach (Node node in allNodes)
                         {
-                            click += line;
-                        }
-                        if (node.Type == "move")
-                        {
-                            move += line;
-                        }
-                        if (node.Type == "wheel")
-                        {
-                            scroll += line;
-                        }
-                        if (node.Type == "freeze")
-                        {
-                            freeze += line;
-                        }
-                        if (node.Type == "eye")
-                        {
-                            eye += line;
+                            counter++;
+                            string line = node.Type + separator + node.Time + separator + node.X + separator + node.Y + separator + node.Url;
+                            Updater("Stage 4 | Writing "+ counter +" "+ line, counter);
+                            //Txt_log.Text += line;
+                            //if (node.Type == "click")
+                            //{
+                            //    click += line;
+                            //}
+                            //if (node.Type == "move")
+                            //{
+                            //    move += line;
+                            //}
+                            //if (node.Type == "wheel")
+                            //{
+                            //    scroll += line;
+                            //}
+                            //if (node.Type == "freeze")
+                            //{
+                            //    freeze += line;
+                            //}
+                            //if (node.Type == "eye")
+                            //{
+                            //    eye += line;
+                            //}
+                            finalFile += line;
+                            writer.WriteLine(line);
                         }
                     }
-                    finalFile += click + move + scroll + freeze + eye;
+                    //finalFile += click + move + scroll + freeze + eye;
                     Updater("Writing " + Txt_input.Text + "\\trace.csv...", counter);
-                    System.IO.File.WriteAllText(Txt_input.Text + "\\trace.csv", finalFile);
-                    Updater("_________DONE______________",counter);
+                    Updater("_________DONE______________", counter);
+                    //Updater(File.ReadLines(Txt_input.Text + "\\trace.xml").Count() + " lines processed.", 0);
                 }
             }
             catch(Exception ex)
@@ -149,6 +223,14 @@ namespace TraceConverter
                 Updater("Error converting file",0);
                 Updater(ex.Message,0);
             }
+        }
+        string separator="";
+        Microsoft.Win32.RegistryKey load;
+
+        private void Wnd_traceconverter_ContentRendered(object sender, EventArgs e)
+        {
+           load= Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\WAVES Systems\\AIMT-UXT\\TraceConverter");
+            Txt_separator.Text = (string)load.GetValue("Separator", ";");
         }
     }
 }

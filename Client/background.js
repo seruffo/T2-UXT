@@ -10629,7 +10629,7 @@ function capture(type, data)
             //}
             if(type=="eye"){
                 data.imageData = "NO";
-                data.Time-=0.2;
+                //data.Time-=0.2;
                 Post(type, data);
             }else{
 				if((type=="move" || type=="freeze") && shot<7){
@@ -10668,8 +10668,12 @@ function Post(type, data){
                     data: JSON.stringify(data)
 
             }
-            ).done(function (data) {
-                //alert(type+" "+data);
+			).fail(function (data){
+				console.log(type+" "+data);
+			}	
+			
+			).done(function (data) {
+                console.log(type+" "+data);
                 }
             );
 }
@@ -10695,7 +10699,7 @@ function prepareSample() {
             chrome.tabs.getSelected(null, function (tab) {
                 var url = new URL(tab.url);
                 domain = url.hostname;
-                $.post("http://localhost/WebTracer/SampleChecker.php", { userId: userid, domain: domain }).done(function (data) {
+                $.post("http://192.168.56.101/WebTracer/SampleChecker.php", { userId: userid, domain: domain }).done(function (data) {
                     timeInternal = parseInt(data);});
             });
         }

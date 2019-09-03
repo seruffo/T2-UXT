@@ -10701,7 +10701,7 @@ document.addEventListener("mouseout", function (e) {
 document.addEventListener("wheel", function (e) {
     mouse.Id = e.target.id;
     mouse.Class = e.target.className;
-    console.log("wheel " + e.pageX + " | " + e.pageY);
+    //console.log("wheel " + e.pageX + " | " + e.pageY);
     mouse.X = e.pageX;
     mouse.Y = e.pageY;
     freeze = 0;
@@ -10711,7 +10711,7 @@ document.addEventListener("wheel", function (e) {
 document.addEventListener('click', function (e) {
     mouse.Id = e.target.id;
     mouse.Class = e.target.className;
-    console.log("click " + e.pageX + " | " + e.pageY);
+    //console.log("click " + e.pageX + " | " + e.pageY);
     mouse.X = e.pageX;
     mouse.Y = e.pageY;
     freeze = 0;
@@ -10751,7 +10751,7 @@ var typing = false;
 document.onkeypress = function (e) {
     typing = true;
     var obj = GetScreenCordinates(document.getElementById(e.target.id));
-    //console.log('Press id ' + e.target.id + " pos "+ obj.x + " | "+obj.y);
+    console.log('Press id ' + e.target.id + " pos "+ obj.x + " | "+obj.y);
     var get = window.event ? event : e;
     var key = get.keyCode ? get.keyCode : get.charCode;
     key = String.fromCharCode(key);
@@ -10773,13 +10773,13 @@ $(document).mouseover(function(e){
  });
  var EyeTime=0;
 function tick() {
-	//console.log(WebTracer_time);
+	////console.log(WebTracer_time);
     freeze+=0.5;
     WebTracer_time+=0.1;
     if (freeze == 1.5) {
         sendMessage("freeze");
         freeze=0;
-        //console.log("freeze at "+overId+" // "+overClass);
+        ////console.log("freeze at "+overId+" // "+overClass);
     }else
     {
 		sendMessage("move");
@@ -10800,32 +10800,32 @@ function sendEye(x,y){
 
 function sendMessage(type)
 {
-    var data = {};
-	if (type == "keyboard")
-	{
-        data = keyboard;
-        if (data.X == 0 && data.Y == 0)
-        {
-            data.X = Math.round(mouse.X);
-            data.Y = Math.round(mouse.Y);
-        }
-    }
-    else
-	{   
-		data = {
-		Id:mouse.Id,
-		Class:mouse.Class,
-		X: mouse.X,
-		Y: mouse.Y,
-		Typed: mouse.Typed,
-		Time:mouse.Time
-	};
-        if(type=="eye")
-        {
-            data.X=Math.round(eye.x);
-            data.Y=Math.round(eye.y);
-        }
-	}
+		var data = {};
+		if (type == "keyboard")
+		{
+			data = keyboard;
+			if (data.X == 0 && data.Y == 0)
+			{
+				data.X = Math.round(mouse.X);
+				data.Y = Math.round(mouse.Y);
+			}
+		}
+		else
+		{   
+			data = {
+				Id:mouse.Id,
+				Class:mouse.Class,
+				X: mouse.X,
+				Y: mouse.Y,
+				Typed: mouse.Typed,
+				Time:mouse.Time
+			};
+			if(type=="eye")
+			{
+				data.X=Math.round(eye.x);
+				data.Y=Math.round(eye.y);
+			}
+		}
 		data.Time = WebTracer_time;
 		data.imageName="";
 		data.pageHeight = Math.round(pageHeight);
@@ -10833,7 +10833,7 @@ function sendMessage(type)
 		data.url = document.URL;
 		data.mouseId = overId;
 		data.mouseClass = overClass;
-		//console.log("message send "+type);
+		////console.log("message send "+type);
 		chrome.runtime.sendMessage({
 			type: type,
 			data: data

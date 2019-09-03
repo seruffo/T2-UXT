@@ -10604,6 +10604,7 @@ var timeInternal = 0;
 var userId = "";
 var domain = "";
 var lastTime = 0;
+var fixtime=0;
 
 chrome.runtime.onMessage.addListener(function (request, sender)
 {
@@ -10629,7 +10630,7 @@ function capture(type, data)
             //}
             if(type=="eye"){
                 data.imageData = "NO";
-                //data.Time-=0.2;
+                data.Time-=0.2;
                 Post(type, data);
             }else{
 				if((type=="move" || type=="freeze") && shot<7){
@@ -10653,14 +10654,17 @@ function capture(type, data)
 }
 
 function Post(type, data){
-    data.imageName = lastTime+".jpg";
+	data.imageName = lastTime+".jpg";
+	if(fixtime<data.Time + timeInternal){
+		fixtime=data.Time + timeInternal;
+	}
     $.post("http://localhost/WebTracer/receiver.php",
                 {
                     metadata: JSON.stringify({
                             sample: domain,
                             userId: userId,
                             type: type,
-                            time: data.Time + timeInternal,
+                            time: fixtime,
                             scroll: data.pageScroll,
                             height: data.pageHeight,
                             url: data.url

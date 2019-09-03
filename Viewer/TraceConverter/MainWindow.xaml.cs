@@ -47,6 +47,11 @@ namespace TraceConverter
 
                     Updater("Stage 1 | Cleaning " + source[x].Time, x);
 
+
+                    if ((source[x].Type == "eye"))
+                    {
+                        source[x].Time += 0.2f;
+                    }
                     if (source[x].Time < timer)
                     {
 

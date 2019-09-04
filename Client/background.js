@@ -10630,7 +10630,7 @@ function capture(type, data)
             //}
             if(type=="eye"){
                 data.imageData = "NO";
-                data.Time-=0.2;
+                //data.Time-=0.2;
                 Post(type, data);
             }else{
 				if((type=="move" || type=="freeze") && shot<7){
@@ -10703,7 +10703,7 @@ function prepareSample() {
             chrome.tabs.getSelected(null, function (tab) {
                 var url = new URL(tab.url);
                 domain = url.hostname;
-                $.post("http://192.168.56.101/WebTracer/SampleChecker.php", { userId: userid, domain: domain }).done(function (data) {
+                $.post("http://localhost/WebTracer/SampleChecker.php", { userId: userid, domain: domain }).done(function (data) {
                     timeInternal = parseInt(data);});
             });
         }

@@ -48,20 +48,23 @@ namespace TraceConverter
                     Updater("Stage 1 | Cleaning " + source[x].Time, x);
 
 
-                    if ((source[x].Type == "eye"))
+                    if ((source[x].Type == "click"))
                     {
                         source[x].Time += 0.2f;
                     }
-                    if (source[x].Time < timer)
+                    if (Convert.ToSingle(source[x].Time.ToString()) < timer)
                     {
-
+                        //System.Windows.MessageBox.Show(source[x].Type + " " + source[x].Time/1.0001 + " test time " + timer/1.0001);
+                        source[x].Time += 0.1f;
+                        if (Convert.ToSingle(source[x].Time.ToString()) < timer)
+                        {
                             source.RemoveAt(x);
                             x--;
-                        
+                        }
                     }
                     else
                     {
-                        timer = source[x].Time;
+                        timer = Convert.ToSingle(source[x].Time.ToString());
                     }
                 }
             }
@@ -173,13 +176,13 @@ namespace TraceConverter
                 {
                     counter = 0;
                     Updater("Converting " + Txt_input.Text + "\\trace.xml...", counter);
-                    allNodes = Node.LoadNodes(Txt_input.Text, true);
+                    allNodes = Node.LoadNodes(Txt_input.Text, false);
                     Pgb_progrress.Maximum = allNodes.Count;
                     Pgb_progrress.Minimum = 0;
                     List<Node> ordenados = Cleaner(allNodes,1);
                     Pgb_progrress.Maximum = ordenados.Count;
                     ordenados = ordenadorTime(ordenados);
-                    ordenados = Cleaner(allNodes, 2);
+                    //ordenados = Cleaner(allNodes, 2);
                     Pgb_progrress.Maximum = ordenados.Count;
                     allNodes = ordenados;
                     separator = Txt_separator.Text;

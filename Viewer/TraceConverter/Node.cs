@@ -97,7 +97,7 @@ namespace Lades.WebTracer
                         string timeS = LoadAttribute(node, "time", "0");
                         if (timeS == "")
                             timeS = "0";
-                        tempNode.Time = float.Parse(timeS, System.Globalization.CultureInfo.InvariantCulture);
+                        tempNode.Time = (float)Math.Round(Convert.ToSingle(timeS, System.Globalization.CultureInfo.InvariantCulture),4);
                         tempNode.Id = LoadAttribute(node, "Id", "");
                         tempNode.Class = LoadAttribute(node, "Class", "");
                         tempNode.MouseId = LoadAttribute(node, "MouseId", "");
@@ -109,7 +109,14 @@ namespace Lades.WebTracer
                         tempNode.keyText = LoadAttribute(node, "keys", "");
                         tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "");
                         tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
-                        if (tempNode.Type == "eye")
+                        if (tempNode.Y == 256 && tempNode.X == 512)
+                        {
+                            tempNode.X = int.MinValue;
+                        }
+
+                        if ((tempNode.X > 0 && tempNode.Y > 0))
+
+                            if (tempNode.Type == "eye")
                         {
                             tempNode.Y += tempNode.Scroll;
                         }
@@ -156,7 +163,7 @@ namespace Lades.WebTracer
                     string timeS = LoadAttribute(node, "time", "0");
                     if (timeS == "")
                         timeS = "0";
-                    tempNode.Time = float.Parse(timeS, System.Globalization.CultureInfo.InvariantCulture);
+                    tempNode.Time = (float)Math.Round(Convert.ToSingle(timeS, System.Globalization.CultureInfo.InvariantCulture),4);
                     tempNode.Id = LoadAttribute(node, "Id", "");
                     tempNode.Class = LoadAttribute(node, "Class", "");
                     tempNode.MouseId = LoadAttribute(node, "MouseId", "");
@@ -167,7 +174,12 @@ namespace Lades.WebTracer
                     tempNode.Scroll = int.Parse(LoadAttribute(node, "scroll", "0"));
                     tempNode.keyText = LoadAttribute(node, "keys", "");
                     tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "");
-                    result.Add(tempNode);
+                    if (tempNode.Y == 256 && tempNode.X == 512)
+                    {
+                        tempNode.X = int.MinValue;
+                    }
+                    if ((tempNode.X > 1 && tempNode.Y > 1))
+                        result.Add(tempNode);
                 }
             }
             return result;

@@ -108,15 +108,15 @@ namespace Lades.WebTracer
                         tempNode.keyText = LoadAttribute(node, "keys", "");
                         tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "");
                         tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
-                        if (tempNode.Type == "eye")
-                        {                            
-                            if (tempNode.Y == 256 && tempNode.X == 512)
-                            {
-                                tempNode.X = -1;
+
+                        if (Convert.ToInt32(tempNode.Y.ToString()) == 256 && Convert.ToInt32(tempNode.X.ToString()) == 512)
+                        {
+                            
+                                tempNode.X = int.MinValue;
                             }
                             tempNode.Y += tempNode.Scroll;
-                        }
-                        if (!(tempNode.X < 1 && tempNode.Y < 1))
+                        
+                        if ((tempNode.X > 0 && tempNode.Y > 0))
                             result.Add(tempNode);
                     }
                 }
@@ -172,14 +172,12 @@ namespace Lades.WebTracer
                     tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "");
                     if (URL == "") URL = tempNode.Url;
                     tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
-                    if (tempNode.Type == "eye")
-                    {
-                        if (tempNode.Y == 256 && tempNode.X == 512)
+                    if (Convert.ToInt32(tempNode.Y.ToString()) == 256 && Convert.ToInt32(tempNode.X.ToString()) == 512)
                         {
-                            tempNode.X = -1;
+                        tempNode.X = int.MinValue;
                         }
                         tempNode.Y += tempNode.Scroll;
-                    }
+                    
                     if ((tempNode.X > 0 && tempNode.Y > 0) && tempNode.Url == URL)
                     {
                         result.Add(tempNode);

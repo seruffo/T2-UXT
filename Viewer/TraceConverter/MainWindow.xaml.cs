@@ -81,7 +81,7 @@ namespace TraceConverter
                         {
                             if (!str1.Equals(str2))
                             {
-                                //System.Windows.MessageBox.Show("str1" + str1 + "\nstr2" + str2 + "\nstr3" + str3);
+                                System.Windows.MessageBox.Show("str1" + str1 + "\nstr2" + str2 + "\nstr3" + str3);
                                 source.RemoveAt(x);
                                 x--;
                                 continue;

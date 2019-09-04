@@ -10658,7 +10658,7 @@ function Post(type, data){
 	if(fixtime<data.Time + timeInternal){
 		fixtime=data.Time + timeInternal;
 	}
-    $.post("http://localhost/WebTracer/receiver.php",
+    $.post("http://192.168.56.101/WebTracer/receiver.php",
                 {
                     metadata: JSON.stringify({
                             sample: domain,
@@ -10703,7 +10703,7 @@ function prepareSample() {
             chrome.tabs.getSelected(null, function (tab) {
                 var url = new URL(tab.url);
                 domain = url.hostname;
-                $.post("http://localhost/WebTracer/SampleChecker.php", { userId: userid, domain: domain }).done(function (data) {
+                $.post("http://192.168.56.101/WebTracer/SampleChecker.php", { userId: userid, domain: domain }).done(function (data) {
                     timeInternal = parseInt(data);});
             });
         }

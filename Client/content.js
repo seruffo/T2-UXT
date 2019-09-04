@@ -10684,7 +10684,7 @@ $(document).mousemove(function (event) {
 
 function startTimer(secs) {
     secTime = parseInt(secs);
-    ticker = setInterval("tick()", 100);
+    ticker = setInterval("tick()", 200);
     tick();
 }
 
@@ -10775,8 +10775,8 @@ $(document).mouseover(function(e){
 function tick() {
 	////console.log(WebTracer_time);
     freeze+=0.5;
-    WebTracer_time+=0.1;
-    if (freeze == 1.5) {
+    WebTracer_time+=0.2;
+    if (freeze == 3.5) {
         sendMessage("freeze");
         freeze=0;
         ////console.log("freeze at "+overId+" // "+overClass);

@@ -10708,6 +10708,12 @@ document.addEventListener("wheel", function (e) {
     sendMessage("wheel");
 });
 
+$(window).on("navigate", function (event, data) {
+    var direction = data.state.direction;
+    sendMessage(direction);
+    //back, forward
+});
+
 document.addEventListener('click', function (e) {
     mouse.Id = e.target.id;
     mouse.Class = e.target.className;

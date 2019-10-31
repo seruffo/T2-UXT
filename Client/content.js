@@ -10692,14 +10692,12 @@ function tick() {
         sendMessage("freeze");
         freeze=0;
         console.log("freeze at "+overId+" // "+overClass);
-    }else
-    {
+    }
+	EyeTime+=1;
+	if(EyeTime>1){
+		sendMessage("eye");
+		EyeTime=0;
 	}
-	//EyeTime+=1;
-	//if(EyeTime>1){
-		//sendMessage("eye");
-		//EyeTime=0;
-	//}
 }
 
 function startTimer(secs) {

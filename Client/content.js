@@ -10679,13 +10679,32 @@ function startAgain() {
 $(document).mousemove(function (event) {
     mouse.X = event.pageX;
     mouse.Y = event.pageY;
-    freeze = 0;
+	freeze = 0;
+	sendMessage("move");
 });
+
+
+function tick() {
+	////console.log(WebTracer_time);
+    freeze+=0.5;
+    WebTracer_time+=0.2;
+    if (freeze == 1) {
+        sendMessage("freeze");
+        freeze=0;
+        console.log("freeze at "+overId+" // "+overClass);
+    }else
+    {
+	}
+	//EyeTime+=1;
+	//if(EyeTime>1){
+		//sendMessage("eye");
+		//EyeTime=0;
+	//}
+}
 
 function startTimer(secs) {
     secTime = parseInt(secs);
-    ticker = setInterval("tick()", 200);
-    tick();
+    ticker = setInterval(tick, 200);
 }
 
 document.addEventListener("mouseover", function (e) {
@@ -10778,24 +10797,7 @@ $(document).mouseover(function(e){
     overClass=e.target.className;
  });
  var EyeTime=0;
-function tick() {
-	////console.log(WebTracer_time);
-    freeze+=0.5;
-    WebTracer_time+=0.2;
-    if (freeze == 3.5) {
-        sendMessage("freeze");
-        freeze=0;
-        ////console.log("freeze at "+overId+" // "+overClass);
-    }else
-    {
-		sendMessage("move");
-	}
-	//EyeTime+=1;
-	//if(EyeTime>1){
-		sendMessage("eye");
-		//EyeTime=0;
-	//}
-}
+
 startAgain();
 startTimer();
 
@@ -10839,7 +10841,7 @@ function sendMessage(type)
 		data.url = document.URL;
 		data.mouseId = overId;
 		data.mouseClass = overClass;
-		////console.log("message send "+type);
+		console.log("message send "+type);
 		chrome.runtime.sendMessage({
 			type: type,
 			data: data

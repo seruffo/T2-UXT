@@ -10599,7 +10599,7 @@ return jQuery;
 
 /*==============================================================================================================*/
 
-
+const serverUrl = "http://localhost/webtracer";
 var timeInternal = 0;
 var userId = "";
 var domain = "";
@@ -10658,7 +10658,7 @@ function Post(type, data){
 	if(fixtime<data.Time + timeInternal){
 		fixtime=data.Time + timeInternal;
 	}
-    $.post("http://localhost/WebTracer/receiver.php",
+    $.post(serverUrl+"/receiver.php",
                 {
                     metadata: JSON.stringify({
                             sample: domain,
@@ -10703,7 +10703,7 @@ function prepareSample() {
             chrome.tabs.getSelected(null, function (tab) {
                 var url = new URL(tab.url);
                 domain = url.hostname;
-                $.post("http://localhost/WebTracer/SampleChecker.php", { userId: userid, domain: domain }).done(function (data) {
+                $.post(serverUrl+"/SampleChecker.php", { userId: userid, domain: domain }).done(function (data) {
                     timeInternal = parseInt(data);});
             });
         }

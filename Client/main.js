@@ -8,8 +8,8 @@
         .setTracker('clmtrackr')
         .setGazeListener(function(data, clock) {
            if(data!=null) {
-            console.log(data.x,data.y);
-            console.log(findDomElementGoogle(data.x,data.y));
+            //console.log(data.x,data.y);
+            //console.log(findDomElementGoogle(data.x,data.y));
             x = data.x; //these x coordinates are relative to the viewport
             y = data.y; //these y coordinates are relative to the viewport
             time = clock;

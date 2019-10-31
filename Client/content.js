@@ -10676,11 +10676,18 @@ function startAgain() {
 
 
 
-$(document).mousemove(function (event) {
-    mouse.X = event.pageX;
-    mouse.Y = event.pageY;
+document.addEventListener("mousemove", function (e) {
+    mouse.X = e.pageX;
+    mouse.Y = e.pageY;
 	freeze = 0;
 	sendMessage("move");
+	if (typing) {
+        sendMessage("keyboard");
+        keyboard.Typed = "";
+        keyboard.Id = e.target.id;
+		keyboard.Class = e.target.className;
+		typing=false;
+    }
 });
 
 
@@ -10691,7 +10698,7 @@ function tick() {
     if (freeze == 1) {
         sendMessage("freeze");
         freeze=0;
-        console.log("freeze at "+overId+" // "+overClass);
+        //console.log("freeze at "+overId+" // "+overClass);
     }
 	EyeTime+=1;
 	if(EyeTime>1){
@@ -10761,6 +10768,7 @@ function KeyCheck(event) {
             keyboard.Typed += "-!-";
             break;
         case 13:
+			keyboard.Typed = keyboard.Typed.slice(0, -1);
             sendMessage("keyboard");
             keyboard.Typed = "";
             keyboard.Id = e.target.id;
@@ -10787,7 +10795,8 @@ document.onkeypress = function (e) {
         keyboard.X=Math.round(obj.x);
         keyboard.Y=Math.round(obj.y);
     }
-    keyboard.Typed += key;
+	keyboard.Typed += key;
+	console.log(keyboard.Typed);
 }
 
 $(document).mouseover(function(e){
@@ -10839,7 +10848,7 @@ function sendMessage(type)
 		data.url = document.URL;
 		data.mouseId = overId;
 		data.mouseClass = overClass;
-		console.log("message send "+type);
+		//console.log("message send "+type);
 		chrome.runtime.sendMessage({
 			type: type,
 			data: data

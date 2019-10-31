@@ -18,7 +18,6 @@
   },
   "permissions": [
     "storage",
-    "captureVisibleTab",
     "webNavigation",
     "unlimitedStorage",
     "tabs",

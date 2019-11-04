@@ -22,8 +22,8 @@ namespace Lades.WebTracer
         public static string CurrentTraceFolder { get; set; }
         public static bool Compilation { get; set; } = false;
 
-        public static int maxClicks = 0;
-        public static int sizeFactor = 8;
+        public static float heatSize = 10;
+        public static float heatBlur = 30;
 
         public static List<int> scrolls = new List<int>();
 
@@ -32,6 +32,7 @@ namespace Lades.WebTracer
         public static Stats stats;
 
         public static bool singleViewMouse = true;
+        internal static int maxClicks = 0;
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {

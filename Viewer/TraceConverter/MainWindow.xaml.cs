@@ -42,13 +42,14 @@ namespace TraceConverter
                 float timer = 0;
                 for (int x = 0; x < source.Count; x++)
                 {
-
-
-
                     Updater("Stage 1 | Cleaning " + source[x].Time, x);
 
 
                     if ((source[x].Type == "click"))
+                    {
+                        source[x].Time += 0.2f;
+                    }
+                    if ((source[x].Type == "keyboard"))
                     {
                         source[x].Time += 0.2f;
                     }
@@ -187,6 +188,38 @@ namespace TraceConverter
                     allNodes = ordenados;
                     separator = Txt_separator.Text;
                     load.SetValue("Separator", separator);
+                    using (StreamWriter writerTracer = new StreamWriter(Txt_input.Text + "\\trace_2.xml"))
+                    {
+                        foreach (Node node in allNodes)
+                        {
+                            counter++;
+                            string line = node.Type + separator + node.Time + separator + node.X + separator + node.Y + separator + node.Url;
+                            Updater("Stage 4 | Writing " + counter + " " + line, counter);
+                            //Txt_log.Text += line;
+                            //if (node.Type == "click")
+                            //{
+                            //    click += line;
+                            //}
+                            //if (node.Type == "move")
+                            //{
+                            //    move += line;
+                            //}
+                            //if (node.Type == "wheel")
+                            //{
+                            //    scroll += line;
+                            //}
+                            //if (node.Type == "freeze")
+                            //{
+                            //    freeze += line;
+                            //}
+                            //if (node.Type == "eye")
+                            //{
+                            //    eye += line;
+                            //}
+                            writerTracer.WriteLine(node.ToRawTrace());
+                        }
+                    }
+                    counter = 0;
                     using (StreamWriter writer = new StreamWriter(Txt_input.Text + "\\trace.csv"))
                     {
                         writer.Write("TIPO" + separator + "TEMPO" + separator + "X" + separator + "Y" + separator + "URL\n");
@@ -216,7 +249,6 @@ namespace TraceConverter
                             //{
                             //    eye += line;
                             //}
-                            finalFile += line;
                             writer.WriteLine(line);
                         }
                     }

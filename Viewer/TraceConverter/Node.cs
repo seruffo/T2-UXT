@@ -30,6 +30,37 @@ namespace Lades.WebTracer
 
         }
 
+        public string ToRawTrace()
+        {
+            //Node tempNode = new Node();
+            //tempNode.Type = LoadAttribute(node, "type", "click");
+            //if (justMouse)
+            //{
+            //    if (tempNode.Type == "keyboard")
+            //        continue;
+            //}
+            //tempNode.ImgPath = LoadAttribute(node, "image", "");
+            //string timeS = LoadAttribute(node, "time", "0");
+            //if (timeS == "")
+            //    timeS = "0";
+            //tempNode.Time = (float)Math.Round(Convert.ToSingle(timeS, System.Globalization.CultureInfo.InvariantCulture), 4);
+            //tempNode.Id = LoadAttribute(node, "Id", "");
+            //tempNode.Class = LoadAttribute(node, "Class", "");
+            //tempNode.MouseId = LoadAttribute(node, "MouseId", "");
+            //tempNode.MouseClass = LoadAttribute(node, "MouseClass", "");
+            //tempNode.X = int.Parse(LoadAttribute(node, "X", "0"));
+            //tempNode.Y = int.Parse(LoadAttribute(node, "Y", "0"));
+            //tempNode.Height = int.Parse(LoadAttribute(node, "height", "768"));
+            //tempNode.Scroll = (int)double.Parse(LoadAttribute(node, "scroll", "0"), System.Globalization.CultureInfo.InvariantCulture);
+            //tempNode.keyText = LoadAttribute(node, "keys", "");
+            //tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "");
+            //tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
+            //<trace type="move" image="NaN.jpg" time="0.4" Class="corto" Id="portal-title" MouseClass="corto" MouseId="portal-title" X="307" Y="98" keys="" scroll="0" height="2390" url="https://receita.economia.gov.br/" />
+
+            return "<rawtrace type=\"" +this.Type+"\" image=\""+this.ImgPath+"\" time=\""+this.Time+"\" Id=\""+this.Id+"\" Class=\""+this.Class+"\" MouseId=\""+this.MouseId+"\" "+
+                "MouseClass=\""+this.MouseClass+"\" X=\""+this.X+"\" Y=\""+this.Y+"\" height=\""+this.Height+"\" scroll=\""+this.Scroll+"\" keys=\""+this.keyText+"\" sourcePath=\""+""/*this.sourcePath*/+"\" url=\""+this.Url+"\"/>";
+        }
+
         public Node Copy()
         {
             return new Node(this.Type, this.ImgPath, this.Time, this.Id, this.Class, this.MouseId, this.MouseClass, this.X, this.Y, this.Height, this.Scroll, this.keyText, this.sourcePath, this.Url);
@@ -85,7 +116,7 @@ namespace Lades.WebTracer
                     XmlNodeList list = current.ParentNode.SelectNodes(current.Name);
                     foreach (XmlNode node in list)
                     {
-                        //<trace type="click" image="1.jpg" time="1" x="321" y="184" keys=""\>
+                        //<trace type="move" image="NaN.jpg" time="0.4" Class="corto" Id="portal-title" MouseClass="corto" MouseId="portal-title" X="307" Y="98" keys="" scroll="0" height="2390" url="https://receita.economia.gov.br/" />
                         Node tempNode = new Node();
                         tempNode.Type = LoadAttribute(node, "type", "click");
                         if (justMouse)
@@ -106,8 +137,8 @@ namespace Lades.WebTracer
                         tempNode.Y = int.Parse(LoadAttribute(node, "Y", "0"));
                         tempNode.Height = int.Parse(LoadAttribute(node, "height", "768"));
                         tempNode.Scroll = (int)double.Parse(LoadAttribute(node, "scroll", "0"), System.Globalization.CultureInfo.InvariantCulture);
-                        tempNode.keyText = LoadAttribute(node, "keys", "");
-                        tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "");
+                        tempNode.keyText = LoadAttribute(node, "keys", "").Replace("\n"," - ");
+                        tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "").Replace("\n", " - ");
                         tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
                         if (tempNode.Y == 256 && tempNode.X == 512)
                         {
@@ -172,8 +203,8 @@ namespace Lades.WebTracer
                     tempNode.Y = int.Parse(LoadAttribute(node, "Y", "0"));
                     tempNode.Height = int.Parse(LoadAttribute(node, "height", "768"));
                     tempNode.Scroll = int.Parse(LoadAttribute(node, "scroll", "0"));
-                    tempNode.keyText = LoadAttribute(node, "keys", "");
-                    tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "");
+                    tempNode.keyText = LoadAttribute(node, "keys", "").Replace("\n", " - ");
+                    tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "").Replace("\n", " - ");
                     if (tempNode.Y == 256 && tempNode.X == 512)
                     {
                         tempNode.X = int.MinValue;

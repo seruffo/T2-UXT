@@ -10,6 +10,16 @@ namespace Lades.WebTracer
     {
         public string Name { get; }
         public List<string> Text { get; set; } = new List<string>();
+        public string GetText()
+        {
+            string result = "";
+            foreach(string text in Text)
+            {
+                string text_ = text.Replace("\n", " ");
+                result += @text_+@"\n";
+            }
+            return result;
+        }
         public int X { get; set; }
         public int Y { get; set; }
 

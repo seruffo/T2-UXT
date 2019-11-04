@@ -52,8 +52,6 @@ namespace Lades.WebTracer
                 {
                     MaxSelector seletor = new MaxSelector();
                     seletor.ShowDialog();
-                    ViewerFull viewer = new ViewerFull();
-                    viewer.ShowDialog();
                 }
                 else
                 {

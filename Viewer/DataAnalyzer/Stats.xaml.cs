@@ -123,20 +123,16 @@ namespace Lades.WebTracer
                 Ltb_Levh.Items.Add(item);
         }
         public string[] urls;
-        public int index = 0;
         private void Ltb_freq_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            App.stats.index = 0;
             string rota = Ltb_freq.SelectedItem.ToString();
             int index = rota.IndexOf(" ");
             rota = rota.Remove(0, index);
             Console.WriteLine("rota "+rota);
-            rota = rota.Replace(" - > ", " ");
-            urls = rota.Split(' ');
+            rota = rota.Replace(" - > ", "ª").Replace(" ","");
+            urls = rota.Split('ª');
             MaxSelector seletor = new MaxSelector();
             seletor.ShowDialog();
-            ViewerFull viewer = new ViewerFull();
-            viewer.ShowDialog();
         }
     }
 }

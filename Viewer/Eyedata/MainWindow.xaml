@@ -1,0 +1,19 @@
+﻿<Window x:Name="Win_eyedata" x:Class="Eyedata.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Eyedata"
+        mc:Ignorable="d"
+        Title="Eyegazer extractor" Height="450" Width="800" ResizeMode="CanMinimize">
+    <Grid>
+        <Grid Margin="10">
+            <Button x:Name="Cmd_start" Content="START" HorizontalAlignment="Left" Margin="697,0,0,0" VerticalAlignment="Top" Width="75" Height="33" IsEnabled="False" Click="Cmd_start_Click"/>
+            <TextBox x:Name="Txt_path" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="612"/>
+            <Button x:Name="Cmd_browse" Content="Browse" HorizontalAlignment="Left" Margin="617,0,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="Cmd_browse_Click"/>
+            <TextBox x:Name="Txt_conversion" HorizontalAlignment="Left" Height="361" Margin="0,38,0,0" TextWrapping="Wrap" Text="WAVES Systems" VerticalAlignment="Top" Width="772"/>
+
+        </Grid>
+
+    </Grid>
+</Window>

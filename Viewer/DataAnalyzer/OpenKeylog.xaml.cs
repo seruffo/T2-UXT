@@ -26,17 +26,17 @@ namespace Lades.WebTracer
             this.grupo = grupo;
         }
 
-        KeyGroup grupo;
+        public KeyGroup grupo;
         private void Cmd_open_Click(object sender, RoutedEventArgs e)
         {
-            var source = App.vieweFull.img_read.Source;
-            System.Drawing.Image img = System.Drawing.Image.FromFile(grupo.path+ "\\" + grupo.Time + ".jpg");
-            App.vieweFull.img_read.Width = img.Width;
-            App.vieweFull.img_read.Height = img.Height;
-            App.vieweFull.img_read.Source = ViewerFull.LoadBitmapImage(grupo.path + "\\" + grupo.Time + ".jpg");
+            //var source = App.vieweFull.img_read.Source;
+            //System.Drawing.Image img = System.Drawing.Image.FromFile(grupo.path+ "\\" + grupo.Time + ".jpg");
+            //App.vieweFull.img_read.Width = img.Width;
+            //App.vieweFull.img_read.Height = img.Height;
+            //App.vieweFull.img_read.Source = ViewerFull.LoadBitmapImage(grupo.path + "\\" + grupo.Time + ".jpg");
             KeyloggerShow show = new KeyloggerShow(grupo);
             show.ShowDialog();
-            App.vieweFull.img_read.Source = source;
+            //App.vieweFull.img_read.Source = source;
         }
     }
 }

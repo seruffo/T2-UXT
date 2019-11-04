@@ -6,18 +6,17 @@
         xmlns:local="clr-namespace:Lades.WebTracer"
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1360" ContentRendered="Window_ContentRendered" KeyDown="Window_KeyDown" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize">
-    <Grid x:Name="grd_viewer" Background="Black">
+    <Grid x:Name="grd_viewer" Background="Black" MinWidth="1360" MinHeight="768">
         <ScrollViewer x:Name="scv_viewer" Margin="0,0,0,60">
-            <Canvas x:Name="canvas" Margin="0" Height="768" Width="1360">
-                <Image x:Name="img_read" Stretch="UniformToFill" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0"/>
-                <Rectangle x:Name="ret_white" Fill="#FFF4F4F5" Opacity="0.5" Width="1920" Height="1080"/>
+            <Canvas x:Name="canvas" Margin="0" MinWidth="1360" MinHeight="708" Background="Black">
+                <Image x:Name="img_read" Stretch="UniformToFill" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Opacity="0.517"/>
             </Canvas>
         </ScrollViewer>
         <Grid x:Name="grd_info" Height="392" Width="754" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="303,152,303,224">
             <Border BorderBrush="White" BorderThickness="1" Height="100" Width="100" CornerRadius="15" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="262,87,392,0"/>
-            <Label Content="Utilize as seguntes teclas para navegar entre as telas:" Foreground="White" FontSize="32" Margin="0,0,0,297"/>
+            <Label Content="Use these keys to navigate through the screens:" Foreground="White" FontSize="32" Margin="0,0,0,297"/>
             <Border BorderBrush="White" BorderThickness="1" Height="100" Width="100" CornerRadius="15" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="379,86,0,0"/>
-            <Label Content="Para ajustar o posicionamento utilize:" Foreground="White" FontSize="24" Margin="175,239,175,69" HorizontalAlignment="Center"/>
+            <Label Content="Use these keys to adjust position:" Foreground="White" FontSize="24" Margin="175,239,175,69" HorizontalAlignment="Center"/>
             <Grid Margin="308,296,302,-36" HorizontalAlignment="Center" Width="144">
                 <Border BorderBrush="White" BorderThickness="1" Height="43" Width="43" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,47,0,0"/>
                 <Border BorderBrush="White" BorderThickness="1" Height="43" Width="43" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,0,0,0"/>
@@ -31,95 +30,64 @@
             <Label Content="←" Foreground="White" Margin="287,107,417,220" HorizontalAlignment="Center" FontSize="40" FontFamily="Arial"/>
             <Label Content="→" Foreground="White" Margin="403,107,301,220" HorizontalAlignment="Center" FontSize="40" FontFamily="Arial"/>
         </Grid>
-        <Grid x:Name="grd_newGrid" Height="60" VerticalAlignment="Bottom" Margin="0">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFF7F9FF" Offset="0"/>
-                    <GradientStop Color="#FF425270" Offset="1"/>
-                    <GradientStop Color="#FF737A89" Offset="0.9"/>
-                </LinearGradientBrush>
-            </Grid.Background>
+        <Grid x:Name="grd_newGrid" Height="60" VerticalAlignment="Bottom" Margin="0" Background="#FF111111">
             <Rectangle Height="1" Margin="0" VerticalAlignment="Top" Fill="#33000000"/>
 
             <Grid Margin="0,10,705,10" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <Ellipse Margin="107,7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="27" Height="27">
-                    <Ellipse.Stroke>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="White" Offset="0"/>
-                            <GradientStop Color="#3F000000" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Ellipse.Stroke>
                     <Ellipse.Fill>
                         <RadialGradientBrush>
                             <GradientStop Color="Blue" Offset="0"/>
-                            <GradientStop Offset="1"/>
+                            <GradientStop Offset="1" Color="#000000FF"/>
                             <GradientStop Color="Blue" Offset="0.25"/>
                         </RadialGradientBrush>
                     </Ellipse.Fill>
                 </Ellipse>
-                <Label Content="Waiting" Margin="134,5,0,0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="Waiting" Margin="134,5,0,0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
                 <Ellipse Margin="23,7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="27" Height="27">
-                    <Ellipse.Stroke>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="White" Offset="0"/>
-                            <GradientStop Color="#3F000000" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Ellipse.Stroke>
                     <Ellipse.Fill>
                         <RadialGradientBrush>
                             <GradientStop Color="Red" Offset="0"/>
-                            <GradientStop Offset="1"/>
+                            <GradientStop Offset="1" Color="#00FF0000"/>
                             <GradientStop Color="Red" Offset="0.25"/>
                         </RadialGradientBrush>
                     </Ellipse.Fill>
                 </Ellipse>
-                <Label Content="Click" Margin="50,5,0,0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="Lbl_clickLabel" Content="Click" Margin="50,5,0,0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
                 <Ellipse Margin="200,7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="26" Height="27">
-                    <Ellipse.Stroke>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="White" Offset="0"/>
-                            <GradientStop Color="#3F000000" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Ellipse.Stroke>
                     <Ellipse.Fill>
                         <RadialGradientBrush>
                             <GradientStop Color="Magenta" Offset="0"/>
-                            <GradientStop Offset="1"/>
+                            <GradientStop Offset="1" Color="#00FF00FF"/>
                             <GradientStop Color="Magenta" Offset="0.25"/>
                         </RadialGradientBrush>
                     </Ellipse.Fill>
                 </Ellipse>
-                <Label Content="Click + Waiting" Margin="226,5,0,0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Rectangle HorizontalAlignment="Left" Height="40" Margin="349,0,-5,0" VerticalAlignment="Center" Width="1" Fill="#7F000000" Stroke="#3F000000"/>
+                <Label Content="Click + Waiting" Margin="226,5,0,0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                <Rectangle HorizontalAlignment="Left" Height="40" Margin="349,0,-5,0" VerticalAlignment="Center" Width="1" Fill="#7FFFFFFF" Stroke="#3FFFFFFF"/>
                 <Rectangle HorizontalAlignment="Left" Height="40" Margin="-83,0,0,0" VerticalAlignment="Center" Width="1" Fill="#7F000000" Stroke="#3F000000"/>
                 <Ellipse Margin="-61,7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="28" Height="27">
-                    <Ellipse.Stroke>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="White" Offset="0"/>
-                            <GradientStop Color="#3F000000" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Ellipse.Stroke>
                     <Ellipse.Fill>
                         <RadialGradientBrush>
                             <GradientStop Color="Lime" Offset="0"/>
-                            <GradientStop Offset="1"/>
+                            <GradientStop Offset="1" Color="#0000FF00"/>
                             <GradientStop Color="Lime" Offset="0.25"/>
                         </RadialGradientBrush>
                     </Ellipse.Fill>
                 </Ellipse>
-                <Label Content="Scroll" Margin="-33,5,0,0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="Scroll" Margin="-33,5,0,0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
             </Grid>
             <Grid Margin="0,16,75,15" HorizontalAlignment="Right" Width="620">
-                <Label Content="Clicks:" Margin="0,0,0,1" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock x:Name="txb_click" HorizontalAlignment="Left" Margin="51,5,0,5" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" FontSize="14"/>
-                <Label Content="Time:" Margin="118,0,0,0" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock x:Name="txb_time" HorizontalAlignment="Left" Margin="165,5,0,5" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" FontSize="14"/>
-                <Label Content="Mouse Stopped:" Margin="232,0,0,0" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock x:Name="txb_freeze" HorizontalAlignment="Left" Margin="348,5,0,5" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" FontSize="14"/>
-                <Label Content="Mouse Moving:" Margin="415,0,0,0" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
+                <Label Content="Clicks:" Margin="0,0,0,1" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                <TextBlock x:Name="txb_click" HorizontalAlignment="Left" Margin="51,5,0,5" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" FontSize="14" Foreground="White"/>
+                <Label Content="Time:" Margin="118,0,0,0" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                <TextBlock x:Name="txb_time" HorizontalAlignment="Left" Margin="165,5,0,5" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" FontSize="14" Foreground="White"/>
+                <Label Content="Mouse Stopped:" Margin="232,0,0,0" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                <TextBlock x:Name="txb_freeze" HorizontalAlignment="Left" Margin="348,5,0,5" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" FontSize="14" Foreground="White"/>
+                <Label Content="Mouse Moving:" Margin="415,0,0,0" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" FontWeight="Bold" Foreground="White"/>
                 <TextBlock x:Name="txb_move" HorizontalAlignment="Left" Margin="527,5,0,5" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" FontSize="14"/>
             </Grid>
-            <Image Margin="0,10,11,10" Source="ufpaLogoBlack.png" Stretch="Fill" Opacity="0.35" Width="32" Height="40" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Button Content="Close" HorizontalAlignment="Right" Margin="0,0,18,20" VerticalAlignment="Bottom" Width="37" Click="Button_Click"/>
         </Grid>
         <ListBox x:Name="ltb_keylogger" Height="120" HorizontalAlignment="Left" VerticalContentAlignment="Top" VerticalAlignment="Bottom" Width="228" Foreground="Black">
             <ListBox.BorderBrush>

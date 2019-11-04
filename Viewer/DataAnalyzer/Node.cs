@@ -23,12 +23,37 @@ namespace Lades.WebTracer
         public int Scroll { get; set; }
         public string keyText{get; set;}
         public string sourcePath { get; set; }
-        public string Url { get; set; }    
+        public string Url { get; set; }  
+        
+        public Node Copy()
+        {
+            return new Node(this.Type, this.ImgPath, this.Time, this.Id, this.Class, this.MouseId, this.MouseClass, this.X, this.Y, this.Height, this.Scroll, this.keyText, this.sourcePath, this.Url);
+        }
 
         public Node()
         {
 
         }
+
+        public Node(string Type, string ImgPath, float Time, string Id, string Class, string MouseId, string MouseClass, int X, int Y, int Height, int Scroll, string keyText, string sourcePath, string Url )
+        {
+            this.Type=Type;
+            this.ImgPath=ImgPath;
+            this.Time=Time;
+            this.Id=Id;
+            this.Class=Class;
+            this.MouseId = MouseId;
+            this.MouseClass = MouseClass;
+            this.X =X;
+            this.Y =Y;
+            this.Height =Height;
+            this.Scroll =Scroll;
+            this.keyText =keyText;
+            this.sourcePath = sourcePath;
+            this.Url = Url;
+        }
+
+
         public static List<Node> LoadNodes(string path)
         {
             return LoadNodes(path, false);
@@ -59,7 +84,8 @@ namespace Lades.WebTracer
                     XmlNodeList list = current.ParentNode.SelectNodes(current.Name);
                     foreach (XmlNode node in list)
                     {
-                        //<trace type="click" image="1.jpg" time="1" x="321" y="184" keys=""\>
+                        // //<trace type="move" image="NaN.jpg" time="0.4" Class="corto" Id="portal-title" MouseClass="corto"
+                        //MouseId ="portal-title" X="307" Y="98" keys="" scroll="0" height="2390" url="https://receita.economia.gov.br/" />
                         Node tempNode = new Node();
                         tempNode.Type = LoadAttribute(node, "type", "click");
                         if (justMouse)
@@ -80,10 +106,18 @@ namespace Lades.WebTracer
                         tempNode.Y = int.Parse(LoadAttribute(node, "Y", "0"));
                         tempNode.Height = int.Parse(LoadAttribute(node, "height", "768"));
                         tempNode.Scroll = int.Parse(LoadAttribute(node, "scroll", "0"));
-                        tempNode.keyText = LoadAttribute(node, "keys", "");
-                        tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "");
+                        tempNode.keyText = LoadAttribute(node, "keys", "").Replace("\n", " - ");
+                        tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "").Replace("\n", " - ");
                         tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
-                        if (!(tempNode.X < 1 && tempNode.Y < 1))
+
+                        if (Convert.ToInt32(tempNode.Y.ToString()) == 256 && Convert.ToInt32(tempNode.X.ToString()) == 512)
+                        {
+                            
+                                tempNode.X = int.MinValue;
+                            }
+                            tempNode.Y += tempNode.Scroll;
+                        
+                        if ((tempNode.X > 0 && tempNode.Y > 0))
                             result.Add(tempNode);
                     }
                 }
@@ -97,6 +131,7 @@ namespace Lades.WebTracer
 
         public static List<Node> LoadNodes(string path, string URL)
         {
+            string last_img = "";
             List<Node> result = null;
             XmlDocument doc = new XmlDocument();
             if (File.Exists(path))
@@ -134,18 +169,28 @@ namespace Lades.WebTracer
                     tempNode.Y = int.Parse(LoadAttribute(node, "Y", "0"));
                     tempNode.Height = int.Parse(LoadAttribute(node, "height", "768"));
                     tempNode.Scroll = int.Parse(LoadAttribute(node, "scroll", "0"));
-                    tempNode.keyText = LoadAttribute(node, "keys", "");
-                    tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "");
+                    tempNode.keyText = LoadAttribute(node, "keys", "").Replace("\n", " - ");
+                    tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "").Replace("\n"," - ");
                     if (URL == "") URL = tempNode.Url;
                     tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
+                    if (Convert.ToInt32(tempNode.Y.ToString()) == 256 && Convert.ToInt32(tempNode.X.ToString()) == 512)
+                        {
+                        tempNode.X = int.MinValue;
+                        }
+                        tempNode.Y += tempNode.Scroll;
+                    
                     if ((tempNode.X > 0 && tempNode.Y > 0) && tempNode.Url == URL)
                     {
                         result.Add(tempNode);
-                        ViewerFull.firstImage.Add(System.IO.Path.Combine(tempNode.sourcePath,tempNode.ImgPath));
-                        ViewerFull.firstImageScroll.Add(tempNode.Scroll);
+                        if (last_img != tempNode.ImgPath && File.Exists(System.IO.Path.Combine(tempNode.sourcePath, tempNode.ImgPath)))
+                        {
+                            ViewerFull.Image.Add(System.IO.Path.Combine(tempNode.sourcePath, tempNode.ImgPath));
+                            ViewerFull.ImageScroll.Add(tempNode.Scroll);
+                            last_img = tempNode.ImgPath;
+                        }
                         App.scrolls.Add(tempNode.Scroll);
                     }
-                    Console.WriteLine("result size " + result.Count);
+                    Console.WriteLine("Added node " + result.Count);
                 }
             }
             return result;
@@ -162,7 +207,7 @@ namespace Lades.WebTracer
             }
             catch
             {
-                ////Console.WriteLine("erro no atributo " + attr);
+                Console.WriteLine("erro no atributo " + attr);
                 return defaultValue;
             }
         }

@@ -10703,7 +10703,7 @@ function prepareSample() {
             chrome.tabs.getSelected(null, function (tab) {
                 var url = new URL(tab.url);
                 domain = url.hostname;
-                $.post(serverUrl+"/SampleChecker.php", { userId: userid, domain: domain }).done(function (data) {
+                $.post(serverUrl+"/samplechecker.php", { userId: userid, domain: domain }).done(function (data) {
                     timeInternal = parseInt(data);});
             });
         }

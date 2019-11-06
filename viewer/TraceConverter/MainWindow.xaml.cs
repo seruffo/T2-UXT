@@ -45,14 +45,14 @@ namespace TraceConverter
                     Updater("Stage 1 | Cleaning " + source[x].Time, x);
 
 
-                    if ((source[x].Type == "click"))
-                    {
-                        source[x].Time += 0.2f;
-                    }
-                    if ((source[x].Type == "keyboard"))
-                    {
-                        source[x].Time += 0.2f;
-                    }
+                    //if ((source[x].Type == "click"))
+                    //{
+                    //    source[x].Time += 0.2f;
+                    //}
+                    //if ((source[x].Type == "keyboard"))
+                    //{
+                    //    source[x].Time += 0.2f;
+                    //}
                     if (Convert.ToSingle(source[x].Time.ToString()) < timer)
                     {
                         //System.Windows.MessageBox.Show(source[x].Type + " " + source[x].Time/1.0001 + " test time " + timer/1.0001);
@@ -82,7 +82,7 @@ namespace TraceConverter
                         {
                             if (!str1.Equals(str2))
                             {
-                                System.Windows.MessageBox.Show("str1" + str1 + "\nstr2" + str2 + "\nstr3" + str3);
+                                //System.Windows.MessageBox.Show("str1" + str1 + "\nstr2" + str2 + "\nstr3" + str3);
                                 source.RemoveAt(x);
                                 x--;
                                 continue;
@@ -180,10 +180,10 @@ namespace TraceConverter
                     allNodes = Node.LoadNodes(Txt_input.Text, false);
                     Pgb_progrress.Maximum = allNodes.Count;
                     Pgb_progrress.Minimum = 0;
-                    List<Node> ordenados = Cleaner(allNodes,1);
+                    List<Node> ordenados = ordenadorTime(allNodes);
                     Pgb_progrress.Maximum = ordenados.Count;
-                    ordenados = ordenadorTime(ordenados);
-                    //ordenados = Cleaner(allNodes, 2);
+                    ordenados = Cleaner(ordenados, 1);
+                    ordenados = Cleaner(ordenados, 2);
                     Pgb_progrress.Maximum = ordenados.Count;
                     allNodes = ordenados;
                     separator = Txt_separator.Text;

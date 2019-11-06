@@ -145,55 +145,58 @@ namespace Lades.WebTracer
         {
             List<Node> node = Node.LoadNodes(source, URL);
             List<HeatPoint> result = new List<HeatPoint>();
-            foreach (Node loaded in node)
+            if (node.Count > 0)
             {
-
-                if (loaded.Type != "keyboard")
+                foreach (Node loaded in node)
                 {
-                    //Console.WriteLine("type " + loaded.Type + "X " + loaded.X + " | Y " + loaded.Y+ " | time "+ loaded.Time);
-                    result.Add(new HeatPoint());
-                    if (loaded.Type == "click")
+
+                    if (loaded.Type != "keyboard")
                     {
+                        //Console.WriteLine("type " + loaded.Type + "X " + loaded.X + " | Y " + loaded.Y+ " | time "+ loaded.Time);
+                        result.Add(new HeatPoint());
+                        if (loaded.Type == "click")
+                        {
+                            result[result.Count - 1].Z = 1;
+                            result[result.Count - 1].type = 1;
+                            clickQuant++;
+                        }
+
+                        if (loaded.Type == "wheel")
+                        {
+                            //result[result.Count - 1].Z = -2;
+                            result[result.Count - 1].type = -2;
+                        }
+                        if (loaded.Type == "freeze")
+                        {
+                            //result[result.Count - 1].Z = -1;
+                            result[result.Count - 1].type = -3;
+                            freeze += 3;
+                        }
+                        if (loaded.Type == "eye")
+                        {
+                            result[result.Count - 1].type = -4;
+                            //result[result.Count - 1].Z = 1;
+                        }
+                        if (loaded.Type == "move")
+                        {
+                            result[result.Count - 1].type = -5;
+                            //result[result.Count - 1].Z = 1;
+                        }
+
+
                         result[result.Count - 1].Z = 1;
-                        result[result.Count - 1].type = 1;
-                        clickQuant++;
-                    }
 
-                    if (loaded.Type == "wheel")
-                    {
-                        //result[result.Count - 1].Z = -2;
-                        result[result.Count - 1].type = -2;
+                        result[result.Count - 1].X = loaded.X;
+                        result[result.Count - 1].Y = loaded.Y;
+                        Times.Add(time = loaded.Time);
+                        txb_time.Text = time.ToString();
                     }
-                    if (loaded.Type == "freeze")
+                    else
                     {
-                        //result[result.Count - 1].Z = -1;
-                        result[result.Count - 1].type = -3;
-                        freeze += 3;
+                        AddToKeylogging(loaded);
                     }
-                    if (loaded.Type == "eye")
-                    {
-                        result[result.Count - 1].type = -4;
-                        //result[result.Count - 1].Z = 1;
-                    }
-                    if (loaded.Type == "move")
-                    {
-                        result[result.Count - 1].type = -5;
-                        //result[result.Count - 1].Z = 1;
-                    }
-
-
-                    result[result.Count - 1].Z = 1;
-
-                    result[result.Count - 1].X = loaded.X;
-                    result[result.Count - 1].Y = loaded.Y;
-                    Times.Add(time = loaded.Time);
-                    txb_time.Text = time.ToString();
+                    height = Math.Max(height, loaded.Height);
                 }
-                else
-                {
-                    AddToKeylogging(loaded);
-                }
-                height = Math.Max(height, loaded.Height);
             }
             return result;
         }
@@ -272,7 +275,7 @@ namespace Lades.WebTracer
             try
             {
                 
-                int lastRes = 0;
+                double lastRes = 0;
                 for(int x=0;x<Image.Count;x++)
                 {
                     try
@@ -280,11 +283,11 @@ namespace Lades.WebTracer
                         if (System.IO.File.Exists(Image[x]))
                         {
                             Console.WriteLine("imgFound " + Image[x]);
-                            if (ImageScroll[x] >= ((float)lastRes * 0.3f))
+                            if (ImageScroll[x] >= lastRes)
                             {
                                 System.Drawing.Image img;
                                 img = System.Drawing.Image.FromFile(Image[x]);
-                                lastRes = ImageScroll[x] + img.Height;
+                                lastRes = ImageScroll[x] + ((double)img.Height*0.4d);
                                 Console.WriteLine(ImageScroll[x]);
                                 AddImage(Image[x], ImageScroll[x], 0);
                                 Console.WriteLine("Added do Background " + Image[x]+" Height "+ ImageScroll[x]);
@@ -558,7 +561,7 @@ namespace Lades.WebTracer
                     //}
                     //if (App.stats.index < App.stats.urls.Length)
                     //{
-                    for (int x = 0; x < App.stats.urls.Length; x++)
+                    for (int x = 0; x < Math.Min(App.stats.urls.Length,10); x++)
                     {
                         txb_click.Text = txb_freeze.Text = txb_move.Text = txb_time.Text = "LOADING...";
                         GenHeatmap(App.stats.urls[x], x, App.stats.urls.Length - 1);

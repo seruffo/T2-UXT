@@ -34,6 +34,7 @@ namespace Lades.WebTracer
             Target = new ViewerFull();
             App.heatSize = ((Convert.ToSingle(lbl_size.Text)/100)*40)+10;
             App.heatBlur = ((Convert.ToSingle(lbl_blur.Text) / 100)*40)+10;
+            App.realisticHeat = Rdb_heatreal.IsChecked.Value;
             Target.ShowDialog();
         }
 

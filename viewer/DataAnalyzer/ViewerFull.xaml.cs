@@ -261,6 +261,22 @@ namespace Lades.WebTracer
                 nextindex = index;
             }
 
+            string heatcolor;
+            if (App.realisticHeat){
+                heatcolor = "        0.4: \"red\",\n" +
+"        0.6: \"yellow\",\n" +
+"        0.8: \"white\",\n" +
+"        1.0: \"cyan\"\n";
+            }
+            else
+            {
+                heatcolor = "        0.4: \"blue\",\n" +
+"        0.6: \"cyan\",\n" +
+"        0.7: \"lime\",\n" +
+"        0.8: \"yellow\",\n" +
+"        1.0: \"red\"\n";
+            }
+
             //for(int h = 0; h < 100; h++)
             //{
             //    grd_viewer.Background = new SolidColorBrush(getHeat(100, h));
@@ -397,11 +413,7 @@ namespace Lades.WebTracer
                 "    defaultRadius: 25,\n" +
                 "\n" +
                 "    defaultGradient: {\n" +
-                "        0.4: \"blue\",\n" +
-                "        0.6: \"cyan\",\n" +
-                "        0.7: \"lime\",\n" +
-                "        0.8: \"yellow\",\n" +
-                "        1.0: \"red\"\n" +
+                    heatcolor+
                 "    },\n" +
                 "\n" +
                 "    data: function (data) {\n" +

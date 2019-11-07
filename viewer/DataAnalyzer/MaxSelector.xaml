@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="Heatmap Settings" Height="202.951" Width="516.484" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown" ResizeMode="NoResize" ContentRendered="Window_ContentRendered">
     <Grid>
-        <TextBox x:Name="lbl_size" HorizontalAlignment="Left" Height="23" Margin="59,90,0,0" TextWrapping="Wrap" Text="25" VerticalAlignment="Top" Width="53"/>
+        <TextBox x:Name="lbl_size" HorizontalAlignment="Left" Height="23" Margin="48,90,0,0" TextWrapping="Wrap" Text="25" VerticalAlignment="Top" Width="53"/>
         <Button x:Name="Cmd_set" Content="GENERATE!" HorizontalAlignment="Center" Margin="168,133,168,0" VerticalAlignment="Top" Width="74" Height="23" Click="Cmd_set_Click"/>
         <CheckBox x:Name="Chk_clicks" Content="Clicks" HorizontalAlignment="Left" Margin="17,32,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="Chk_clicks_Unchecked"/>
         <CheckBox x:Name="Chk_scrolls" Content="Scrolls" HorizontalAlignment="Left" Margin="231,32,0,0" VerticalAlignment="Top" Checked="Chk_scrolls_Checked" Unchecked="Chk_scrolls_Unchecked"/>
         <CheckBox x:Name="Chk_waits" Content="Waits" HorizontalAlignment="Left" Margin="337,32,0,0" VerticalAlignment="Top" Checked="Chk_waits_Checked" Unchecked="Chk_waits_Unchecked"/>
-        <TextBox x:Name="lbl_blur" HorizontalAlignment="Left" Height="23" Margin="207,90,0,0" TextWrapping="Wrap" Text="75" VerticalAlignment="Top" Width="53"/>
-        <Label Content="Blur" HorizontalAlignment="Left" Margin="156,87,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="lbl_blur" HorizontalAlignment="Left" Height="23" Margin="160,90,0,0" TextWrapping="Wrap" Text="75" VerticalAlignment="Top" Width="53"/>
+        <Label Content="Blur" HorizontalAlignment="Left" Margin="122,87,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="Chk_gaze" Content="Gaze" HorizontalAlignment="Left" Margin="126,32,0,0" VerticalAlignment="Top" Checked="Chk_gaze_Checked" Unchecked="Chk_gaze_Unchecked" RenderTransformOrigin="0.521,1.193"/>
         <Label Content="Composition" HorizontalAlignment="Left" Margin="12,4,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA"/>
         <Label Content="______________________________________________________________________________________________________________________________________________________________" HorizontalAlignment="Left" Margin="98,0,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA" Width="402"/>
@@ -21,7 +21,7 @@
         <Label Content="_______________________________________________________________________________________________________________________________________________________________________________" HorizontalAlignment="Left" Margin="52,58,0,0" VerticalAlignment="Top" Foreground="#FFAAAAAA" Width="448"/>
         <Label Content="Size" HorizontalAlignment="Left" Margin="12,89,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="Chk_moves" Content="Moves" HorizontalAlignment="Left" Margin="432,32,0,0" VerticalAlignment="Top" Checked="Chk_moves_Checked" Unchecked="Chk_moves_Unchecked"/>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="301,92,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="408,92,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Rdb_heatcommon" Content="Common Style" HorizontalAlignment="Left" Margin="281,92,0,0" VerticalAlignment="Top" GroupName="HeatStyle"/>
+        <RadioButton x:Name="Rdb_heatreal" Content="Realistic Style" HorizontalAlignment="Left" Margin="405,92,0,0" VerticalAlignment="Top" GroupName="HeatStyle" IsChecked="True" Width="91"/>
     </Grid>
 </Window>

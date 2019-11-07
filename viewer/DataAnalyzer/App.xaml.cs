@@ -24,6 +24,7 @@ namespace Lades.WebTracer
 
         public static float heatSize = 10;
         public static float heatBlur = 30;
+        public static bool realisticHeat = true;
 
         public static List<int> scrolls = new List<int>();
 

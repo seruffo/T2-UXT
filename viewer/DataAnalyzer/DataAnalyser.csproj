@@ -207,5 +207,8 @@
   <ItemGroup>
     <Resource Include="aimt-uxt.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="WTToCSV.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

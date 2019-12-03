@@ -1,0 +1,91 @@
+<html>
+    <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <style>
+            #txt_input{
+                width: 100%;
+                height: 300px;
+            }
+            #txt_output{
+                width: 100%;
+                height: 450px;
+            }
+        </style>
+
+        <script>
+            var time=0;
+            var results=[];
+            var resultsInstant=[];
+            function UserProcessor(){
+
+                var inputOrign = $("#txt_input").val();
+                while(inputOrign.search("\nSAMPLE DATA __")>-1){
+                    resultsInstant=[];
+                    var input = inputOrign.substr(inputOrign.search("\nSAMPLE DATA __"),inputOrign.search("\nURL TRACE ")+10);
+                    
+                    inputOrign=inputOrign.substr(inputOrign.search("\nURL TRACE ")+10,inputOrign.length);
+
+                    alert(input);
+                    var breakList=input.split("\n");
+                    for(var x = 2;x<breakList.length-1;x++)
+                    {
+                        if(breakList[x]===""){
+                            continue;
+                        }
+                        else{
+                            resultsInstant[resultsInstant.length]=breakList[x];
+                        }
+                    }
+                    if(time===0)
+                    {
+                        time=1;
+                        results[0]="User ID;"+resultsInstant[0].replace("USER ID: ","");
+                        results[1]="URL;"+resultsInstant[1].replace("URL: ","");
+                        results[2]="Time spent (s);"+resultsInstant[2].replace("Time spent (s): ","");
+                        results[3]="Clicks;"+resultsInstant[3].replace("Clicks: ","");
+                        results[4]="Distance to find objects (px);"+resultsInstant[4].replace("Distance to find objects (px): ","");
+                        results[5]="Total Distance (px);"+resultsInstant[5].replace("Total Distance (px): ","");
+                        results[6]="Ideal Distance (px);"+resultsInstant[6].replace("Ideal Distance (px): ","");
+                        results[7]="Total / Ideal Distance;"+resultsInstant[7].replace("Total / Ideal Distance: ","").replace(" X","");
+                        results[8]="Wait To Click (s);"+resultsInstant[8].replace("Wait To Click (s): ","");
+                        results[9]="Page returns;"+resultsInstant[9].replace("Page returns: ","");
+                        results[10]="Page repeatitions;"+resultsInstant[10].replace("Page repeatitions: ","");
+                    }
+                    else
+                    {
+                        results[0]+=";"+resultsInstant[0].replace("USER ID: ","");
+                        results[1]+=";"+resultsInstant[1].replace("URL: ","");
+                        results[2]+=";"+resultsInstant[2].replace("Time spent (s): ","");
+                        results[3]+=";"+resultsInstant[3].replace("Clicks: ","");
+                        results[4]+=";"+resultsInstant[4].replace("Distance to find objects (px): ","");
+                        results[5]+=";"+resultsInstant[5].replace("Total Distance (px): ","");
+                        results[6]+=";"+resultsInstant[6].replace("Ideal Distance (px): ","");
+                        results[7]+=";"+resultsInstant[7].replace("Total / Ideal Distance: ","").replace(" X","");
+                        results[8]+=";"+resultsInstant[8].replace("Wait To Click (s): ","");
+                        results[9]+=";"+resultsInstant[9].replace("Page returns: ","");
+                        results[10]+=";"+resultsInstant[10].replace("Page repeatitions: ","");
+                    }
+                    var output="";
+                    for(var x = 0;x<results.length;x++)
+                    {
+                        output+=results[x]+"\n";
+                    }
+                    $("#txt_output").val(output);
+
+                }
+            }
+
+
+
+        </script>
+        <textarea id="txt_input">
+
+        </textarea>
+        <center><button type="button" id="convert" onclick="UserProcessor()">Convert!</button></center>
+        <textarea id="txt_output">
+
+            </textarea>
+    </body>
+</html>

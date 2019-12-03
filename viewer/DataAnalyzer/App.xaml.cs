@@ -112,5 +112,11 @@ namespace Lades.WebTracer
             }
             return -1;
         }
+
+        public static void ForceUpdate(UIElement element)
+        {
+            Action EmptyDelegate = delegate () { };
+            element.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Render, EmptyDelegate);
+        }
     }
 }

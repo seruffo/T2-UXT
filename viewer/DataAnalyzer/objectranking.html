@@ -1,0 +1,92 @@
+<html>
+    <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <style>
+            #txt_input{
+                width: 100%;
+                height: 300px;
+            }
+            #txt_output{
+                width: 100%;
+                height: 450px;
+            }
+        </style>
+
+        <script>
+            var time=0;
+            var interactions=new Object();
+            interactions['click']=new Object();
+            interactions['move']=new Object();
+            interactions['freeze']=new Object();
+            interactions['wheel']=new Object();
+            var output="";
+            function UserProcessor(){
+                alert("working");
+                var inputOrign = $("#txt_input").val().replace(/#/g,"");
+                var breakList=inputOrign.split("\n");
+                for(var x = 0;x<breakList.length;x++)
+                {
+                    if(breakList[x].search("OBJECT ")<0 || breakList[x].replace("OBJECT ","")===" | ")
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        var current={
+                            name:breakList[x].replace("OBJECT ",""),
+                            url: breakList[x+1].replace("in ",""),
+                        }
+                        try{
+                            if(isNaN(interactions[breakList[x+3].replace("Type: ","")][current.name+" | "+current.url])){
+                                interactions[breakList[x+3].replace("Type: ","")][current.name+" | "+current.url]=0;
+                            }
+                            interactions[breakList[x+3].replace("Type: ","")][current.name+" | "+current.url]++;
+                        }catch{
+                            console.log(breakList[x+3].replace("Type: ",""));
+                            interactions[breakList[x+3].replace("Type: ","")][current.name+" | "+current.url]=0;
+                            interactions[breakList[x+3].replace("Type: ","")][current.name+" | "+current.url]++;
+                        }
+                    }
+                }
+                var most=[{
+                    name:"",
+                    time:0
+                },{
+                    name:"",
+                    time:0
+                }
+                ,{
+                    name:"",
+                    time:0
+                },{
+                    name:"",
+                    time:0
+                }];
+                var type=['click','move','freeze','wheel'];
+                
+                for(var x = 0;x<Object.keys(interactions).length;x++)
+                {
+                        var sortable = [];
+                        console.log(interactions[type[x]]);
+                        $('#txt_output').val($('#txt_output').val()+"\n\n"+type[x]+" ==========================\n\n");
+                                var keysSorted = Object.keys(interactions[type[x]]).sort(function(a,b){return interactions[type[x]][a]-interactions[type[x]][b]})
+                                for(var z=0;z<keysSorted.length;z++){
+                                    $('#txt_output').val($('#txt_output').val()+"\n"+interactions[type[x]][keysSorted[z]]+"  ==  "+keysSorted[z]);
+                                }
+                }
+            }
+
+
+
+        </script>
+        <textarea id="txt_input">
+
+        </textarea>
+        <center><button type="button" id="convert" onclick="UserProcessor()">Convert!</button></center>
+        <textarea id="txt_output">
+
+            </textarea>
+    </body>
+</html>

@@ -264,9 +264,9 @@ namespace Lades.WebTracer
             string heatcolor;
             if (App.realisticHeat){
                 heatcolor = "        0.4: \"red\",\n" +
-"        0.6: \"yellow\",\n" +
-"        0.8: \"white\",\n" +
-"        1.0: \"cyan\"\n";
+"        0.7: \"yellow\",\n" +
+//"        0.8: \"#AAF9FF\",\n" +
+"        1.0: \"white\"\n";
             }
             else
             {

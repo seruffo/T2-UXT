@@ -1,9 +1,7 @@
     var x = [];
     var y = [];
     var time = [];
-    
 
-    window.onload = function() {
         webgazer.setRegression('ridge') /* currently must set regression and tracker */
         .setTracker('clmtrackr')
         .setGazeListener(function(data, clock) {
@@ -69,7 +67,7 @@
         window.onbeforeunload = function() {
             webgazer.end();
         };
-    };
+        
 
     //console save salvar os array's de predições
     console.save = function(data, filename){

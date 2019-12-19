@@ -10,9 +10,9 @@
     {
       "matches": [ "<all_urls>", "http://*/*", "https://*/*" ],
       "exclude_globs": [
-          "http://*/calibra_webgazer_*",
-          "http://localhost/calibra_webgazer_*",
-          "https://localhost/calibra_webgazer_*"
+          "http://*/webtracer/calibra_webgazer_*",
+          "http://localhost/webtracer/calibra_webgazer_*",
+          "https://localhost/webtracer/calibra_webgazer_*"
       ],
       "js": ["jquery-3.4.1.min.js","searchgazer.js","main.js","content.js"]
     }

@@ -11,6 +11,7 @@
       "matches": [ "<all_urls>", "http://*/*", "https://*/*" ],
       "exclude_globs": [
           "http://*/webtracer/calibra_webgazer_*",
+          "https://*/webtracer/calibra_webgazer_*",
           "http://localhost/webtracer/calibra_webgazer_*",
           "https://localhost/webtracer/calibra_webgazer_*"
       ],

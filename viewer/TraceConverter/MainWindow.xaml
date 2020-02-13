@@ -7,15 +7,16 @@
         mc:Ignorable="d"
         Title="Trace Converter v2.1.0.0" Height="600" Width="800" MinWidth="800" MinHeight="600" WindowStartupLocation="CenterScreen" ContentRendered="Wnd_traceconverter_ContentRendered">
     <Grid>
-        <TextBox x:Name="Txt_input" Height="25" Margin="18,119,234.6,0" Text="Please click &quot;browse&quot; to set the sample's folder path. Then, click &quot;CONVERT!&quot; to start the process." VerticalAlignment="Top" TextOptions.TextHintingMode="Animated" TextAlignment="Right"/>
-        <Button x:Name="Cmd_convert" Content="Browse" HorizontalAlignment="Right" Margin="0,119,100.6,0" VerticalAlignment="Top" Width="75" Click="Cmd_convert_Click" Height="25"/>
+        <TextBox x:Name="Txt_input" Height="25" Margin="18,119,253.6,0" Text="Please click &quot;browse&quot; to set the sample's folder path. Then, click &quot;CONVERT!&quot; to start the process." VerticalAlignment="Top" TextOptions.TextHintingMode="Animated" TextAlignment="Right"/>
+        <Button x:Name="Cmd_convert" Content="Browse" HorizontalAlignment="Right" Margin="0,119,100.6,0" VerticalAlignment="Top" Width="48" Click="Cmd_convert_Click" Height="25"/>
         <TextBox x:Name="Txt_log" Margin="18,162,17.6,62.4" TextWrapping="WrapWithOverflow" Text="WAVES Systems" IsReadOnly="True"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="0" VerticalAlignment="Top" Width="500" Source="banner.png"/>
         <Rectangle Fill="#FF1F1F1F" Height="100" Margin="271,0,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Right" Height="45" Margin="0,28,15,0" TextWrapping="Wrap" Text="TRACE CONVERTER (XML -&gt; CSV)" VerticalAlignment="Top" Width="176" FontWeight="Bold" TextAlignment="Right" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" FontSize="16" TextChanged="TextBox_TextChanged" IsReadOnly="True" IsUndoEnabled="False" AllowDrop="False" Focusable="False" IsTabStop="False" IsEnabled="False"/>
         <Button x:Name="Cmd_FIRE" Content="CONVERT!" HorizontalAlignment="Right" Margin="0,119,18,0" VerticalAlignment="Top" Width="75" Click="Cmd_FIRE_Click" Foreground="#FFFF0A0A" Height="25" IsEnabled="False"/>
         <ProgressBar x:Name="Pgb_progrress" Height="25" Margin="18,521,17.6,18" VerticalAlignment="Bottom"/>
-        <TextBox x:Name="Txt_separator" Height="25" Margin="0,119,183.6,0" Text="," VerticalAlignment="Top" TextOptions.TextHintingMode="Animated" TextAlignment="Right" HorizontalAlignment="Right" Width="44"/>
+        <TextBox x:Name="Txt_separator" Height="25" Margin="0,119,155.6,0" Text="," VerticalAlignment="Top" TextOptions.TextHintingMode="Animated" TextAlignment="Right" HorizontalAlignment="Right" Width="30"/>
+        <Label Content="Separator" HorizontalAlignment="Left" Margin="540,118,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

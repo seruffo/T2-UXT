@@ -222,11 +222,11 @@ namespace TraceConverter
                     counter = 0;
                     using (StreamWriter writer = new StreamWriter(Txt_input.Text + "\\trace.csv"))
                     {
-                        writer.Write("TIPO" + separator + "TEMPO" + separator + "X" + separator + "Y" + separator + "URL\n");
+                        writer.Write("TIPO" + separator + "TEMPO" + separator + "X" + separator + "Y" + separator+"KEYS"+ separator + "URL\n");
                         foreach (Node node in allNodes)
                         {
                             counter++;
-                            string line = node.Type + separator + node.Time + separator + node.X + separator + node.Y + separator + node.Url;
+                            string line = node.Type + separator + node.Time + separator + node.X + separator + node.Y + separator + node.keyText+ separator + node.Url;
                             Updater("Stage 4 | Writing "+ counter +" "+ line, counter);
                             //Txt_log.Text += line;
                             //if (node.Type == "click")

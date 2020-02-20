@@ -10,6 +10,7 @@ namespace Lades.WebTracer
 {
     public class Node
     {
+        public static int dead = 0;
         public string Type{get; set;}
         public string ImgPath{get; set;}
         public float Time{get; set;}
@@ -89,12 +90,12 @@ namespace Lades.WebTracer
         {
             return LoadNodes(path, false);
         }
- 
-            public static List<Node> LoadNodes(string path, bool justMouse)
-            {
+
+        public static List<Node> LoadNodes(string path, bool justMouse)
+        {
             List<Node> result = null;
+
             XmlDocument doc = new XmlDocument();
-            path += "\\trace.xml";
             if (File.Exists(path))
             {
                 try
@@ -114,6 +115,7 @@ namespace Lades.WebTracer
                     doc.Load(path);
                     XmlNode current = doc.SelectSingleNode("/usertrace/trace");
                     XmlNodeList list = current.ParentNode.SelectNodes(current.Name);
+                    dead = 0;
                     foreach (XmlNode node in list)
                     {
                         //<trace type="move" image="NaN.jpg" time="0.4" Class="corto" Id="portal-title" MouseClass="corto" MouseId="portal-title" X="307" Y="98" keys="" scroll="0" height="2390" url="https://receita.economia.gov.br/" />
@@ -128,7 +130,7 @@ namespace Lades.WebTracer
                         string timeS = LoadAttribute(node, "time", "0");
                         if (timeS == "")
                             timeS = "0";
-                        tempNode.Time = (float)Math.Round(Convert.ToSingle(timeS, System.Globalization.CultureInfo.InvariantCulture),4);
+                        tempNode.Time = (float)Math.Round(Convert.ToSingle(timeS, System.Globalization.CultureInfo.InvariantCulture), 4);
                         tempNode.Id = LoadAttribute(node, "Id", "");
                         tempNode.Class = LoadAttribute(node, "Class", "");
                         tempNode.MouseId = LoadAttribute(node, "MouseId", "");
@@ -137,27 +139,33 @@ namespace Lades.WebTracer
                         tempNode.Y = int.Parse(LoadAttribute(node, "Y", "0"));
                         tempNode.Height = int.Parse(LoadAttribute(node, "height", "768"));
                         tempNode.Scroll = (int)double.Parse(LoadAttribute(node, "scroll", "0"), System.Globalization.CultureInfo.InvariantCulture);
-                        tempNode.keyText = LoadAttribute(node, "keys", "").Replace("\n"," - ");
+                        tempNode.keyText = LoadAttribute(node, "keys", "").Replace("\n", " - ");
                         tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "").Replace("\n", " - ");
                         tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
                         if (tempNode.Y == 256 && tempNode.X == 512)
                         {
-                            tempNode.X = int.MinValue;
+                            tempNode.X = -5;
                         }
 
-                        if ((tempNode.X > 0 && tempNode.Y > 0))
+                        if ((tempNode.X > -1 && tempNode.Y > -1))
 
                             if (tempNode.Type == "eye")
-                        {
-                            tempNode.Y += tempNode.Scroll;
-                        }
-                        if ((tempNode.X > 1 && tempNode.Y > 1))
+                            {
+                                tempNode.Y += tempNode.Scroll;
+                            }
+                        if ((tempNode.X > -1 && tempNode.Y > -1))
                             result.Add(tempNode);
+                        else
+                        {
+                            dead++;
+                            Console.WriteLine("ignored traces " + dead);
+                        }
+
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
-                    System.Windows.MessageBox.Show("____________________________\r\rFalha ao carregar XML!\r\r" + path + "\r\r" + e.ToString()+ "\r\r____________________________");
+                    System.Windows.MessageBox.Show("____________________________\r\rFalha ao carregar XML!\r\r" + path + "\r\r" + e.ToString() + "\r\r____________________________");
                 }
             }
             return result;

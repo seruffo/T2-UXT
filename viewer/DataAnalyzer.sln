@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAnalyser", "DataAnalyzer\DataAnalyser.csproj", "{ADE1E569-CDED-44AE-8158-196CFA5845F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAnalyzer", "DataAnalyzer\DataAnalyzer.csproj", "{ADE1E569-CDED-44AE-8158-196CFA5845F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eyedata", "Eyedata\Eyedata.csproj", "{68994C37-18DC-41E4-89AF-BB3527C26961}"
 EndProject

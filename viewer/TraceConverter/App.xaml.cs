@@ -13,5 +13,14 @@ namespace TraceConverter
     /// </summary>
     public partial class App : Application
     {
+        public static List<string> Args { get; set; } = new List<string>();
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            foreach (string arg in e.Args)
+            {
+                Args.Add(arg);
+                //MessageBox.Show(arg);
+            }
+        }
     }
 }

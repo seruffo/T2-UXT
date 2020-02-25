@@ -143,8 +143,14 @@ namespace TraceConverter
         {
 
         }
+        string LogPath = "";
 
         private void Updater(string text, int prg)
+        {
+            Updater(text, prg, LogPath);
+        }
+
+        private void Updater(string text, int prg, string path)
         {
             statuscleaner++;
             if (statuscleaner > 50)
@@ -157,7 +163,7 @@ namespace TraceConverter
             Pgb_progrress.Value = prg;
             ForceUpdate(Txt_log);
             ForceUpdate(Pgb_progrress);
-            using (StreamWriter writerTracer = File.AppendText(Txt_input.Text + "\\convert.log"))
+            using (StreamWriter writerTracer = File.AppendText(path + "\\convert.log"))
             {
                 writerTracer.WriteLine(text);
             }
@@ -171,6 +177,7 @@ namespace TraceConverter
         int counter = 0;
         private void Cmd_FIRE_Click(object sender, RoutedEventArgs e)
         {
+            LogPath = Txt_input.Text;
             if (MultipleFiles)
             {
                 MultipleFiles = false;
@@ -198,7 +205,7 @@ namespace TraceConverter
                         foreach (string[] subpaths in subsub)
                         {
                             filePaths.Add(subsub[subsub.Count - 1][0] + "\\trace.xml");
-                            System.Windows.MessageBox.Show(subsub[subsub.Count - 1][0] + "\\trace.xml");
+                            //System.Windows.MessageBox.Show(subsub[subsub.Count - 1][0] + "\\trace.xml");
                         }
                     }
                     for (int x = 0; x < filePaths.Count; x++)
@@ -221,8 +228,8 @@ namespace TraceConverter
                     foreach (string tracepath in filePaths)
                     {
                         counter = 0;
-                        Updater("Converting " + majorpath + "\\trace.xml...", counter);
-                        System.Windows.MessageBox.Show("TRACE PATH " + tracepath);
+                        Updater("Converting " + majorpath + "\\trace.xml...", counter,majorpath);
+                        //System.Windows.MessageBox.Show("TRACE PATH " + tracepath);
                         List<Node> newNodes = Node.LoadNodes(tracepath, false);
 
                         foreach (Node newnode in newNodes)
@@ -232,7 +239,7 @@ namespace TraceConverter
                         }
 
 
-                        Updater("_______ " + Node.dead + " TRACES REMOVED DUE INVALID CONDITIONS.", counter);
+                        Updater("_______ " + Node.dead + " TRACES REMOVED DUE INVALID CONDITIONS.", counter, majorpath);
                         Pgb_progrress.Maximum = allNodes.Count;
                         Pgb_progrress.Minimum = 0;
                         List<Node> ordenados = ordenadorTime(allNodes);
@@ -249,7 +256,7 @@ namespace TraceConverter
                             {
                                 counter++;
                                 string line = node.Type + separator + node.Time + separator + node.X + separator + node.Y + separator + node.Url;
-                                Updater("Stage 4 | Writing " + counter + " " + line, counter);
+                                Updater("Stage 4 | Writing " + counter + " " + line, counter, majorpath);
                                 //Txt_log.Text += line;
                                 //if (node.Type == "click")
                                 //{
@@ -283,7 +290,7 @@ namespace TraceConverter
                         {
                             counter++;
                             string line = node.Type + separator + node.Time + separator + node.X + separator + node.Y + separator + node.keyText + separator + node.Url;
-                            Updater("Stage 4 | Writing " + counter + " " + line, counter);
+                            Updater("Stage 4 | Writing " + counter + " " + line, counter, majorpath);
                             //Txt_log.Text += line;
                             //if (node.Type == "click")
                             //{
@@ -309,15 +316,16 @@ namespace TraceConverter
                         }
                     }
                     //finalFile += click + move + scroll + freeze + eye;
-                    Updater("Writing " + majorpath + "\\trace.csv...", counter);
-                    Updater("_________DONE______________", counter);
+                    Updater("Writing " + majorpath + "\\trace.csv...", counter, majorpath);
+                    Updater("_________DONE______________", counter, majorpath);
                     //Updater(File.ReadLines(Txt_input.Text + "\\trace.xml").Count() + " lines processed.", 0);
                 }
             }
             catch (Exception ex)
             {
-                Updater("Error converting file", 0);
-                Updater(ex.Message, 0);
+                Updater("Error converting file", 0, majorpath);
+                Updater(ex.Message, 0, majorpath);
+                Updater(ex.StackTrace, 0, majorpath);
                 System.Windows.MessageBox.Show(ex.StackTrace);
                 System.Windows.MessageBox.Show(ex.Message);
             }
@@ -329,6 +337,18 @@ namespace TraceConverter
         {
            load= Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\WAVES Systems\\AIMT-UXT\\TraceConverter");
             Txt_separator.Text = (string)load.GetValue("Separator", ";");
+            if (App.Args.Count > 0)
+            {
+                int x = 0;
+                foreach(string path in App.Args)
+                {
+                    x++;
+                    LogPath = path;
+                    Txt_input.Text = "SAMPLE " + x + "/" + App.Args.Count + " | " + path;
+                    Fire(path);
+                }
+            }
+
         }
     }
 }

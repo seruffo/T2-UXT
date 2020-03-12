@@ -26,9 +26,13 @@ namespace Lades.WebTracer
         }
         List<Node> node = new List<Node>();
         List<int> clickIndex = new List<int>();
+        List<int> EyeIndex = new List<int>();
+        List<float> EyeToClickDistance = new List<float>();
         List<float> clickWait = new List<float>();
+        List<float> eyeClickWait = new List<float>();
         List<float> clickWaitFull = new List<float>();
         List<int> clickDistance = new List<int>();
+        List<int> pageEyeDistance = new List<int>();
         List<int> pageDistance = new List<int>();
         List<int> clickDistanceIdeal = new List<int>();
         List<PageData> page = new List<PageData>();
@@ -96,7 +100,7 @@ namespace Lades.WebTracer
             }
         }
 
-         
+
         private void Window_ContentRendered(object sender, EventArgs e)
         {
 
@@ -154,7 +158,7 @@ namespace Lades.WebTracer
                         Console.WriteLine("node LIST SIZE " + node.Count);
                         Console.WriteLine("page LIST SIZE " + page.Count);
                         Console.WriteLine("current pos " + x);
-                        page[pageX].Distance += GetDistance(node[Math.Max(x - 1, 0)], node[x]);
+                        page[pageX].MouseDistance += GetDistance(node[Math.Max(x - 1, 0)], node[x]);
                         if (node[x].Time > 0)
                         {
                             page[pageX].Time = node[x].Time;
@@ -172,9 +176,16 @@ namespace Lades.WebTracer
                             clickDistance.Add(0);
                             pageDistance.Add(0);
                             clickDistanceIdeal.Add(0);
+                            eyeClickWait.Add(0);
+                            EyeToClickDistance.Add(0);
                         }
+                        if (node[x].Type == "eye")
+                        {
+                            EyeIndex.Add(x);
+                            eyeClickWait.Add(0);
+                            pageEyeDistance.Add(0);
 
-                    }
+                        }
                     //analisar cliques
                     for (int x = 0; x < clickIndex.Count; x++)
                     {
@@ -182,13 +193,20 @@ namespace Lades.WebTracer
                         int beforeClick = clickIndex[x] - 1;
                         Node clickNode = node[clickIndex[x]];
                         int waitCounter = 0;
-                        while (beforeClick > -1 && node[beforeClick].MouseId == node[clickIndex[x]].MouseId && node[beforeClick].MouseClass == node[clickIndex[x]].MouseClass && node[beforeClick].Url == node[clickIndex[x]].Url && node[beforeClick].Type != "click")
-                        {
-                            waitCounter++;
-                            clickWait[x] = node[beforeClick].Time;
-                            clickNode = node[beforeClick];
-                            beforeClick--;
-                        }
+                            while (beforeClick > -1 && node[beforeClick].MouseId == node[clickIndex[x]].MouseId && node[beforeClick].MouseClass == node[clickIndex[x]].MouseClass && node[beforeClick].Url == node[clickIndex[x]].Url && node[beforeClick].Type != "click")
+                            {
+                                if (node[beforeClick].Type == "eye")
+                                {
+                                    continue;
+                                }
+                                else
+                                {
+                                    waitCounter++;
+                                    clickWait[x] = node[beforeClick].Time;
+                                    clickNode = node[beforeClick];
+                                }
+                                beforeClick--;
+                            }
                         if (waitCounter > 0)
                             clickWait[x] = node[clickIndex[x]].Time - clickWait[x];
                         Print("\r\r==========================");
@@ -230,7 +248,7 @@ namespace Lades.WebTracer
                         { //do nothing
                         }
                         page[pageX].IdealDistance += clickDistanceIdeal[x];
-                        page[pageX].DistanceToFind += pageDistance[x];
+                        page[pageX].MouseDistanceToFind  += pageDistance[x];
                     }
 
                     for (int x = 0; x < urlList.Count; x++)
@@ -265,13 +283,13 @@ namespace Lades.WebTracer
                         final.SetTime(final.Time + samplePage.Time);
                         Print("Clicks: " + samplePage.Clicks);
                         final.Clicks += samplePage.Clicks;
-                        Print("Distance to find objects (px): " + samplePage.DistanceToFind);
-                        final.DistanceToFind += samplePage.DistanceToFind;
-                        Print("Total Distance (px): " + samplePage.Distance);
-                        final.Distance += samplePage.Distance;
+                        Print("Distance to find objects (px): " + samplePage.MouseDistanceToFind);
+                        final.MouseDistanceToFind += samplePage.MouseDistanceToFind;
+                        Print("Total Distance (px): " + samplePage.MouseDistance);
+                        final.MouseDistance += samplePage.MouseDistance;
                         Print("Ideal Distance (px): " + samplePage.IdealDistance);
                         final.IdealDistance += samplePage.IdealDistance;
-                        Print("Total Distance / Ideal: " + Math.Round(((float)samplePage.Distance / samplePage.IdealDistance), 4) + " X");
+                        Print("Total Distance / Ideal: " + Math.Round(((float)samplePage.MouseDistance / samplePage.IdealDistance), 4) + " X");
                         Print("Wait To Click (s): " + samplePage.WaitForClick);
                         final.WaitForClick += samplePage.WaitForClick;
                         Print("Page returns: " + samplePage.BackPages);
@@ -293,13 +311,13 @@ namespace Lades.WebTracer
                     //Print("Times acessed " + final.Acessed);
                     Print("Clicks: " + final.Clicks);
                     geral.Clicks += final.Clicks;
-                    Print("Distance to find objects (px): " + final.DistanceToFind);
-                    geral.DistanceToFind += final.DistanceToFind;
-                    Print("Total Distance (px): " + final.Distance);
-                    geral.Distance += final.Distance;
+                    Print("Distance to find objects (px): " + final.MouseDistanceToFind);
+                    geral.MouseDistanceToFind += final.MouseDistanceToFind;
+                    Print("Total Distance (px): " + final.MouseDistance);
+                    geral.MouseDistance += final.MouseDistance;
                     Print("Ideal Distance (px): " + final.IdealDistance);
                     geral.IdealDistance += final.IdealDistance;
-                    Print("Total / Ideal Distance: " + Math.Round(((float)final.Distance / final.IdealDistance), 4) + " X");
+                    Print("Total / Ideal Distance: " + Math.Round(((float)final.MouseDistance / final.IdealDistance), 4) + " X");
                     Print("Wait To Click (s): " + final.WaitForClick);
                     geral.WaitForClick += final.WaitForClick;
                     Print("Page returns: " + final.BackPages);
@@ -314,7 +332,7 @@ namespace Lades.WebTracer
                         ideal.Acessed = final.Acessed;
                         ideal.BackPages = final.BackPages;
                         ideal.Clicks = final.Clicks;
-                        ideal.Distance = final.Distance;
+                        ideal.MouseDistance = final.MouseDistance;
                         ideal.IdealDistance = final.IdealDistance;
                         ideal.SetTime(final.Time);
                         ideal.WaitForClick = final.WaitForClick;
@@ -332,10 +350,10 @@ namespace Lades.WebTracer
                 Print("");
                 Print("Time spent (s): " + geral.Time);
                 Print("Clicks: " + geral.Clicks);
-                Print("Distance to find objects (px): " + geral.DistanceToFind);
-                Print("Total Distance (px): " + geral.Distance);
+                Print("Distance to find objects (px): " + geral.MouseDistanceToFind);
+                Print("Total Distance (px): " + geral.MouseDistance);
                 Print("Ideal Distance (px): " + geral.IdealDistance);
-                Print("Total / Ideal Distance " + Math.Round(((float)geral.Distance / geral.IdealDistance), 4) + " X");
+                Print("Total / Ideal Distance " + Math.Round(((float)geral.MouseDistance / geral.IdealDistance), 4) + " X");
                 Print("Wait To Click (s): " + geral.WaitForClick);
                 Print("Page returns: " + geral.BackPages);
                 Print("Page repeatitions: " + geral.Acessed);
@@ -346,9 +364,9 @@ namespace Lades.WebTracer
                 Print("");
                 Print("Time spent (s): " + geral.Time / App.CurrentTraceList.Count);
                 Print("Clicks: " + Math.Floor((float)geral.Clicks / App.CurrentTraceList.Count));
-                Print("Total Distance (px): " + Math.Ceiling(geral.Distance / App.CurrentTraceList.Count));
+                Print("Total Distance (px): " + Math.Ceiling(geral.MouseDistance / App.CurrentTraceList.Count));
                 Print("Ideal Distance (px): " + Math.Ceiling(geral.IdealDistance / App.CurrentTraceList.Count));
-                Print("Total / Ideal Distance " + Math.Round((((float)geral.Distance / App.CurrentTraceList.Count) / ((float)geral.IdealDistance / App.CurrentTraceList.Count)), 4) + " X");
+                Print("Total / Ideal Distance " + Math.Round((((float)geral.MouseDistance / App.CurrentTraceList.Count) / ((float)geral.IdealDistance / App.CurrentTraceList.Count)), 4) + " X");
                 Print("Wait To Click (s): " + Math.Round((geral.WaitForClick / App.CurrentTraceList.Count), 4));
                 Print("Page returns: " + Math.Floor((double)geral.BackPages / App.CurrentTraceList.Count));
                 Print("Page repeatitions: " + Math.Floor((double)geral.Acessed / App.CurrentTraceList.Count));
@@ -359,9 +377,9 @@ namespace Lades.WebTracer
                 Print("");
                 Print("Time spent (s): " + ideal.Time);
                 Print("Clicks: " + ideal.Clicks);
-                Print("Total Distance (px): " + ideal.Distance);
+                Print("Total Distance (px): " + ideal.MouseDistance);
                 Print("Ideal Distance (px): " + ideal.IdealDistance);
-                Print("Total / Ideal Distance " + Math.Round(((float)ideal.Distance / ideal.IdealDistance), 4) + " X");
+                Print("Total / Ideal Distance " + Math.Round(((float)ideal.MouseDistance / ideal.IdealDistance), 4) + " X");
                 Print("Wait To Click (s): " + ideal.WaitForClick);
                 Print("Page returns: " + ideal.BackPages);
                 Print("Page repeatitions: " + ideal.Acessed);
@@ -430,7 +448,7 @@ namespace Lades.WebTracer
                         Console.WriteLine("node LIST SIZE " + node.Count);
                         Console.WriteLine("page LIST SIZE " + page.Count);
                         Console.WriteLine("current pos " + x);
-                        page[pageX].Distance += GetDistance(node[Math.Max(x - 1, 0)], node[x]);
+                        page[pageX].MouseDistance += GetDistance(node[Math.Max(x - 1, 0)], node[x]);
                         if (node[x].Time > 0)
                         {
                             page[pageX].Time = node[x].Time;
@@ -452,7 +470,7 @@ namespace Lades.WebTracer
                         else
                         {
                             Print("\r\r==========================");
-                            Print("\rOBJECT " + node[x].Id + " | " + node[x].Class + "\rin " + node[x].Url + "\r\rType: "+ node[x].Type);
+                            Print("\rOBJECT " + node[x].Id + " | " + node[x].Class + "\rin " + node[x].Url + "\r\rType: " + node[x].Type);
                         }
 
                     }
@@ -473,7 +491,7 @@ namespace Lades.WebTracer
                         if (waitCounter > 0)
                             clickWait[x] = node[clickIndex[x]].Time - clickWait[x];
                         Print("\r\r==========================");
-                        Print("\rOBJECT " + node[clickIndex[x]].Id + " | " + node[clickIndex[x]].Class + "\rin " + node[clickIndex[x]].Url + "\r\rType: "+node[clickIndex[x]].Type + "\nWait to Click (s): " + clickWait[x]);
+                        Print("\rOBJECT " + node[clickIndex[x]].Id + " | " + node[clickIndex[x]].Class + "\rin " + node[clickIndex[x]].Url + "\r\rType: " + node[clickIndex[x]].Type + "\nWait to Click (s): " + clickWait[x]);
                         page[pageX].WaitForClick += clickWait[x];
                         waitCounter = 0;
                         beforeClick = clickIndex[x] - 1;
@@ -511,7 +529,7 @@ namespace Lades.WebTracer
                         { //do nothing
                         }
                         page[pageX].IdealDistance += clickDistanceIdeal[x];
-                        page[pageX].DistanceToFind += pageDistance[x];
+                        page[pageX].MouseDistanceToFind  += pageDistance[x];
                     }
 
                     for (int x = 0; x < urlList.Count; x++)
@@ -546,13 +564,13 @@ namespace Lades.WebTracer
                         final.SetTime(final.Time + samplePage.Time);
                         Print("Clicks: " + samplePage.Clicks);
                         final.Clicks += samplePage.Clicks;
-                        Print("Distance to find objects (px): " + samplePage.DistanceToFind);
-                        final.DistanceToFind += samplePage.DistanceToFind;
-                        Print("Total Distance (px): " + samplePage.Distance);
-                        final.Distance += samplePage.Distance;
+                        Print("Distance to find objects (px): " + samplePage.MouseDistanceToFind);
+                        final.MouseDistanceToFind += samplePage.MouseDistanceToFind;
+                        Print("Total Distance (px): " + samplePage.MouseDistance);
+                        final.MouseDistance += samplePage.MouseDistance;
                         Print("Ideal Distance (px): " + samplePage.IdealDistance);
                         final.IdealDistance += samplePage.IdealDistance;
-                        Print("Total Distance / Ideal: " + Math.Round(((float)samplePage.Distance / samplePage.IdealDistance), 4) + " X");
+                        Print("Total Distance / Ideal: " + Math.Round(((float)samplePage.MouseDistance / samplePage.IdealDistance), 4) + " X");
                         Print("Wait To Click (s): " + samplePage.WaitForClick);
                         final.WaitForClick += samplePage.WaitForClick;
                         Print("Page returns: " + samplePage.BackPages);
@@ -574,13 +592,13 @@ namespace Lades.WebTracer
                     //Print("Times acessed " + final.Acessed);
                     Print("Clicks: " + final.Clicks);
                     geral.Clicks += final.Clicks;
-                    Print("Distance to find objects (px): " + final.DistanceToFind);
-                    geral.DistanceToFind += final.DistanceToFind;
-                    Print("Total Distance (px): " + final.Distance);
-                    geral.Distance += final.Distance;
+                    Print("Distance to find objects (px): " + final.MouseDistanceToFind);
+                    geral.MouseDistanceToFind += final.MouseDistanceToFind;
+                    Print("Total Distance (px): " + final.MouseDistance);
+                    geral.MouseDistance += final.MouseDistance;
                     Print("Ideal Distance (px): " + final.IdealDistance);
                     geral.IdealDistance += final.IdealDistance;
-                    Print("Total / Ideal Distance: " + Math.Round(((float)final.Distance / final.IdealDistance), 4) + " X");
+                    Print("Total / Ideal Distance: " + Math.Round(((float)final.MouseDistance / final.IdealDistance), 4) + " X");
                     Print("Wait To Click (s): " + final.WaitForClick);
                     geral.WaitForClick += final.WaitForClick;
                     Print("Page returns: " + final.BackPages);
@@ -595,7 +613,7 @@ namespace Lades.WebTracer
                         ideal.Acessed = final.Acessed;
                         ideal.BackPages = final.BackPages;
                         ideal.Clicks = final.Clicks;
-                        ideal.Distance = final.Distance;
+                        ideal.MouseDistance = final.MouseDistance;
                         ideal.IdealDistance = final.IdealDistance;
                         ideal.SetTime(final.Time);
                         ideal.WaitForClick = final.WaitForClick;
@@ -613,10 +631,10 @@ namespace Lades.WebTracer
                 Print("");
                 Print("Time spent (s): " + geral.Time);
                 Print("Clicks: " + geral.Clicks);
-                Print("Distance to find objects (px): " + geral.DistanceToFind);
-                Print("Total Distance (px): " + geral.Distance);
+                Print("Distance to find objects (px): " + geral.MouseDistanceToFind);
+                Print("Total Distance (px): " + geral.MouseDistance);
                 Print("Ideal Distance (px): " + geral.IdealDistance);
-                Print("Total / Ideal Distance " + Math.Round(((float)geral.Distance / geral.IdealDistance), 4) + " X");
+                Print("Total / Ideal Distance " + Math.Round(((float)geral.MouseDistance / geral.IdealDistance), 4) + " X");
                 Print("Wait To Click (s): " + geral.WaitForClick);
                 Print("Page returns: " + geral.BackPages);
                 Print("Page repeatitions: " + geral.Acessed);
@@ -627,9 +645,9 @@ namespace Lades.WebTracer
                 Print("");
                 Print("Time spent (s): " + geral.Time / App.CurrentTraceList.Count);
                 Print("Clicks: " + Math.Floor((float)geral.Clicks / App.CurrentTraceList.Count));
-                Print("Total Distance (px): " + Math.Ceiling(geral.Distance / App.CurrentTraceList.Count));
+                Print("Total Distance (px): " + Math.Ceiling(geral.MouseDistance / App.CurrentTraceList.Count));
                 Print("Ideal Distance (px): " + Math.Ceiling(geral.IdealDistance / App.CurrentTraceList.Count));
-                Print("Total / Ideal Distance " + Math.Round((((float)geral.Distance / App.CurrentTraceList.Count) / ((float)geral.IdealDistance / App.CurrentTraceList.Count)), 4) + " X");
+                Print("Total / Ideal Distance " + Math.Round((((float)geral.MouseDistance / App.CurrentTraceList.Count) / ((float)geral.IdealDistance / App.CurrentTraceList.Count)), 4) + " X");
                 Print("Wait To Click (s): " + Math.Round((geral.WaitForClick / App.CurrentTraceList.Count), 4));
                 Print("Page returns: " + Math.Floor((double)geral.BackPages / App.CurrentTraceList.Count));
                 Print("Page repeatitions: " + Math.Floor((double)geral.Acessed / App.CurrentTraceList.Count));
@@ -640,9 +658,9 @@ namespace Lades.WebTracer
                 Print("");
                 Print("Time spent (s): " + ideal.Time);
                 Print("Clicks: " + ideal.Clicks);
-                Print("Total Distance (px): " + ideal.Distance);
+                Print("Total Distance (px): " + ideal.MouseDistance);
                 Print("Ideal Distance (px): " + ideal.IdealDistance);
-                Print("Total / Ideal Distance " + Math.Round(((float)ideal.Distance / ideal.IdealDistance), 4) + " X");
+                Print("Total / Ideal Distance " + Math.Round(((float)ideal.MouseDistance / ideal.IdealDistance), 4) + " X");
                 Print("Wait To Click (s): " + ideal.WaitForClick);
                 Print("Page returns: " + ideal.BackPages);
                 Print("Page repeatitions: " + ideal.Acessed);

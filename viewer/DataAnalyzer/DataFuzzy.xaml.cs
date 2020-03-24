@@ -131,7 +131,26 @@ namespace Lades.WebTracer
                     urlList.Clear();
                     urlList.Add("");
                     //carregar todos os nós
-                    node = Node.LoadNodes(currentTrace + "\\trace.xml", true);
+
+                    string[] lines = System.IO.File.ReadAllLines(currentTrace + "\\trace_2.xml");
+                    List<string> eyeLines = new List<string>();
+                    for (int x = 0; x < lines.Length; x++)
+                    {
+                        if (lines[x].IndexOf("type=\"eye\"") > -1)
+                        {
+                            eyeLines.Add(lines[x].Replace("<trace", "<rawtrace"));
+                            lines[x] = "";
+                        }
+                    }
+                    System.IO.File.WriteAllLines(currentTrace + "\\trace_3.xml", lines);
+
+                    string[] eyeLinesVector = new string[eyeLines.Count];
+                    for(int x = 0; x < eyeLines.Count; x++)
+                    {
+                        eyeLinesVector[x] = eyeLines[x];
+                    }
+                    System.IO.File.WriteAllLines(currentTrace + "\\trace_4.xml", eyeLinesVector);
+                    node = Node.LoadNodes(currentTrace + "\\trace_3.xml", true);
                     string url = "";
                     //ler nós individualmente
                     for (int x = 0; x < node.Count; x++)

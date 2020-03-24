@@ -67,6 +67,7 @@
     <Compile Include="Chooser.xaml.cs">
       <DependentUpon>Chooser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Click.cs" />
     <Compile Include="DataFuzzy.xaml.cs">
       <DependentUpon>DataFuzzy.xaml</DependentUpon>
     </Compile>

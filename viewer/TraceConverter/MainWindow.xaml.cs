@@ -205,7 +205,7 @@ namespace TraceConverter
                         foreach (string[] subpaths in subsub)
                         {
                             filePaths.Add(subsub[subsub.Count - 1][0] + "\\trace.xml");
-                            System.Windows.MessageBox.Show(subsub[subsub.Count - 1][0] + "\\trace.xml");
+                            //System.Windows.MessageBox.Show(subsub[subsub.Count - 1][0] + "\\trace.xml");
                         }
                     }
                     for (int x = 0; x < filePaths.Count; x++)

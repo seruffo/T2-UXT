@@ -16,8 +16,6 @@ namespace Lades.WebTracer
         public double EyeDistance { get; set; } = 0;
         public double MouseDistance { get; set; } = 0;
         public double MouseDistanceToFind { get; set; } = 0;
-        public double TimeToFind { get; set; } = 0;
-        public double ClickTime{ get; set; } = 0;
         public double EyeDistanceToFind { get; set; } = 0;
         public double IdealDistance { get; set; } = 0;
         public int Clicks { get; set; } = 0;

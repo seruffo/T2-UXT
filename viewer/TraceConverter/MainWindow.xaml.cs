@@ -326,8 +326,6 @@ namespace TraceConverter
                 Updater("Error converting file", 0, majorpath);
                 Updater(ex.Message, 0, majorpath);
                 Updater(ex.StackTrace, 0, majorpath);
-                System.Windows.MessageBox.Show(ex.StackTrace);
-                System.Windows.MessageBox.Show(ex.Message);
             }
         }
         string separator="";

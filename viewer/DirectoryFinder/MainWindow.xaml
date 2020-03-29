@@ -1,0 +1,17 @@
+﻿<Window x:Class="DirectoryFinder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DirectoryFinder"
+        mc:Ignorable="d"
+        Title="MainWindow" Width="800" AllowDrop="True" Drop="Window_Drop" SizeToContent="Height" Height="683.66">
+    <Grid Drop="Grid_Drop" AllowDrop="True">
+        <Grid Margin="20" Drop="StackPanel_Drop">
+            <TextBox x:Name="Txt_folders" TextWrapping="Wrap" Margin="0,0,0,80" MinHeight="300"/>
+            <Label Content="Drop files here to get directories" HorizontalAlignment="Center" Margin="0,0,0,26" VerticalAlignment="Bottom"/>
+
+        </Grid>
+
+    </Grid>
+</Window>

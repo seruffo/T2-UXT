@@ -119,232 +119,275 @@ namespace Lades.WebTracer
                 PageData ideal = new PageData();
                 foreach (string currentTrace in App.CurrentTraceList)
                 {
-                    App.CurrentTrace = currentTrace;
-                    node.Clear();
-                    clickIndex.Clear();
-                    clickWait.Clear();
-                    clickWaitFull.Clear();
-                    clickDistance.Clear();
-                    pageDistance.Clear();
-                    clickDistanceIdeal.Clear();
-                    page.Clear();
-                    urlList.Clear();
-                    urlList.Add("");
-                    //carregar todos os nós
-
-                    string[] lines = System.IO.File.ReadAllLines(currentTrace + "\\trace_2.xml");
-                    List<string> eyeLines = new List<string>();
-                    for (int x = 0; x < lines.Length; x++)
+                    try
                     {
-                        if (lines[x].IndexOf("type=\"eye\"") > -1)
-                        {
-                            eyeLines.Add(lines[x].Replace("<trace", "<rawtrace"));
-                            lines[x] = "";
-                        }
-                    }
-                    System.IO.File.WriteAllLines(currentTrace + "\\trace_3.xml", lines);
+                        App.CurrentTrace = currentTrace;
+                        node.Clear();
+                        clickIndex.Clear();
+                        clickWait.Clear();
+                        clickWaitFull.Clear();
+                        clickDistance.Clear();
+                        pageDistance.Clear();
+                        clickDistanceIdeal.Clear();
+                        page.Clear();
+                        urlList.Clear();
+                        urlList.Add("");
+                        //carregar todos os nós
 
-                    string[] eyeLinesVector = new string[eyeLines.Count];
-                    for(int x = 0; x < eyeLines.Count; x++)
-                    {
-                        eyeLinesVector[x] = eyeLines[x];
-                    }
-                    System.IO.File.WriteAllLines(currentTrace + "\\trace_4.xml", eyeLinesVector);
-                    node = Node.LoadNodes(currentTrace + "\\trace_3.xml", true);
-                    string url = "";
-                    //ler nós individualmente
-                    for (int x = 0; x < node.Count; x++)
-                    {
-                        Console.WriteLine("url " + url);
-                        if (url != node[x].Url)
+                        string[] lines = System.IO.File.ReadAllLines(currentTrace + "\\trace_2.xml");
+                        List<string> eyeLines = new List<string>();
+                        for (int x = 0; x < lines.Length; x++)
                         {
-                            Console.WriteLine("url was equal");
-                            url = node[x].Url;
-                            AddToList(url);
-                            AddToListGeral(url);
-                            pageX = GetRightIndex(node[x].Url);
-                            page[pageX].Acessed++;
-                        }
-                        else
-                            Console.WriteLine("url was diferent");
-
-                        Console.WriteLine("node a " + Math.Max(x - 1, 0));
-                        Console.WriteLine("node b " + x);
-                        Console.WriteLine("node LIST SIZE " + node.Count);
-                        Console.WriteLine("page LIST SIZE " + page.Count);
-                        Console.WriteLine("current pos " + x);
-                        page[pageX].Distance += GetDistance(node[Math.Max(x - 1, 0)], node[x]);
-                        if (node[x].Time > 0)
-                        {
-                            page[pageX].Time = node[x].Time;
-                            if (page[pageX].Time < 0)
+                            //MessageBox.Show(lines[x]);
+                            lines[x] = lines[x].Replace("<rawtrace", "<rawtrace indexGeral=\""+x+"\"");
+                            //MessageBox.Show(lines[x]);
+                            if (lines[x].IndexOf("type=\"eye\"") > -1)
                             {
-                                MessageBox.Show("Negative Time detected at \r" + currentTrace);
+                                eyeLines.Add(lines[x]);
+                                lines[x] = "";
                             }
                         }
-                        if (node[x].Type == "click")
-                        {
-                            page[pageX].Clicks++;
-                            clickIndex.Add(x);
-                            clickWait.Add(0);
-                            clickWaitFull.Add(0);
-                            clickDistance.Add(0);
-                            pageDistance.Add(0);
-                            clickDistanceIdeal.Add(0);
-                        }
+                        System.IO.File.WriteAllLines(currentTrace + "\\trace_3.xml", lines);
 
-                    }
-                    //analisar cliques
-                    for (int x = 0; x < clickIndex.Count; x++)
-                    {
-                        pageX = GetRightIndex(node[clickIndex[x]].Url);
-                        int beforeClick = clickIndex[x] - 1;
-                        Node clickNode = node[clickIndex[x]];
-                        int waitCounter = 0;
-                        while (beforeClick > -1 && node[beforeClick].MouseId == node[clickIndex[x]].MouseId && node[beforeClick].MouseClass == node[clickIndex[x]].MouseClass && node[beforeClick].Url == node[clickIndex[x]].Url && node[beforeClick].Type != "click")
+                        string[] eyeLinesVector = new string[eyeLines.Count];
+                        for (int x = 0; x < eyeLines.Count; x++)
                         {
-                            waitCounter++;
-                            clickWait[x] = node[beforeClick].Time;
-                            clickNode = node[beforeClick];
-                            beforeClick--;
+                            eyeLinesVector[x] = eyeLines[x];
                         }
-                        if (waitCounter > 0)
-                            clickWait[x] = node[clickIndex[x]].Time - clickWait[x];
-                        Print("\r\r==========================");
-                        Print("\rOBJECT " + node[clickIndex[x]].Id + " | " + node[clickIndex[x]].Class + "\rin " + node[clickIndex[x]].Url + "\r\rWait to Click (s): " + clickWait[x]);
-                        page[pageX].WaitForClick += clickWait[x];
-                        waitCounter = 0;
-                        beforeClick = clickIndex[x] - 1;
-                        while (beforeClick > -1 && node[beforeClick].Url == node[clickIndex[x]].Url && node[beforeClick].Type != "click")
+                        System.IO.File.WriteAllLines(currentTrace + "\\trace_4.xml", eyeLinesVector);
+                        node = Node.LoadNodes(currentTrace + "\\trace_3.xml", true);
+                        List<Node> eyeNode = Node.LoadNodes(currentTrace + "\\trace_4.xml", true);
+                        string url = "";
+
+
+                        //ler eye nós individualmente
+                        for (int x = 0; x < eyeNode.Count; x++)
                         {
-                            waitCounter++;
-                            if (node[beforeClick].MouseId == node[clickIndex[x]].MouseId && node[beforeClick].MouseClass == node[clickIndex[x]].MouseClass)
+                            if (url != eyeNode[x].Url)
                             {
-                                clickDistance[x] += GetDistance(clickNode, node[beforeClick]);
+                                Console.WriteLine("url was equal");
+                                url = eyeNode[x].Url;
+                                AddToList(url);
+                                AddToListGeral(url);
+                                pageX = GetRightIndex(eyeNode[x].Url);
+                                page[pageX].Acessed++;
                             }
-                            pageDistance[x] += GetDistance(clickNode, node[beforeClick]);
-                            clickWaitFull[x] = node[beforeClick].Time;
-                            clickNode = node[beforeClick];
-                            beforeClick--;
-                        }
-                        if (waitCounter > 0)
-                            clickWaitFull[x] = node[clickIndex[x]].Time - clickWaitFull[x];
 
-                        beforeClick = clickIndex[x] - 1;
-                        while (beforeClick > -1 && node[beforeClick].Url == node[clickIndex[x]].Url)
+                            page[pageX].EyeDistance += GetDistance(eyeNode[Math.Max(x - 1, 0)], eyeNode[x]);
+
+
+                        }
+
+                            //ler nós individualmente
+                            for (int x = 0; x < node.Count; x++)
                         {
-                            clickDistanceIdeal[x] = GetDistance(node[clickIndex[x]], node[beforeClick]);
-                            beforeClick--;
+                            Console.WriteLine("url " + url);
+                            if (url != node[x].Url)
+                            {
+                                Console.WriteLine("url was equal");
+                                url = node[x].Url;
+                                AddToList(url);
+                                AddToListGeral(url);
+                                pageX = GetRightIndex(node[x].Url);
+                                page[pageX].Acessed++;
+                            }
+                            else
+                                Console.WriteLine("url was diferent");
+
+                            Console.WriteLine("node a " + Math.Max(x - 1, 0));
+                            Console.WriteLine("node b " + x);
+                            Console.WriteLine("node LIST SIZE " + node.Count);
+                            Console.WriteLine("page LIST SIZE " + page.Count);
+                            Console.WriteLine("current pos " + x);
+                            page[pageX].Distance += GetDistance(node[Math.Max(x - 1, 0)], node[x]);
+                            if (node[x].Time > 0)
+                            {
+                                page[pageX].Time = node[x].Time;
+                                if (page[pageX].Time < 0)
+                                {
+                                    MessageBox.Show("Negative Time detected at \r" + currentTrace);
+                                }
+                            }
+                            if (node[x].Type == "click")
+                            {
+                                page[pageX].Clicks++;
+                                clickIndex.Add(x);
+                                clickWait.Add(0);
+                                clickWaitFull.Add(0);
+                                clickDistance.Add(0);
+                                pageDistance.Add(0);
+                                clickDistanceIdeal.Add(0);
+                            }
+
+                        }
+                        //analisar cliques
+                        for (int x = 0; x < clickIndex.Count; x++)
+                        {
+                            pageX = GetRightIndex(node[clickIndex[x]].Url);
+                            int beforeClick = clickIndex[x] - 1;
+                            Node clickNode = node[clickIndex[x]];
+                            int waitCounter = 0;
+                            while (beforeClick > -1 && node[beforeClick].MouseId == node[clickIndex[x]].MouseId && node[beforeClick].MouseClass == node[clickIndex[x]].MouseClass && node[beforeClick].Url == node[clickIndex[x]].Url && node[beforeClick].Type != "click")
+                            {
+                                waitCounter++;
+                                clickWait[x] = node[beforeClick].Time;
+                                clickNode = node[beforeClick];
+                                beforeClick--;
+                            }
+                            if (waitCounter > 0)
+                                clickWait[x] = node[clickIndex[x]].Time - clickWait[x];
+                            Print("\r\r==========================");
+                            Print("\rOBJECT " + node[clickIndex[x]].Id + " | " + node[clickIndex[x]].Class + "\rin " + node[clickIndex[x]].Url + "\r\rWait to Click (s): " + clickWait[x]);
+                            page[pageX].WaitForClick += clickWait[x];
+                            waitCounter = 0;
+                            beforeClick = clickIndex[x] - 1;
+                            while (beforeClick > -1 && node[beforeClick].Url == node[clickIndex[x]].Url && node[beforeClick].Type != "click")
+                            {
+                                waitCounter++;
+                                if (node[beforeClick].MouseId == node[clickIndex[x]].MouseId && node[beforeClick].MouseClass == node[clickIndex[x]].MouseClass)
+                                {
+                                    clickDistance[x] += GetDistance(clickNode, node[beforeClick]);
+                                }
+                                pageDistance[x] += GetDistance(clickNode, node[beforeClick]);
+                                clickWaitFull[x] = node[beforeClick].Time;
+                                clickNode = node[beforeClick];
+                                beforeClick--;
+                            }
+                            if (waitCounter > 0)
+                                clickWaitFull[x] = node[clickIndex[x]].Time - clickWaitFull[x];
+
+                            beforeClick = clickIndex[x] - 1;
+                            while (beforeClick > -1 && node[beforeClick].Url == node[clickIndex[x]].Url)
+                            {
+                                clickDistanceIdeal[x] = GetDistance(node[clickIndex[x]], node[beforeClick]);
+                                beforeClick--;
+                            }
+
+                            Print("Time to Find (s): " + (clickWaitFull[x] - clickWait[x]));
+                            Print("Total click Time (s): " + clickWaitFull[x]);
+                            Print("Total distance (px): " + clickDistance[x]);
+                            Print("Ideal Distance (px): " + clickDistanceIdeal[x]);
+                            try
+                            {
+                                Print("Total/Ideal Distance: " + Math.Round((float)clickDistance[x] / clickDistanceIdeal[x], 4) + " X");
+                            }
+                            catch
+                            { //do nothing
+                            }
+                            page[pageX].IdealDistance += clickDistanceIdeal[x];
+                            page[pageX].DistanceToFind += pageDistance[x];
                         }
 
-                        Print("Time to Find (s): " + (clickWaitFull[x] - clickWait[x]));
-                        Print("Total click Time (s): " + clickWaitFull[x]);
-                        Print("Total distance (px): " + clickDistance[x]);
-                        Print("Ideal Distance (px): " + clickDistanceIdeal[x]);
+                        for (int x = 0; x < urlList.Count; x++)
+                        {
+                            try
+                            {
+                                if (urlList[x] == urlList[x - 2])
+                                {
+                                    page[GetRightIndex(urlList[x])].BackPages++;
+                                }
+                                if (urlList[x] == urlList[x - 3])
+                                {
+                                    page[GetRightIndex(urlList[x])].BackPages++;
+                                }
+                            }
+                            catch { /*Print("Inicio da análise encontrado."); */}
+                        }
+                        PageData final = new PageData();
                         try
                         {
-                            Print("Total/Ideal Distance: " + Math.Round((float)clickDistance[x] / clickDistanceIdeal[x], 4) + " X");
+                            final.Url = page[0].Url;
                         }
                         catch
-                        { //do nothing
-                        }
-                        page[pageX].IdealDistance += clickDistanceIdeal[x];
-                        page[pageX].DistanceToFind += pageDistance[x];
-                    }
-
-                    for (int x = 0; x < urlList.Count; x++)
-                    {
-                        try
                         {
-                            if (urlList[x] == urlList[x - 2])
-                            {
-                                page[GetRightIndex(urlList[x])].BackPages++;
-                            }
-                            if (urlList[x] == urlList[x - 3])
-                            {
-                                page[GetRightIndex(urlList[x])].BackPages++;
-                            }
+                            MessageBox.Show("INVALID PAGE[0].URL IN \n\n" + currentTrace);
+                            final.Url = "INVALID URL";
                         }
-                        catch { /*Print("Inicio da análise encontrado."); */}
-                    }
-                    PageData final = new PageData();
-                    final.Url = page[0].Url;
-                    int repeat = -1;
-                    foreach (PageData samplePage in page)
-                    {
+                        int repeat = -1;
+                        foreach (PageData samplePage in page)
+                        {
+                            Print("");
+                            Print("");
+                            Print("BY PAGE _________________________________________ ");
+                            Print("");
+                            Print("");
+                            Print("URL: " + samplePage.Url);
+                            Print("Views: " + samplePage.Acessed);
+                            final.Acessed += samplePage.Acessed - 1;
+                            Print("Time spent (s): " + samplePage.Time);
+                            final.SetTime(final.Time + samplePage.Time);
+                            Print("Clicks: " + samplePage.Clicks);
+                            final.Clicks += samplePage.Clicks;
+                            Print("Distance to find objects (px): " + samplePage.DistanceToFind);
+                            final.DistanceToFind += samplePage.DistanceToFind;
+                            Print("Total Distance (px): " + samplePage.Distance);
+                            final.Distance += samplePage.Distance;
+                            Print("Total Eye Distance (px): " + samplePage.EyeDistance);
+                            final.EyeDistance += samplePage.EyeDistance;
+                            Print("Ideal Distance (px): " + samplePage.IdealDistance);
+                            final.IdealDistance += samplePage.IdealDistance;
+                            Print("Total Distance / Ideal: " + Math.Round(((float)samplePage.Distance / samplePage.IdealDistance), 4) + " X");
+                            Print("Wait To Click (s): " + samplePage.WaitForClick);
+                            final.WaitForClick += samplePage.WaitForClick;
+                            Print("Page returns: " + samplePage.BackPages);
+                            final.BackPages += samplePage.BackPages;
+                            Print("");
+                            Print("");
+                        }
+                        Print("___________________________________________________");
                         Print("");
                         Print("");
-                        Print("BY PAGE _________________________________________ ");
-                        Print("");
-                        Print("");
-                        Print("URL: " + samplePage.Url);
-                        Print("Views: " + samplePage.Acessed);
-                        final.Acessed += samplePage.Acessed - 1;
-                        Print("Time spent (s): " + samplePage.Time);
-                        final.SetTime(final.Time + samplePage.Time);
-                        Print("Clicks: " + samplePage.Clicks);
-                        final.Clicks += samplePage.Clicks;
-                        Print("Distance to find objects (px): " + samplePage.DistanceToFind);
-                        final.DistanceToFind += samplePage.DistanceToFind;
-                        Print("Total Distance (px): " + samplePage.Distance);
-                        final.Distance += samplePage.Distance;
-                        Print("Ideal Distance (px): " + samplePage.IdealDistance);
-                        final.IdealDistance += samplePage.IdealDistance;
-                        Print("Total Distance / Ideal: " + Math.Round(((float)samplePage.Distance / samplePage.IdealDistance), 4) + " X");
-                        Print("Wait To Click (s): " + samplePage.WaitForClick);
-                        final.WaitForClick += samplePage.WaitForClick;
-                        Print("Page returns: " + samplePage.BackPages);
-                        final.BackPages += samplePage.BackPages;
-                        Print("");
-                        Print("");
-                    }
-                    Print("___________________________________________________");
-                    Print("");
-                    Print("");
 
-                    Print("SAMPLE DATA _______________________________________ ");
-                    Print("");
-                    Print("USER ID: " + System.IO.Path.GetFileNameWithoutExtension(currentTrace));
-                    Print("");
-                    Print("URL: " + final.Url);
-                    geral.SetTime(final.Time + geral.Time);
-                    Print("Time spent (s): " + final.Time);
-                    //Print("Times acessed " + final.Acessed);
-                    Print("Clicks: " + final.Clicks);
-                    geral.Clicks += final.Clicks;
-                    Print("Distance to find objects (px): " + final.DistanceToFind);
-                    geral.DistanceToFind += final.DistanceToFind;
-                    Print("Total Distance (px): " + final.Distance);
-                    geral.Distance += final.Distance;
-                    Print("Ideal Distance (px): " + final.IdealDistance);
-                    geral.IdealDistance += final.IdealDistance;
-                    Print("Total / Ideal Distance: " + Math.Round(((float)final.Distance / final.IdealDistance), 4) + " X");
-                    Print("Wait To Click (s): " + final.WaitForClick);
-                    geral.WaitForClick += final.WaitForClick;
-                    Print("Page returns: " + final.BackPages);
-                    geral.BackPages += final.BackPages;
-                    Print("Page repeatitions: " + final.Acessed);
-                    geral.Acessed += final.Acessed;
-                    Print("");
-                    Print("");
-                    if (currentTrace.Contains("IDEAL"))
-                    {
-                        ideal.Url = final.Url;
-                        ideal.Acessed = final.Acessed;
-                        ideal.BackPages = final.BackPages;
-                        ideal.Clicks = final.Clicks;
-                        ideal.Distance = final.Distance;
-                        ideal.IdealDistance = final.IdealDistance;
-                        ideal.SetTime(final.Time);
-                        ideal.WaitForClick = final.WaitForClick;
+                        Print("SAMPLE DATA _______________________________________ ");
+                        Print("");
+                        Print("USER ID: " + System.IO.Path.GetFileNameWithoutExtension(currentTrace));
+                        Print("");
+                        Print("URL: " + final.Url);
+                        geral.SetTime(final.Time + geral.Time);
+                        Print("Time spent (s): " + final.Time);
+                        //Print("Times acessed " + final.Acessed);
+                        Print("Clicks: " + final.Clicks);
+                        geral.Clicks += final.Clicks;
+                        Print("Distance to find objects (px): " + final.DistanceToFind);
+                        geral.DistanceToFind += final.DistanceToFind;
+                        Print("Total Distance (px): " + final.Distance);
+                        geral.Distance += final.Distance;
+                        Print("Total Eye Distance (px): " + final.EyeDistance);
+                        geral.EyeDistance += final.EyeDistance;
+                        Print("Ideal Distance (px): " + final.IdealDistance);
+                        geral.IdealDistance += final.IdealDistance;
+                        Print("Total / Ideal Distance: " + Math.Round(((float)final.Distance / final.IdealDistance), 4) + " X");
+                        Print("Wait To Click (s): " + final.WaitForClick);
+                        geral.WaitForClick += final.WaitForClick;
+                        Print("Page returns: " + final.BackPages);
+                        geral.BackPages += final.BackPages;
+                        Print("Page repeatitions: " + final.Acessed);
+                        geral.Acessed += final.Acessed;
+                        Print("");
+                        Print("");
+                        if (currentTrace.Contains("IDEAL"))
+                        {
+                            ideal.Url = final.Url;
+                            ideal.Acessed = final.Acessed;
+                            ideal.BackPages = final.BackPages;
+                            ideal.Clicks = final.Clicks;
+                            ideal.Distance = final.Distance;
+                            ideal.IdealDistance = final.IdealDistance;
+                            ideal.SetTime(final.Time);
+                            ideal.WaitForClick = final.WaitForClick;
+                        }
+                        Print("URL TRACE __________________________________________");
+                        foreach (string urls in urlList)
+                        {
+                            Print(urls);
+                        }
+                        Print("");
+                        Print("");
                     }
-                    Print("URL TRACE __________________________________________");
-                    foreach (string urls in urlList)
+                    catch(Exception ex)
                     {
-                        Print(urls);
+                        MessageBox.Show(ex.Message+ "\n\nIn:"+ currentTrace + "\n\n" + ex.StackTrace);
                     }
-                    Print("");
-                    Print("");
                 }
                 Print("TASK DATA ______________________________________________");
                 Print("");
@@ -353,6 +396,7 @@ namespace Lades.WebTracer
                 Print("Clicks: " + geral.Clicks);
                 Print("Distance to find objects (px): " + geral.DistanceToFind);
                 Print("Total Distance (px): " + geral.Distance);
+                Print("Total Eye Distance (px): " + geral.EyeDistance);
                 Print("Ideal Distance (px): " + geral.IdealDistance);
                 Print("Total / Ideal Distance " + Math.Round(((float)geral.Distance / geral.IdealDistance), 4) + " X");
                 Print("Wait To Click (s): " + geral.WaitForClick);
@@ -366,6 +410,7 @@ namespace Lades.WebTracer
                 Print("Time spent (s): " + geral.Time / App.CurrentTraceList.Count);
                 Print("Clicks: " + Math.Floor((float)geral.Clicks / App.CurrentTraceList.Count));
                 Print("Total Distance (px): " + Math.Ceiling(geral.Distance / App.CurrentTraceList.Count));
+                Print("Total Eye Distance (px): " + Math.Ceiling(geral.EyeDistance / App.CurrentTraceList.Count));
                 Print("Ideal Distance (px): " + Math.Ceiling(geral.IdealDistance / App.CurrentTraceList.Count));
                 Print("Total / Ideal Distance " + Math.Round((((float)geral.Distance / App.CurrentTraceList.Count) / ((float)geral.IdealDistance / App.CurrentTraceList.Count)), 4) + " X");
                 Print("Wait To Click (s): " + Math.Round((geral.WaitForClick / App.CurrentTraceList.Count), 4));

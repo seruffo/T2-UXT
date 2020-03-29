@@ -83,17 +83,20 @@ namespace Lades.WebTracer
 
         private void Cmd_fuzzy_Click(object sender, RoutedEventArgs e)
         {
-            using (var fbd = new FolderBrowserDialog())
-            {
-                System.Windows.Forms.DialogResult result = fbd.ShowDialog();
+            //using (var fbd = new FolderBrowserDialog())
+            //{
+            //    System.Windows.Forms.DialogResult result = fbd.ShowDialog();
 
-                if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                {
-                    App.CurrentTraceFolder = fbd.SelectedPath;
-                    FuzzySelect views = new FuzzySelect();
-                    views.ShowDialog();
-                }
-            }
+            //    if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+            //    {
+            //        App.CurrentTraceFolder = fbd.SelectedPath;
+            //        FuzzySelect views = new FuzzySelect();
+            //        views.ShowDialog();
+            //    }
+            //}
+
+            FuzzySelector2 selector = new FuzzySelector2();
+            selector.ShowDialog();
         }
 
         private void Cmd_tracecsv_Click(object sender, RoutedEventArgs e)

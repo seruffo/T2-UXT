@@ -13,6 +13,7 @@ namespace Lades.WebTracer
         public string Type{get; set;}
         public string ImgPath{get; set;}
         public float Time{get; set;}
+        public int IndexGeral { get; set; }
         public string Id{get; set;}
         public string Class { get; set; }
         public string MouseId { get; set; }
@@ -107,6 +108,7 @@ namespace Lades.WebTracer
                         tempNode.Height = int.Parse(LoadAttribute(node, "height", "768"));
                         tempNode.Scroll = int.Parse(LoadAttribute(node, "scroll", "0"));
                         tempNode.keyText = LoadAttribute(node, "keys", "").Replace("\n", " - ");
+                        tempNode.IndexGeral = int.Parse(LoadAttribute(node, "indexGeral", "0"));
                         tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "").Replace("\n", " - ");
                         tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
 
@@ -171,6 +173,7 @@ namespace Lades.WebTracer
                     tempNode.Scroll = int.Parse(LoadAttribute(node, "scroll", "0"));
                     tempNode.keyText = LoadAttribute(node, "keys", "").Replace("\n", " - ");
                     tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "").Replace("\n"," - ");
+                    tempNode.IndexGeral = int.Parse(LoadAttribute(node, "indexGeral", "0"));
                     if (URL == "") URL = tempNode.Url;
                     tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
                     if (Convert.ToInt32(tempNode.Y.ToString()) == 256 && Convert.ToInt32(tempNode.X.ToString()) == 512)

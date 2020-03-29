@@ -74,6 +74,9 @@
     <Compile Include="FuzzySelect.xaml.cs">
       <DependentUpon>FuzzySelect.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FuzzySelector2.xaml.cs">
+      <DependentUpon>FuzzySelector2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HeatPoint.cs" />
     <Compile Include="KeyGroup.cs" />
     <Compile Include="KeyloggerShow.xaml.cs">
@@ -125,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FuzzySelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FuzzySelector2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

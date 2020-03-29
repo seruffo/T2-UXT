@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eyedata", "Eyedata\Eyedata.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceConverter", "TraceConverter\TraceConverter.csproj", "{566BCAA2-1017-4894-B08F-11153B4F31F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectoryFinder", "DirectoryFinder\DirectoryFinder.csproj", "{2471A83E-B663-4892-AABF-CAE6A6C92798}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{566BCAA2-1017-4894-B08F-11153B4F31F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{566BCAA2-1017-4894-B08F-11153B4F31F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{566BCAA2-1017-4894-B08F-11153B4F31F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2471A83E-B663-4892-AABF-CAE6A6C92798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2471A83E-B663-4892-AABF-CAE6A6C92798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2471A83E-B663-4892-AABF-CAE6A6C92798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2471A83E-B663-4892-AABF-CAE6A6C92798}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -158,7 +158,7 @@ namespace Lades.WebTracer
                         else
                         {
                             dead++;
-                            Console.WriteLine("ignored traces " + dead);
+                            //Console.WriteLine("ignored traces " + dead);
                         }
 
                     }
@@ -235,7 +235,7 @@ namespace Lades.WebTracer
             }
             catch
             {
-                ////Console.WriteLine("erro no atributo " + attr);
+                //////Console.WriteLine("erro no atributo " + attr);
                 return defaultValue;
             }
         }

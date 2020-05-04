@@ -100,7 +100,7 @@ namespace Lades.WebTracer
                 {
                     if(node[x].Type != "eye")
                     {
-                        Console.WriteLine("Removed " + node[x].ImgPath);
+                        //Console.WriteLine("Removed " + node[x].ImgPath);
                     }
                     node.RemoveAt(x);
                     x--;
@@ -176,18 +176,18 @@ namespace Lades.WebTracer
                         img_read.Width = img.Width;
                         img_read.Height = img.Height;
                         image.Add(new Image());
-                        //Console.WriteLine("position " + count);
+                        ////Console.WriteLine("position " + count);
                         image[image.Count - 1].Source = LoadBitmapImage(App.CurrentTrace + "\\" + node[count].ImgPath);
                         position = img_read.Margin;
                         position.Top = node[count].Scroll;
                         image[image.Count - 1].Margin = position;
                         lastImg = node[count].ImgPath;
                         placeImage = true;
-                        Console.WriteLine("Path " + node[count].ImgPath + " top " + position.Top);
+                        //Console.WriteLine("Path " + node[count].ImgPath + " top " + position.Top);
                     }
                     circle.Add(new Ellipse());
                     number.Add(new Label());
-                    //Console.WriteLine("count " + count);
+                    ////Console.WriteLine("count " + count);
                     number[number.Count - 1].Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
                     number[number.Count - 1].Content = count;
                     number[number.Count - 1].FontSize = 10;
@@ -214,11 +214,11 @@ namespace Lades.WebTracer
                         pos[0] = node[count].X;
                         pos[1] = node[count].Y;
                     }
-                    ////Console.WriteLine("line1 " + trace[countLines]);
-                    ////Console.WriteLine(" x " + pos[0]);
-                    ////Console.WriteLine("line2 " + trace[countLines + 1]);
-                    ////Console.WriteLine(" y " + trace[countLines + 1].Substring(0, separador));
-                    ////Console.WriteLine(" time " + trace[countLines + 1].Substring(separador + 2, trace[countLines + 1].Length - (separador + 2)));
+                    //////Console.WriteLine("line1 " + trace[countLines]);
+                    //////Console.WriteLine(" x " + pos[0]);
+                    //////Console.WriteLine("line2 " + trace[countLines + 1]);
+                    //////Console.WriteLine(" y " + trace[countLines + 1].Substring(0, separador));
+                    //////Console.WriteLine(" time " + trace[countLines + 1].Substring(separador + 2, trace[countLines + 1].Length - (separador + 2)));
 
                     circle[circle.Count - 1].Height = circle[circle.Count - 1].Width = 100;
                     //canvas_generator.Children.Add(circle);
@@ -241,7 +241,7 @@ namespace Lades.WebTracer
                     line[line.Count - 1].HorizontalAlignment = HorizontalAlignment.Left;
                     line[line.Count - 1].VerticalAlignment = VerticalAlignment.Center;
                     line[line.Count - 1].Stroke = new SolidColorBrush(Color.FromArgb(255, 0, 0, 255));
-                    //Console.WriteLine(pos[1]);
+                    ////Console.WriteLine(pos[1]);
                     //if (pos[1] > 539)
                     //{
                     //    int original = pos[1];
@@ -423,7 +423,7 @@ namespace Lades.WebTracer
                     }
 
                     catch(Exception) {
-                        //Console.WriteLine(e.ToString());
+                        ////Console.WriteLine(e.ToString());
                     }
                 }
             }

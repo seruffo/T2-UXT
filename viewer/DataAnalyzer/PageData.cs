@@ -15,6 +15,8 @@ namespace Lades.WebTracer
         public int BackPages { get; set; } = 0;
         public double Distance { get; set; } = 0;
         public double EyeDistance { get; set; } = 0;
+        public double EyeFixationTime { get; set; } = 0;
+        public string Text { get; set; } = "";
         public double DistanceToFind { get; set; } = 0;
         public double IdealDistance { get; set; } = 0;
         public int Clicks { get; set; } = 0;

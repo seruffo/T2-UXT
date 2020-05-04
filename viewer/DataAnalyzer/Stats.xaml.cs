@@ -128,7 +128,7 @@ namespace Lades.WebTracer
             string rota = Ltb_freq.SelectedItem.ToString();
             int index = rota.IndexOf(" ");
             rota = rota.Remove(0, index);
-            Console.WriteLine("rota "+rota);
+            //Console.WriteLine("rota "+rota);
             rota = rota.Replace(" - > ", "ª").Replace(" ","");
             urls = rota.Split('ª');
             MaxSelector seletor = new MaxSelector();

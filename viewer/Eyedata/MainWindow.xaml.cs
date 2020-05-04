@@ -29,7 +29,7 @@ namespace Eyedata
 
         private void log(object text)
         {
-            Console.WriteLine(text);
+            //Console.WriteLine(text);
             //Txt_conversion.Text += text.ToString();
         }
 
@@ -204,9 +204,9 @@ namespace Eyedata
             //    }
             //    catch
             //    {
-            //        Console.WriteLine("FALHOU.");
-            //        Console.WriteLine("time_values.Count " + time_values.Count);
-            //        Console.WriteLine("y " + y);
+            //        //Console.WriteLine("FALHOU.");
+            //        //Console.WriteLine("time_values.Count " + time_values.Count);
+            //        //Console.WriteLine("y " + y);
             //        return;
 
             //    }

@@ -30,7 +30,7 @@
 
                     inputOrign = inputOrign.substr(inputOrign.search("\nURL TRACE ") + 10, inputOrign.length);
 
-                    alert(input);
+                    //alert(input);
                     var breakList = input.split("\n");
                     for (var x = 2; x < breakList.length - 1; x++) {
                         if (breakList[x] === "") {
@@ -44,32 +44,40 @@
                     {
                         time = 1;
                         results[0] = "User ID;" + resultsInstant[0].replace("USER ID: ", "");
-                        results[1] = "URL;" + resultsInstant[1].replace("URL: ", "");
-                        results[2] = "Time spent (s);" + resultsInstant[2].replace("Time spent (s): ", "");
-                        results[3] = "Clicks;" + resultsInstant[3].replace("Clicks: ", "");
-                        results[4] = "Distance to find objects (px);" + resultsInstant[4].replace("Distance to find objects (px): ", "");
-                        results[5] = "Total Distance (px);" + resultsInstant[5].replace("Total Distance (px): ", "");
-                        results[6] = "Total Eye Distance (px);" + resultsInstant[6].replace("Total Eye Distance (px): ", "");
-                        results[7] = "Ideal Distance (px);" + resultsInstant[7].replace("Ideal Distance (px): ", "");
-                        results[8] = "Total / Ideal Distance;" + resultsInstant[8].replace("Total / Ideal Distance: ", "").replace(" X", "");
-                        results[9] = "Wait To Click (s);" + resultsInstant[9].replace("Wait To Click (s): ", "");
-                        results[10] = "Page returns;" + resultsInstant[10].replace("Page returns: ", "");
-                        results[11] = "Page repeatitions;" + resultsInstant[11].replace("Page repeatitions: ", "");
+                        results[1] = "Caminho;" + resultsInstant[1].replace("PATH: ", "");
+                        results[2] = "STATUS;" + resultsInstant[2].replace("STATUS: ", "");
+                        results[3] = "URL Inicial;" + resultsInstant[3].replace("URL: ", "");
+                        results[4] = "Time spent (s);" + resultsInstant[4].replace("Time spent (s): ", "");
+                        results[5] = "Clicks;" + resultsInstant[5].replace("Clicks: ", "");
+                        results[6] = "Distance to find objects (px);" + resultsInstant[6].replace("Distance to find objects (px): ", "");
+                        results[7] = "Total Distance (px);" + resultsInstant[7].replace("Total Distance (px): ", "");
+                        results[8] = "Total Eye Distance (px);" + resultsInstant[8].replace("Total Eye Distance (px): ", "");
+                        results[9] = "Ideal Distance (px);" + resultsInstant[9].replace("Ideal Distance (px): ", "");
+                        results[10] = "Total / Ideal Distance;" + resultsInstant[10].replace("Total / Ideal Distance: ", "").replace(" X", "");
+                        results[11] = "Wait To Click (s);" + resultsInstant[11].replace("Wait To Click (s): ", "");
+                        results[12] = "Fixation To Click (s);" + resultsInstant[12].replace("Fixation To Click (s): ", "");
+                        results[13] = "Page returns;" + resultsInstant[13].replace("Page returns: ", "");
+                        results[14] = "Page repeatitions;" + resultsInstant[14].replace("Page repeatitions: ", "");
+                        results[15] = "Keylog;" + resultsInstant[15].replace("Keylog: ", "");
                     }
                     else
                     {
                         results[0] += ";" + resultsInstant[0].replace("USER ID: ", "");
-                        results[1] += ";" + resultsInstant[1].replace("URL: ", "");
-                        results[2] += ";" + resultsInstant[2].replace("Time spent (s): ", "");
-                        results[3] += ";" + resultsInstant[3].replace("Clicks: ", "");
-                        results[4] += ";" + resultsInstant[4].replace("Distance to find objects (px): ", "");
-                        results[5] += ";" + resultsInstant[5].replace("Total Distance (px): ", "");
-                        results[6] += ";" + resultsInstant[6].replace("Total Eye Distance (px): ", "");
-                        results[7] += ";" + resultsInstant[7].replace("Ideal Distance (px): ", "");
-                        results[8] += ";" + resultsInstant[8].replace("Total / Ideal Distance: ", "").replace(" X", "");
-                        results[9] += ";" + resultsInstant[9].replace("Wait To Click (s): ", "");
-                        results[10] += ";" + resultsInstant[10].replace("Page returns: ", "");
-                        results[11] += ";" + resultsInstant[11].replace("Page repeatitions: ", "");
+                        results[1] += ";" + resultsInstant[1].replace("PATH: ", "");
+                        results[2] += ";" + resultsInstant[2].replace("STATUS: ", "");
+                        results[3] += ";" + resultsInstant[3].replace("URL: ", "");
+                        results[4] += ";" + resultsInstant[4].replace("Time spent (s): ", "");
+                        results[5] += ";" + resultsInstant[5].replace("Clicks: ", "");
+                        results[6] += ";" + resultsInstant[6].replace("Distance to find objects (px): ", "");
+                        results[7] += ";" + resultsInstant[7].replace("Total Distance (px): ", "");
+                        results[8] += ";" + resultsInstant[8].replace("Total Eye Distance (px): ", "");
+                        results[9] += ";" + resultsInstant[9].replace("Ideal Distance (px): ", "");
+                        results[10] += ";" + resultsInstant[10].replace("Total / Ideal Distance: ", "").replace(" X", "");
+                        results[11] += ";" + resultsInstant[11].replace("Wait To Click (s): ", "");
+                        results[12] += ";" + resultsInstant[12].replace("Fixation To Click (s): ", "");
+                        results[13] += ";" + resultsInstant[13].replace("Page returns: ", "");
+                        results[14] += ";" + resultsInstant[14].replace("Page repeatitions: ", "");
+                        results[15] += ";" + resultsInstant[15].replace("Keylog: ", "");
                     }
                     var output = "";
                     for (var x = 0; x < results.length; x++)

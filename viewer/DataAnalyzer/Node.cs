@@ -10,21 +10,23 @@ namespace Lades.WebTracer
 {
     public class Node
     {
-        public string Type{get; set;}
-        public string ImgPath{get; set;}
-        public float Time{get; set;}
+        public string Type { get; set; }
+        public string ImgPath { get; set; }
+        public float Time { get; set; }
         public int IndexGeral { get; set; }
-        public string Id{get; set;}
+        public string Id { get; set; }
         public string Class { get; set; }
         public string MouseId { get; set; }
         public string MouseClass { get; set; }
-        public int X{get; set;}
-        public int Y{get; set;}
+        public int X { get; set; }
+        public int Y { get; set; }
         public int Height { get; set; }
         public int Scroll { get; set; }
-        public string keyText{get; set;}
+        public string keyText { get; set; }
         public string sourcePath { get; set; }
-        public string Url { get; set; }  
+        public string Url { get; set; }
+
+        public static string CurrentId { get; set; } = "";
         
         public Node Copy()
         {
@@ -60,8 +62,9 @@ namespace Lades.WebTracer
             return LoadNodes(path, false);
         }
  
-            public static List<Node> LoadNodes(string path, bool justMouse)
+        public static List<Node> LoadNodes(string path, bool justMouse)
             {
+            CurrentId = path;
             List<Node> result = null;
             XmlDocument doc = new XmlDocument();
             if (File.Exists(path))
@@ -125,7 +128,7 @@ namespace Lades.WebTracer
                 }
                 catch(Exception e)
                 {
-                    System.Windows.MessageBox.Show("____________________________\r\rFalha ao carregar XML!\r\r" + path + "\r\r" + e.ToString()+ "\r\r____________________________");
+                    //Console.WriteLine("____________________________\r\rFalha ao carregar XML!\r\r" + path + "\r\r" + e.ToString()+ "\r\r____________________________");
                 }
             }
             return result;
@@ -183,8 +186,9 @@ namespace Lades.WebTracer
                         tempNode.Y += tempNode.Scroll;
                     
                     if ((tempNode.X > 0 && tempNode.Y > 0) && tempNode.Url == URL)
-                    {
+                    {                        
                         result.Add(tempNode);
+                        Console.WriteLine("Added node " + result.Count);
                         if (last_img != tempNode.ImgPath && File.Exists(System.IO.Path.Combine(tempNode.sourcePath, tempNode.ImgPath)))
                         {
                             ViewerFull.Image.Add(System.IO.Path.Combine(tempNode.sourcePath, tempNode.ImgPath));
@@ -193,26 +197,28 @@ namespace Lades.WebTracer
                         }
                         App.scrolls.Add(tempNode.Scroll);
                     }
-                    Console.WriteLine("Added node " + result.Count);
+                    
                 }
             }
             return result;
         }
 
-
         private static string LoadAttribute(XmlNode node, string attr, string defaultValue)
         {
-            string result;
+            string result="";
             try
             {
+                //Console.WriteLine("ATT "+attr+" CURRENT PATH " + CurrentId);
                 result = node.Attributes[attr].Value;
+                if (result == null)
+                    result = defaultValue;
                 return result;
             }
-            catch
+            catch(System.Exception ex)
             {
-                Console.WriteLine("erro no atributo " + attr);
-                return defaultValue;
+                Console.WriteLine("erro no atributo " + attr.ToString()+"\n\n"+ex.Message);
             }
+            return defaultValue;
         }
 
     }

@@ -104,7 +104,11 @@ namespace Lades.WebTracer
         {
             for (int x = 0; x < App.CurrentTraceList.Count; x++)
             {
-                List<HeatPoint> response = LoadHeatPointList(App.CurrentTraceList[x] + "\\trace_2.xml", URL);
+                if (URL.Contains("busca?SearchableText"))
+                {
+                    URL = "BUSCA__na_receita";
+                }
+                List<HeatPoint> response = LoadHeatPointList(App.CurrentTraceList[x] + "\\trace.xml", URL);
                 Fulltime += time;
                 foreach (HeatPoint point in response)
                 {

@@ -113,6 +113,10 @@ namespace Lades.WebTracer
                         tempNode.keyText = LoadAttribute(node, "keys", "").Replace("\n", " - ");
                         tempNode.IndexGeral = int.Parse(LoadAttribute(node, "indexGeral", "0"));
                         tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "").Replace("\n", " - ");
+                        if (tempNode.Url.Contains("busca?SearchableText"))
+                        {
+                            tempNode.Url = "BUSCA__na_receita";
+                        }
                         tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
 
                         if (Convert.ToInt32(tempNode.Y.ToString()) == 256 && Convert.ToInt32(tempNode.X.ToString()) == 512)
@@ -176,6 +180,10 @@ namespace Lades.WebTracer
                     tempNode.Scroll = int.Parse(LoadAttribute(node, "scroll", "0"));
                     tempNode.keyText = LoadAttribute(node, "keys", "").Replace("\n", " - ");
                     tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "").Replace("\n"," - ");
+                    if (tempNode.Url.Contains("busca?SearchableText"))
+                    {
+                        tempNode.Url = "BUSCA__na_receita";
+                    }
                     tempNode.IndexGeral = int.Parse(LoadAttribute(node, "indexGeral", "0"));
                     if (URL == "") URL = tempNode.Url;
                     tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);

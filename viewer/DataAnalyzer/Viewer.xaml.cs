@@ -84,7 +84,7 @@ namespace Lades.WebTracer
     
             img_read.Width = System.Windows.SystemParameters.WorkArea.Width;
             img_read.Height = System.Windows.SystemParameters.WorkArea.Height;
-            node = Node.LoadNodes(App.CurrentTrace+"\\trace.xml");
+            node = Node.LoadNodes(App.CurrentTrace+"\\trace_2.xml");
             for(int x=0;x<node.Count;x++)
             {
                 bool Analysis = false;

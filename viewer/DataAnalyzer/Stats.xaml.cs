@@ -44,11 +44,12 @@ namespace Lades.WebTracer
         {
             for (int x = 0; x < App.CurrentTraceList.Count; x++)
             {
-                List<Node> node = Node.LoadNodes(App.CurrentTraceList[x] + "\\trace.xml");
+                List<Node> node = Node.LoadNodes(App.CurrentTraceList[x] + "\\trace_2.xml");
                 string rota = "";
                 string lastUrl = "";
                 foreach (Node no in node)
                 {
+                    Console.WriteLine(no.Url);
                     no.Url = no.Url.ToLower();
                     if (no.Url != lastUrl)
                     {
@@ -109,18 +110,18 @@ namespace Lades.WebTracer
             }
             ordenador();
             List<string> toFuzzy = new List<string>();
-            for (int x = points.Count-1; x>-1;x--)
+            for (int x = points.Count - 1; x > -1; x--)
             {
                 if (urlPaths[x] != "*_-*")
                 {
-                    Ltb_freq.Items.Add("QT."+points[x]+" "+urlPaths[x]);
+                    Ltb_freq.Items.Add("QT." + points[x] + " " + urlPaths[x]);
                     toFuzzy.Add(urlPaths[x]);
                 }
             }
-            
-            List<string> result = FuzzySearch.Search(toFuzzy[0], toFuzzy, 0.5 );
-            foreach (string item in result)
-                Ltb_Levh.Items.Add(item);
+
+            //List<string> result = FuzzySearch.Search(toFuzzy[0], toFuzzy, 0.5 );
+            //foreach (string item in result)
+            //    Ltb_Levh.Items.Add(item);
         }
         public string[] urls;
         private void Ltb_freq_MouseDoubleClick(object sender, MouseButtonEventArgs e)

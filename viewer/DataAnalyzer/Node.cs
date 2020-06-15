@@ -61,9 +61,9 @@ namespace Lades.WebTracer
         {
             return LoadNodes(path, false);
         }
- 
+
         public static List<Node> LoadNodes(string path, bool justMouse)
-            {
+        {
             CurrentId = path;
             List<Node> result = null;
             XmlDocument doc = new XmlDocument();
@@ -118,19 +118,22 @@ namespace Lades.WebTracer
                             tempNode.Url = "BUSCA__na_receita";
                         }
                         tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
-
+                        Console.WriteLine("trying to add " + tempNode.Url);
                         if (Convert.ToInt32(tempNode.Y.ToString()) == 256 && Convert.ToInt32(tempNode.X.ToString()) == 512)
                         {
-                            
-                                tempNode.X = int.MinValue;
-                            }
-                            tempNode.Y += tempNode.Scroll;
-                        
+                            tempNode.X = int.MinValue;
+                        }
+                        tempNode.Y += tempNode.Scroll;
+
                         if ((tempNode.X > 0 && tempNode.Y > 0))
+                        {
                             result.Add(tempNode);
+                            Console.WriteLine("==============================ADDED");
+                        }
+
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     //Console.WriteLine("____________________________\r\rFalha ao carregar XML!\r\r" + path + "\r\r" + e.ToString()+ "\r\r____________________________");
                 }
@@ -179,7 +182,7 @@ namespace Lades.WebTracer
                     tempNode.Height = int.Parse(LoadAttribute(node, "height", "768"));
                     tempNode.Scroll = int.Parse(LoadAttribute(node, "scroll", "0"));
                     tempNode.keyText = LoadAttribute(node, "keys", "").Replace("\n", " - ");
-                    tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "").Replace("\n"," - ");
+                    tempNode.Url = LoadAttribute(node, "url", "").Replace("https://", "").Replace("http://", "").Replace("\n", " - ");
                     if (tempNode.Url.Contains("busca?SearchableText"))
                     {
                         tempNode.Url = "BUSCA__na_receita";
@@ -188,13 +191,13 @@ namespace Lades.WebTracer
                     if (URL == "") URL = tempNode.Url;
                     tempNode.sourcePath = System.IO.Path.GetDirectoryName(path);
                     if (Convert.ToInt32(tempNode.Y.ToString()) == 256 && Convert.ToInt32(tempNode.X.ToString()) == 512)
-                        {
+                    {
                         tempNode.X = int.MinValue;
-                        }
-                        tempNode.Y += tempNode.Scroll;
-                    
+                    }
+                    tempNode.Y += tempNode.Scroll;
+                    Console.WriteLine("trying to add " + tempNode.Url);
                     if ((tempNode.X > 0 && tempNode.Y > 0) && tempNode.Url == URL)
-                    {                        
+                    {
                         result.Add(tempNode);
                         Console.WriteLine("Added node " + result.Count);
                         if (last_img != tempNode.ImgPath && File.Exists(System.IO.Path.Combine(tempNode.sourcePath, tempNode.ImgPath)))
@@ -205,7 +208,7 @@ namespace Lades.WebTracer
                         }
                         App.scrolls.Add(tempNode.Scroll);
                     }
-                    
+
                 }
             }
             return result;

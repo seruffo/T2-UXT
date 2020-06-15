@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Trace Converter v2.1.0.0" Height="600" Width="800" MinWidth="800" MinHeight="600" WindowStartupLocation="CenterScreen" ContentRendered="Wnd_traceconverter_ContentRendered">
     <Grid>
-        <TextBox x:Name="Txt_input" Height="25" Margin="18,119,253.6,0" Text="Please click &quot;browse&quot; to set the sample's folder path. Then, click &quot;CONVERT!&quot; to start the process." VerticalAlignment="Top" TextOptions.TextHintingMode="Animated" TextAlignment="Right"/>
+        <TextBox x:Name="Txt_input" Height="25" Margin="18,119,253.6,0" Text="Please click &quot;browse&quot; to set the SAMPLES' folder path. Then, click &quot;CONVERT!&quot; to start the process." VerticalAlignment="Top" TextOptions.TextHintingMode="Animated" TextAlignment="Right" TextChanged="Txt_input_TextChanged"/>
         <Button x:Name="Cmd_convert" Content="Browse" HorizontalAlignment="Right" Margin="0,119,100.6,0" VerticalAlignment="Top" Width="48" Click="Cmd_convert_Click" Height="25"/>
         <TextBox x:Name="Txt_log" Margin="18,162,17.6,62.4" TextWrapping="WrapWithOverflow" Text="WAVES Systems" IsReadOnly="True"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="0" VerticalAlignment="Top" Width="500" Source="banner.png"/>

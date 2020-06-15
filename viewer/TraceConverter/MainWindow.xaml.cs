@@ -348,5 +348,10 @@ namespace TraceConverter
             }
 
         }
+
+        private void Txt_input_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

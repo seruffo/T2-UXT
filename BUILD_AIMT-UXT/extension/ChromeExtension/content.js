@@ -98,11 +98,7 @@ function tick() {
         freeze=0;
         //console.log("freeze at "+overId+" // "+overClass);
     }
-	EyeTime+=1;
-	if(EyeTime>0){
-		sendMessage("eye");
-		EyeTime=0;
-	}
+    sendMessage("eye");
 }
 
 function startTimer(secs) {

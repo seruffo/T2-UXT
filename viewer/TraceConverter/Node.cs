@@ -94,7 +94,12 @@ namespace Lades.WebTracer
         public static List<Node> LoadNodes(string path, bool justMouse)
         {
             List<Node> result = null;
-
+            String ToCleanUp = File.ReadAllText(path);
+            ToCleanUp = ToCleanUp.Replace(">\n<", ">#$#<");
+            ToCleanUp = ToCleanUp.Replace("\n", "");
+            ToCleanUp = ToCleanUp.Replace(">#$#<", ">\n<");
+            //ToCleanUp = ToCleanUp.Replace("\n\"", "\"");
+            File.WriteAllText(path, ToCleanUp);
             XmlDocument doc = new XmlDocument();
             if (File.Exists(path))
             {

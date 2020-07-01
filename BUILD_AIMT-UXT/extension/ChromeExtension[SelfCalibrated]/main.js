@@ -3,7 +3,7 @@
     var time = [];
 
         webgazer.setRegression('ridge') /* currently must set regression and tracker */
-        .setTracker('clmtrackr')
+        .setTracker('TFFacemesh')
         .setGazeListener(function(data, clock) {
            if(data!=null) {
             //console.log(data.x,data.y);
@@ -35,8 +35,8 @@
         
         var setup = function() {
             var video = document.getElementById('webgazerVideoFeed');
-            video.style.display = 'hidden';
-            video.style.position = 'absolute';
+            //video.style.display = 'hidden';
+            video.style.position = 'fixed';
             video.style.top = topDist;
             video.style.left = leftDist;
             video.width = width;
@@ -48,6 +48,8 @@
 
          
         };
+
+        //window.saveDataAcrossSessions=true;
 
         function checkIfReady() {
             if (webgazer.isReady()) {

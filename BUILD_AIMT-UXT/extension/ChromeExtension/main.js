@@ -94,6 +94,8 @@ e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, fals
 a.dispatchEvent(e)
 }
 
+window.saveDataAcrossSessions=true;
+
 document.onkeyup=function(e){
 if(e.which == 27){
     //Pressionou ESC, aqui vai a função para esta tecla.

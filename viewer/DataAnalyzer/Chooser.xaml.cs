@@ -101,7 +101,17 @@ namespace Lades.WebTracer
 
         private void Cmd_tracecsv_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start(Environment.CurrentDirectory + @"\traceconverter.exe");
+            System.Diagnostics.Process.Start(@"traceconverter.exe");
+        }
+
+        private void Cmd_client_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"extension");
+        }
+
+        private void Cmd_server_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"server");
         }
     }
 }

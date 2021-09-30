@@ -1,9 +1,11 @@
-/*==============================================================================================================*/
-
-
 var pageHeight = Math.max( document.body.scrollHeight, document.body.offsetHeight);
 var overId="";
 var overClass="";
+
+var voice = {
+    Typed: ""
+};
+
 var mouse = {
     Id:"",
     Class:"",
@@ -77,11 +79,18 @@ function startAgain() {
 
 
 
-$(document).mousemove(function (event) {
-    mouse.X = event.pageX;
-    mouse.Y = event.pageY;
+document.addEventListener("mousemove", function (e) {
+    mouse.X = e.pageX;
+    mouse.Y = e.pageY;
 	freeze = 0;
 	sendMessage("move");
+	if (typing) {
+        sendMessage("keyboard");
+        keyboard.Typed = "";
+        keyboard.Id = e.target.id;
+		keyboard.Class = e.target.className;
+		typing=false;
+    }
 });
 
 
@@ -92,15 +101,13 @@ function tick() {
     if (freeze == 1) {
         sendMessage("freeze");
         freeze=0;
-        console.log("freeze at "+overId+" // "+overClass);
-    }else
-    {
+        //console.log("freeze at "+overId+" // "+overClass);
+    }
+	EyeTime+=1;
+	if(EyeTime>0){
+		sendMessage("eye");
+		EyeTime=0;
 	}
-	//EyeTime+=1;
-	//if(EyeTime>1){
-		//sendMessage("eye");
-		//EyeTime=0;
-	//}
 }
 
 function startTimer(secs) {
@@ -190,7 +197,9 @@ document.onkeypress = function (e) {
         keyboard.X=Math.round(obj.x);
         keyboard.Y=Math.round(obj.y);
     }
-    keyboard.Typed += key;
+	keyboard.Typed += key;
+	keyboard.Typed.replace(/(?:\r\n|\r|\n)/g," - ");
+	console.log(keyboard.Typed);
 }
 
 $(document).mouseover(function(e){
@@ -218,6 +227,7 @@ function sendMessage(type)
 				data.X = Math.round(mouse.X);
 				data.Y = Math.round(mouse.Y);
 			}
+            data.Time = WebTracer_time;
 		}
 		else
 		{   
@@ -234,15 +244,20 @@ function sendMessage(type)
 				data.X=Math.round(eye.x);
 				data.Y=Math.round(eye.y);
 			}
+            if(type=="voice"){
+                data=voice;
+            }
+            data.Time = WebTracer_time;
 		}
-		data.Time = WebTracer_time;
+
 		data.imageName="";
 		data.pageHeight = Math.round(pageHeight);
 		data.pageScroll = Math.round(document.documentElement.scrollTop);
 		data.url = document.URL;
 		data.mouseId = overId;
 		data.mouseClass = overClass;
-		console.log("message send "+type);
+		data.Typed = data.Typed.replace(/(?:\r\n|\r|\n)/g, " - ");
+		//console.log("message send "+type);
 		chrome.runtime.sendMessage({
 			type: type,
 			data: data

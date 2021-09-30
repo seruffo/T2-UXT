@@ -1,6 +1,4 @@
-/*==============================================================================================================*/
-
-var webtracerHost="http://wavesampler.com/webtracer";
+const serverUrl = "https://wavessystems.com.br/webtracer/";
 var timeInternal = 0;
 var userId = "";
 var domain = "";
@@ -17,15 +15,14 @@ chrome.runtime.onMessage.addListener(function (request, sender)
     {
         capture(request.type, request.data);
     }
-	//sendResponse({ farewell: "goodbye" });
+    //sendResponse({ farewell: "goodbye" });
 });
 var shot=5;
 function capture(type, data)
 {
-		function send(tab)
-		{
-			var url = new URL(tab[0].url);
-			//console.log("BG-RECEIVED "+url);
+    chrome.windows.getCurrent(function (win) {   
+        chrome.tabs.getSelected(null, function (tab) {
+            var url = new URL(tab.url);
             domain = url.hostname;
             //if(lastTime == (Math.ceil(data.Time) + timeInternal)&& ((type=="move" || type=="freeze") && //Math.ceil(data.Time) % 3 == 1)){
             //    data.imageData = "";
@@ -34,7 +31,13 @@ function capture(type, data)
                 data.imageData = "NO";
                 //data.Time-=0.2;
                 Post(type, data);
-            }else{
+            }
+            else if(type=="voice"){
+                data.imageData = "NO";
+                //data.Time-=0.2;
+                Post(type, data);
+            }            
+            else{
 				if((type=="move" || type=="freeze") && shot<7){
 					data.imageData = "NO";
 					Post(type, data);              
@@ -43,17 +46,16 @@ function capture(type, data)
 				else{
 					shot=0;
 					lastTime = data.Time + timeInternal;
-					chrome.tabs.captureVisibleTab(tab[0].windowId, { format: "jpeg", quality: 25 }, function (screenshotUrl)
+					chrome.tabs.captureVisibleTab(win.id, { format: "jpeg", quality: 25 }, function (screenshotUrl)
 					{
 						data.imageData = screenshotUrl;
 						Post(type, data);
 					});
-					Post(type, data);
+
 				}
 			}
-		}
-		var tabqr = browser.tabs.query({url:data.url});
-		tabqr.then(send,function (){})
+        });
+    });
 }
 
 function Post(type, data){
@@ -61,7 +63,7 @@ function Post(type, data){
 	if(fixtime<data.Time + timeInternal){
 		fixtime=data.Time + timeInternal;
 	}
-    $.post(webtracerHost+"/receiver.php",
+    $.post(serverUrl+"/receiver.php",
                 {
                     metadata: JSON.stringify({
                             sample: domain,
@@ -102,17 +104,13 @@ function prepareSample() {
     chrome.storage.sync.get(["userid"], function (items) {
         var loadedId = items.userid;
         function useToken(userid) {
-			userId = userid;
-			
-			function ppspl (tab) {
-                var url = new URL(tab[0].url);
+            userId = userid;
+            chrome.tabs.getSelected(null, function (tab) {
+                var url = new URL(tab.url);
                 domain = url.hostname;
-                $.post(webtracerHost+"/SampleChecker.php", { userId: userid, domain: domain }).done(function (data) {
+                $.post(serverUrl+"/samplechecker.php", { userId: userid, domain: domain }).done(function (data) {
                     timeInternal = parseInt(data);});
-            };
-
-			var tabqr = browser.tabs.query({active:true});
-			tabqr.then(ppspl,function (){})
+            });
         }
         if (loadedId !== null && loadedId !== "" && typeof loadedId  !== 'undefined') {
             useToken(loadedId);

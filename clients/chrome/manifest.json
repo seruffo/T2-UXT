@@ -15,12 +15,12 @@
           "http://localhost/webtracer/calibra_webgazer_*",
           "https://localhost/webtracer/calibra_webgazer_*"
       ],
-      "js": ["jquery-3.4.1.min.js","searchgazer.js","main.js","content.js"]
+      "js": ["jquery-3.4.1.min.js","content.js","speech.js"]
     }
   ],
   "browser_action": {
     "default_icon": "logo.png",
-    "default_title": "AIMT-UXT Client"
+    "default_title": "T2-UXT Client"
   },
   "permissions": [
     "storage",

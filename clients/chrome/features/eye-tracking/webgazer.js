@@ -11078,8 +11078,8 @@ function store_points(x, y, k) {
         //webgazer.stopVideo(); // uncomment if you want to stop the video from streaming
 
         //remove video element and canvas
-        document.body.removeChild(videoElement);
-        document.body.removeChild(videoElementCanvas);
+        //document.body.removeChild(videoElement);
+        //document.body.removeChild(videoElementCanvas);
 
         setGlobalData();
         return webgazer;

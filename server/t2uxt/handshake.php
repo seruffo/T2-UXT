@@ -6,13 +6,15 @@
 	}
 	if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
-		$userId = $_POST["userId"];
-		$domain = clean($_POST["domain"]);
-		if (!file_exists('Samples/'.$domain.'/'.$userId))
+		$inputJSON = file_get_contents('php://input');
+		$data = json_decode($inputJSON);
+		$userId = clean($data->userId);
+		$domain = clean($data->domain);
+		if (!file_exists('samples/'.$domain.'/'.$userId))
 		{
-			mkdir('Samples/'.$domain.'/'.$userId, 0777, true);
+			mkdir('samples/'.$domain.'/'.$userId, 0777, true);
 		}
-		$filename = 'Samples/'.$domain.'/'.$userId.'/lastTime.txt';
+		$filename = 'samples/'.$domain.'/'.$userId.'/lastTime.txt';
 		if (file_exists($filename))
 		{
 			$handle = fopen($filename,"r");

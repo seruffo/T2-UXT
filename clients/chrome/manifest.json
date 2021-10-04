@@ -1,10 +1,10 @@
 {
-  "name": "AIMT-UXT Client",
-  "version": "2.0",
+  "name": "T2-UXT Client",
+  "version": "3.0",
   "description": "Software de captura de dados de interacao.",
   "background": {
     "persistent": false,
-    "scripts": ["jquery-3.4.1.min.js","background.js" ]
+    "scripts": ["adapter.js","service.js"]
   },
   "content_scripts": [
     {
@@ -15,7 +15,7 @@
           "http://localhost/webtracer/calibra_webgazer_*",
           "https://localhost/webtracer/calibra_webgazer_*"
       ],
-      "js": ["jquery-3.4.1.min.js","content.js","speech.js"]
+      "js": ["main.js","features/mouse-tracking/mouse-tracking.js","features/eye-tracking/eye-tracking.js","features/eye-tracking/webgazer.js","features/eye-tracking/main.js","features/voice-recognition/speech.js","features/keylogging/keylogging.js"]
     }
   ],
   "browser_action": {

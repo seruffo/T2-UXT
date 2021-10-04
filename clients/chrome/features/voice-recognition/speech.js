@@ -1,3 +1,8 @@
+var voice = {
+  type: "voice",
+  typed: ""
+};
+
 // new instance of speech recognition
 var recognition = new webkitSpeechRecognition();
 // set params
@@ -14,10 +19,10 @@ recognition.onresult = function (event) {
   var ArrayLength = event.results[resultsLength].length - 1;
   // get last word detected
   var saidWord = event.results[resultsLength][ArrayLength].transcript;
-  if (voice.Typed != saidWord) {
-    voice.Typed = saidWord;
+  if (voice.typed != saidWord) {
+    voice.typed = saidWord;
     console.log(saidWord);
-    sendMessage("voice");
+    save_speech();
   }
 }
 
@@ -25,4 +30,9 @@ recognition.onresult = function (event) {
 recognition.onerror = function (event) {
   console.log('error?');
   console.log(event);
+}
+
+function save_speech(){
+  let data = voice;
+  save_trace(data);
 }

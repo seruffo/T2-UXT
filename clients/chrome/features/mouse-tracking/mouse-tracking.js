@@ -26,13 +26,6 @@ document.addEventListener('click', function (e) {
     mouse.X = e.pageX;
     mouse.Y = e.pageY;
     freeze = 0;
-    if (typing) {
-        save_keyboard();
-        keyboard.typed = "";
-        keyboard.Id = e.target.id;
-        keyboard.Class = e.target.className;
-        typing = false;
-    }
     save_mouse("click");
 });
 

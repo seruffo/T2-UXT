@@ -1,5 +1,5 @@
    
-  ![Badge](https://img.shields.io/badge/PHP-7.0-information?style=flat&logo=PHP&logoColor=white&color=777BB4![Badge])  ![Badge](https://img.shields.io/badge/framework-%204.5.2-information?style=flat&logo=.NET&logoColor=white&color=512BD4)  ![Badge](https://img.shields.io/badge/%20-5.0-information?style=flat&logo=.NET&logoColor=white&color=512BD4)  ![Badge](https://img.shields.io/badge/OPENAPI-3.0-information?style=flat&&color=Green) ![Badge](https://img.shields.io/badge/VS%20Code-1.60-information?style=flat&logo=Visual-Studio-Code&logoColor=white&color=007ACC)
+  ![Badge](https://img.shields.io/badge/PHP-7.0-information?style=flat&logo=PHP&logoColor=white&color=777BB4![Badge])  ![Badge](https://img.shields.io/badge/framework-%204.5.2-information?style=flat&logo=.NET&logoColor=white&color=512BD4)  ![Badge](https://img.shields.io/badge/%20-5.0-information?style=flat&logo=.NET&logoColor=white&color=512BD4) ![Badge](https://img.shields.io/badge/VS%20Code-1.60-information?style=flat&logo=Visual-Studio-Code&logoColor=white&color=007ACC)
  # T2-UXT: Tracking Techniques User eXperience Tool
 Repositório destinado a abrigar o código-fonte de todas as aplicações relacionadas ao ecossistema da T2-UXT.
 

@@ -4,7 +4,7 @@
   "description": "Software de captura de dados de interacao.",
   "background": {
     "persistent": false,
-    "scripts": ["adapter.js","service.js"]
+    "scripts": ["adapter/adapter.js","services/BackgroundService.js"]
   },
   "content_scripts": [
     {
@@ -15,7 +15,7 @@
           "http://localhost/webtracer/calibra_webgazer_*",
           "https://localhost/webtracer/calibra_webgazer_*"
       ],
-      "js": ["main.js","features/mouse-tracking/mouse-tracking.js","features/eye-tracking/eye-tracking.js","features/eye-tracking/webgazer.js","features/eye-tracking/main.js","features/voice-recognition/speech.js","features/keylogging/keylogging.js"]
+      "js": ["services/FrontService.js","features/mouse-tracking/mouse-tracking.js","features/eye-tracking/eye-tracking.js","features/eye-tracking/webgazer.js","features/eye-tracking/main.js","features/voice-recognition/speech.js","features/keylogging/keylogging.js"]
     }
   ],
   "browser_action": {

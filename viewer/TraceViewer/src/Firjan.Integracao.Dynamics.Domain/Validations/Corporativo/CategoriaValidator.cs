@@ -1,0 +1,23 @@
+﻿using FluentValidation;
+using Firjan.Integracao.Dynamics.Domain.Models;
+using Firjan.Integracao.Dynamics.Domain.Models.STI;
+
+namespace Firjan.Integracao.Dynamics.Domain.Validations.STI
+{
+    public class CategoriaValidator : AbstractValidator<Categoria>
+    {
+        public CategoriaValidator()
+        {
+            RuleFor(c => c.Descricao)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("A descrição precisa ser preenchida");
+
+            //RuleForEach(c => c.Enderecos).NotNull();
+
+            RuleSet("DescricaoPreenchido", () => {
+                RuleFor(x => x.Descricao).NotNull();
+            });
+        }
+    }
+}

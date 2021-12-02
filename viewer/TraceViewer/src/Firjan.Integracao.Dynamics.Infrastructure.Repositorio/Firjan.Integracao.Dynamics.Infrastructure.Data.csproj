@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\**" />
+    <Compile Remove="Repositorios\STI\**" />
+    <Compile Remove="Repositorios\TOTVS\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <EmbeddedResource Remove="Repositorios\STI\**" />
+    <EmbeddedResource Remove="Repositorios\TOTVS\**" />
+    <None Remove="Migrations\**" />
+    <None Remove="Repositorios\STI\**" />
+    <None Remove="Repositorios\TOTVS\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Maps\MotivoRegraExclusaoMap.cs" />
+    <Compile Remove="Maps\RegraEtapaMap.cs" />
+    <Compile Remove="Maps\TipoIdentificadorRegraMap.cs" />
+    <Compile Remove="Repositorios\MotivoRegraExclusaoRepositorio.cs" />
+    <Compile Remove="Repositorios\RegraEtapaRepositorio.cs" />
+    <Compile Remove="Repositorios\TipoIdentificadorRegraRepositorio.cs" />
+    <Compile Remove="UnitOfWork.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.2.0" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Firjan.Integracao.Dynamics.Domain\Firjan.Integracao.Dynamics.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.hosting.abstractions\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>	
+	  <UserSecretsId>6742b170-8037-4956-a3a1-c0a72b7d0c47</UserSecretsId>	
+	  <ApplicationInsightsResourceId>/subscriptions/068b4e04-eda0-4fdb-ae66-21794c280483/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/Firjan.Integracao.Dynamics.API</ApplicationInsightsResourceId>	
+	  <ApplicationInsightsAnnotationResourceId>/subscriptions/068b4e04-eda0-4fdb-ae66-21794c280483/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/Firjan.Integracao.Dynamics.API</ApplicationInsightsAnnotationResourceId>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+	<NoWarn>$(NoWarn);NU1701</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Docs\Firjan.Integracao.Dynamics.API.xml</DocumentationFile>
+    <OutputPath>Docs\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Config\**" />
+    <Content Remove="Config\**" />
+    <EmbeddedResource Remove="Config\**" />
+    <None Remove="Config\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\CodigosMunicipaisProdutosController.cs" />
+    <Compile Remove="Controllers\PlataformasController .cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Gestor\Preco\" />
+    <Folder Include="Docs\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
+    <PackageReference Include="IdentityModel" Version="3.10.10" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.7.1" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Firjan.Integracao.Dynamics.Infrastructure.CrossCutting\Firjan.Integracao.Dynamics.Infrastructure.CrossCutting.csproj" />
+    <ProjectReference Include="..\..\Firjan.Integracao.Dynamics.Infrastructure.Repositorio\Firjan.Integracao.Dynamics.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+</Project>

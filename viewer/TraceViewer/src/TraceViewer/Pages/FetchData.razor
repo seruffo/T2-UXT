@@ -1,0 +1,87 @@
+﻿@page "/fetchdata"
+
+@using TraceViewer.Data
+@inject WeatherForecastService ForecastService
+
+<h1>T2-UXT Event Tracking List</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (traces == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Type</label>
+        </div>
+        <select class="custom-select" @onchange="SummarySelected">
+            <option>All</option>
+            @foreach (var item in types)
+            {
+                <option value="@item">@item</option>
+            }
+        </select>
+    </div>
+    <br />
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Key</th>
+                <th>Url</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var trace in traces)
+            {
+                <tr>
+                    <td>@trace.type</td>
+                    <td>@trace.keys</td>
+                    <td>@trace.url</td>
+                    <td>@trace.date</td>
+                    <td>@trace.time</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    List<string> types;
+
+    private Trace[] traces;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //traces = await ForecastService.GetForecastAsync(DateTime.Now, "All");
+
+        await SetTraces("All");
+
+        types = traces.Select(e => e.type).Distinct().ToList();
+    }
+
+    private async Task SetTraces(string type)
+    {
+        traces = await ForecastService.GetForecastAsync(DateTime.Now, type);
+    }
+
+    protected void SummarySelected(ChangeEventArgs e)
+    {
+        var currSummary = e.Value.ToString();
+        if (currSummary.Equals("All"))
+        {
+            SetTraces("All");
+        }
+        else
+        {
+            SetTraces(currSummary);
+        }
+    }
+}

@@ -1,0 +1,679 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Firjan.Integracao.Dynamics.API</name>
+    </assembly>
+    <members>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.AreasSgeController">
+            <Summary>
+             Class AreasSgeController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.AreasSgeController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.SGE.IAreaAppService)">
+            <Summary>
+             Constructor AreasSgeController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.AreasSgeController.GetByColigada(System.Int16)">
+            <summary>
+            Retorna o objeto Área SGE by CodColigada
+            </summary>
+            <param name="CodColigada">Codigo coligada do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.BairrosController">
+            <Summary>
+             Class BairrosController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.ClassesValoresController">
+            <Summary>
+             Class ClassesValoresController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ClassesValoresController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.Corporativo.Protheus.IClasseValorAppService)">
+            <Summary>
+             Constructor ClassesValoresController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ClassesValoresController.Get(System.String,System.String)">
+            <summary>
+            Retorna o objeto Classe de Valor by PrimaryKey
+            </summary>
+            <param name="id">Código da subconta do objeto do retorno</param>
+            <param name="empresa">Código da empresa do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.ClassesValoresProdutosController">
+            <Summary>
+             Class ClassesValoresProdutosController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ClassesValoresProdutosController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.Corporativo.Gestor.IClasseValorProdutoAppService)">
+            <Summary>
+             Constructor ClassesValoresProdutosController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ClassesValoresProdutosController.Post(Firjan.Integracao.Dynamics.Application.ViewModels.Corporativo.Gestor.ClasseValorProdutoViewModel)">
+            <summary>
+            Criação do objeto Classe Valor Produto.
+            </summary>
+            <param name="classeValorProdutoViewModel">Criaçãodo Objeto Classe Valor Produto</param>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+            <response code="400">Retorna objeto result modelo inválido</response>  
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ClassesValoresProdutosController.Put(Firjan.Integracao.Dynamics.Application.ViewModels.Corporativo.Gestor.ClasseValorProdutoViewModel)">
+            <summary>
+            Atualização do objeto Classe Valor Produto.
+            </summary>
+            <param name="classeValorProdutoViewModel">Atualização do Objeto Classe Valor Produto</param>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ClassesValoresProdutosController.GetAll(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Retorna a lista de objeto Classes Valores Produtos com os parâmetros colunaOrdenacao, direcao, qtd and pule
+            </summary>
+            <param name="colunaOrdenacao">Coluna de ordenação da coleção de retorno</param>
+            <param name="direcao">Direção da ordenação da coleção de retorno</param>
+            <param name="qtd">Quantidade da lista de retorno</param>
+            <param name="pule">Pular específico número de elementos e retorna os elementos remanescentes</param>
+            <response code="204">Retorna status sem conteúdo</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ClassesValoresProdutosController.Get(System.String,System.String,System.Int32)">
+            <summary>
+            Retorna o objeto Bairro by PrimaryKey
+            </summary>
+            <param name="CodigoEmpresa">Codigo da empresa do objeto do retorno</param>
+            <param name="CodigoCentroResponsabilidade">Codigo do centro de responsabilidade do objeto do retorno</param>
+            <param name="ProdutoId">Id do Produto objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.CodigosMunicipaisServicosCorporativosController">
+            <Summary>
+             Class CodigosMunicipaisServicosCorporativosController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.CodigosMunicipaisServicosCorporativosController.Get(System.String,System.Int32)">
+            <summary>
+            Retorna o objeto by código municipio e código produto 
+            </summary>
+            <param name="CodigoMunicipio">Código do municipio</param>
+            <param name="CodigoServicoOficial">Código do produto</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.ContasContabeisController">
+            <Summary>
+             Class ContasContabeisController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ContasContabeisController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.Corporativo.Protheus.IContaContabilAppService)">
+            <Summary>
+             Constructor ContasContabeisController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.ContasContabeisProdutosController">
+            <Summary>
+             Class ContasContabeisProdutosController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ContasContabeisProdutosController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.Corporativo.Gestor.IContaContabilProdutoAppService)">
+            <Summary>
+             Constructor ContasContabeisProdutosController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ContasContabeisProdutosController.Get(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.DateTime})">
+            <summary>
+            Retorna o objeto Bairro by PrimaryKey
+            </summary>
+            <param name="CodigoEmpresa">Id do objeto do retorno</param>
+            <param name="CodigoConta">Id do objeto do retorno</param>
+            <param name="ProdutoId">Id do objeto do retorno</param>
+            <param name="Inicio">Id do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.DiscadosUnidadesController">
+            <Summary>
+             Class DiscadosUnidadesController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.DiscadosUnidadesController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.IDiscadoUnidadeAppService)">
+            <Summary>
+             Constructor DiscadosUnidadesController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.DiscadosUnidadesController.Post(Firjan.Integracao.Dynamics.Application.ViewModels.DiscadoUnidadeViewModel)">
+            <summary>
+            Criação do objeto Discado Unidade.
+            </summary>
+            <param name="discadoUnidadeViewModel">Objeto Disacado Unidade de Negócio</param>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+            <response code="400">Retorna objeto result modelo inválido</response>  
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.DiscadosUnidadesController.Put(Firjan.Integracao.Dynamics.Application.ViewModels.DiscadoUnidadeViewModel)">
+            <summary>
+            Atualização do objeto Discado Unidade.
+            </summary>
+            <param name="discadoUnidadeViewModel">Objeto Disacado Unidade de Negócio</param>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.DiscadosUnidadesController.GetAll(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Retorna a lista de objeto Discado Unidade com os parâmetros colunaOrdenacao, direcao, qtd and pule
+            </summary>
+            <param name="colunaOrdenacao">Coluna de ordenação da coleção de retorno</param>
+            <param name="direcao">Direção da ordenação da coleção de retorno</param>
+            <param name="qtd">Quantidade da lista de retorno</param>
+            <param name="pule">Pular específico número de elementos e retorna os elementos remanescentes</param>
+            <response code="204">Retorna status sem conteúdo</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.DiscadosUnidadesController.Get(System.String)">
+            <summary>
+            Retorna o objeto Discado Unidade by PrimaryKey
+            </summary>
+            <param name="id">Id do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.FuncoesController">
+            <Summary>
+             Class FuncoesController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.CodigosMunicipaisController">
+            <Summary>
+             Class CodigosMunicipaisController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.CodigosMunicipaisController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.Corporativo.Gestor.ICodigoMunicipalAppService)">
+            <Summary>
+             Constructor CodigosMunicipaisController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.EnderecosUnidadesController">
+            <Summary>
+             Class EnderecoUnidadeController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.Gestor.EnderecosUnidadesController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.IEnderecoUnidadeAppService)">
+            <Summary>
+             Constructor EnderecoUnidadeController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.Gestor.EnderecosUnidadesController.GetAll(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Retorna a lista de objeto Endereço Unidade de Negócio com os parâmetros colunaOrdenacao, direcao, qtd and pule
+            </summary>
+            <param name="colunaOrdenacao">Coluna de ordenação da coleção de retorno</param>
+            <param name="direcao">Direção da ordenação da coleção de retorno</param>
+            <param name="qtd">Quantidade da lista de retorno</param>
+            <param name="pule">Pular específico número de elementos e retorna os elementos remanescentes</param>
+            <response code="204">Retorna status sem conteúdo</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.Gestor.EnderecosUnidadesController.Get(System.Int32)">
+            <summary>
+            Retorna o objeto Endereço Unidade de Negócio by PrimaryKey
+            </summary>
+            <param name="id">Id do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.LazeresController">
+            <Summary>
+             Class LazeresController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.Odontograma.FigurasOdontogramasController">
+            <Summary>
+             Class FigurasOdontogramasController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.Odontograma.OdontogramasController">
+            <Summary>
+             Class OdontogramasController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.Gestor.Odontograma.OdontogramasController.Get(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retorna o objeto  by SaudeId e FiguraId
+            </summary>
+            <param name="PessoaId">pessoaId do objeto do retorno</param>
+            <param name="NumeroDente">NumeroDente do objeto do retorno</param>
+            <param name="FiguraOdontogramaId">FiguraOdontogramaId do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.Odontograma.SaudesFigurasOdontogramasController">
+            <Summary>
+             Class SaudesFigurasOdontogramasController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.Gestor.Odontograma.SaudesFigurasOdontogramasController.Get(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Retorna o objeto  by SaudeId e FiguraId
+            </summary>
+            <param name="SaudeId">SaudeId do objeto do retorno</param>
+            <param name="FiguraOdontogramaId">SaudeId do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.ProdutosController">
+            <Summary>
+             Class ProdutosController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.TiposEntidadesController">
+            <Summary>
+             Class TiposEntidadesController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.TiposEntidadesTiposUnidadesNegociosController">
+            <Summary>
+             Class TiposUnidadesNegociosTiposEntidadesController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.TiposUnidadesNegociosController">
+            <Summary>
+             Class TiposUnidadesNegociosController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.TUSSController">
+            <Summary>
+             Class TUSSController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.EntidadesController">
+            <Summary>
+             Class EntidadesController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.Gestor.EntidadesController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.Corporativo.Gestor.IEmpresaAppService)">
+            <Summary>
+             Constructor EntidadesController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.AreasController">
+            <Summary>
+             Class AreasNegociosController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.Gestor.TraceController">
+            <Summary>
+             Class TraceController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.HierarquiasProdutosController">
+            <Summary>
+             Class HierarquiasProdutosController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.HierarquiasProdutosController.GetByCodigoEntidade(System.String)">
+            <summary>
+            Retorna o objeto Hierarquia by CodigoEntidade
+            </summary>
+            <param name="CodigoEntidade">Código do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.HierarquiasProdutosController.GetAll(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Retorna a lista do objeto com os parâmetros colunaOrdenacao, direcao, qtd and pule        
+            </summary>
+            <param name="colunaOrdenacao">Coluna de ordenação da coleção de retorno</param>
+            <param name="direcao">Direção da ordenação da coleção de retorno</param>
+            <param name="qtd">Quantidade da lista de retorno</param>
+            <param name="pule">Pular específico número de elementos e retorna os elementos remanescentes</param>
+            <response code="204">Retorna status sem conteúdo</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.CodigosEmpresasController">
+            <Summary>
+             Class CodigosEmpresasController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.CodigosEmpresasController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.Protheus.IEmpresaAppService)">
+            <Summary>
+             Constructor EmpresasController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.CodigosEmpresasController.GetAll(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Retorna a lista de objeto Empresas com os parâmetros colunaOrdenacao, direcao, qtd and pule
+            </summary>
+            <param name="colunaOrdenacao">Coluna de ordenação da coleção de retorno</param>
+            <param name="direcao">Direção da ordenação da coleção de retorno</param>
+            <param name="qtd">Quantidade da lista de retorno</param>
+            <param name="pule">Pular específico número de elementos e retorna os elementos remanescentes</param>
+            <response code="204">Retorna status sem conteúdo</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.CodigosEmpresasController.Get(System.String)">
+            <summary>
+            Retorna o objeto Empresas by Código
+            </summary>
+            <param name="codigo">Código do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.FiliaisController">
+            <Summary>
+             Class FiliaisController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.FiliaisController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.Corporativo.Protheus.IFilialAppService)">
+            <Summary>
+             Constructor FiliaisController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.SaudesController">
+            <Summary>
+             Class SaudesController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.ProdutosTiposFichasController">
+            <Summary>
+             Class ProdutosTiposFichasController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ProdutosTiposFichasController.Get(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retorna o objeto  by ProdutoId, ServicoId e TipoFichaId
+            </summary>
+            <param name="ProdutoId">ProdutoId do objeto do retorno</param>
+            <param name="ServicoId">ServicoId do objeto do retorno</param>
+            <param name="TipoFichaId">TipoFichaId do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.TiposFichasController">
+            <Summary>
+             Class TiposFichasController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.UnidadesNegociosController">
+            <Summary>
+             Class UnidadesNegociosController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.ItemsContabeisProdutosController">
+            <Summary>
+             Class ItemsContabeisProdutosController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ItemsContabeisProdutosController.Get(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Retorna o objeto Bairro by PrimaryKey
+            </summary>
+            <param name="CodigoEmpresa">Código ds ampresa do objeto do retorno</param>
+            <param name="CodigoCentroResponsabilidade">Código do centro de responsabilidade do objeto do retorno</param>
+            <param name="ProdutoId">Id do Produto do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.ItensContabeisController">
+            <Summary>
+             Class ItensContabeisController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.ModalidadesCursosController">
+            <Summary>
+             Class ModalidadesCursosController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ModalidadesCursosController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.SGE.IModalidadeCursoAppService)">
+            <Summary>
+             Constructor ModalidadesCursosController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ModalidadesCursosController.Get(System.Int16)">
+            <summary>
+            Retorna o objeto Área by CodColigada
+            </summary>
+            <param name="CodColigada">Codigo coligada do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.ModulosVersoesController">
+            <Summary>
+             Class ModulosVersoesController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.ModulosVersoesController.Get(System.String,System.String)">
+            <summary>
+            Retorna o objeto  by codigo e numero da versao
+            </summary>
+            <param name="codigo">Id do objeto do retorno</param>
+            <param name="numeroVersao">Número da versao do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.MunicipiosController">
+            <Summary>
+             Class MunicipiosController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.PingsController.Get">
+            <summary>
+            Action para testes de disponibilidade. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.ProdutosUnidadesNegociosController">
+            <Summary>
+             Class ProdutosUnidadesNegociosController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.CentrosCustosController">
+            <Summary>
+             Class CentrosCustosController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.CentrosCustosController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.Corporativo.Protheus.ICentroCustoAppService)">
+            <Summary>
+             Constructor CentrosCustosController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.RegioesController">
+            <Summary>
+             Class RegioesController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.RegioesController.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.Corporativo.SRC.IRegiaoAppService)">
+            <Summary>
+             Constructor RegiaoController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.RegioesController.GetByTipoRegiao(System.Int32)">
+            <summary>
+            Retorna o objeto Região by Tipo Regiao
+            </summary>
+            <param name="tipoRegiaoId">Id do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.RegioesUnidadesNegociosController">
+            <Summary>
+             Class TiposRegioesController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Controllers.RegioesUnidadesNegociosController.GetByPrimaryKey(System.Int16,System.Int32,System.Int32)">
+            <summary>
+            Retorna o objeto Região Unidade de Negócio by PrimaryKey
+            </summary>
+            <param name="tipoRegiaoId">Código do tipo de região do objeto do retorno</param>
+            <param name="regiaoId">Id da região do objeto de retorno</param>
+            <param name="unidadeNegocioId">Id da unidade de negócio do objeto de retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.ExamesController">
+            <Summary>
+             Class ExamesController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.RiscosController">
+            <Summary>
+             Class RiscosController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.ClassificacoesServicosController">
+            <Summary>
+             Class ClassificacoesController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.LinhasServicosController">
+            <Summary>
+             Class LinhasServicosController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.PlataformasController">
+            <Summary>
+             Class PlataformasController
+            </Summary>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Controllers.TiposRegioesController">
+            <Summary>
+             Class TiposRegioesController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Base.Query.Base`2.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.Base.IAppService{`0},System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <Summary>
+             Constructor BaseGetController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Base.Query.Base`2.GetAll(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Retorna a lista do objeto com os parâmetros colunaOrdenacao, direcao, qtd and pule        
+            </summary>
+            <param name="colunaOrdenacao">Coluna de ordenação da coleção de retorno</param>
+            <param name="direcao">Direção da ordenação da coleção de retorno</param>
+            <param name="qtd">Quantidade da lista de retorno</param>
+            <param name="pule">Pular específico número de elementos e retorna os elementos remanescentes</param>
+            <response code="204">Retorna status sem conteúdo</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Base.Query.Base`2.Get(`1)">
+            <summary>
+            Retorna o objeto  by id
+            </summary>
+            <param name="id">Id do objeto do retorno</param>
+            <response code="204">Retorna o status do objeto não achado</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Base.CRUD.Base`2.#ctor(Firjan.Integracao.Dynamics.Application.Interfaces.Base.IAppService{`0},System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <Summary>
+             Constructor BaseGetController
+            </Summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Base.CRUD.Base`2.Post(`0)">
+            <summary>
+            Criação do objeto />.
+            </summary>.
+            <param name='v'>Objeto </param>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Base.CRUD.Base`2.Put(`0)">
+            <summary>
+            Atualização do objeto .
+            </summary>
+            <param name='v'>Objeto </param>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Base.CRUD.Base`2.Delete(`0)">
+            <summary>
+            Deleção do objeto .
+            </summary>
+            <param name='v'>Objeto </param>
+            <response code="200">Retorna result sucesso com objeto criado e total</response>
+            <response code="400">Retorna objeto result modelo inválido</response>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Settings.ApiVersionFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Apply
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Settings.MvcOptions">
+            <summary>
+            Configuração do MVC
+            </summary>
+        </member>
+        <member name="F:Firjan.Integracao.Dynamics.API.Settings.MvcOptions.CacheProfileName">
+            <summary>
+            Nome do Cache Profile utilizado
+            </summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Settings.MvcOptions.AddService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adiciona o serviço de MVC
+            </summary>
+            <param name="services">Colleção de serviços</param>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Settings.MvcOptions.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Configura o MVC
+            </summary>
+            <param name="app">Aplicação</param>
+        </member>
+        <member name="T:Firjan.Integracao.Dynamics.API.Settings.SwaggerApi">
+            <summary>
+            Configurações de Startup para o Swagger
+            </summary>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Settings.SwaggerApi.AddService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adiciona a configuração de serviço do Swagger
+            </summary>
+            <param name="services">Coleção de serviços</param>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Settings.SwaggerApi.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Configura o Swagger
+            </summary>
+            <param name="app">Aplicação</param>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container. 
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Firjan.Integracao.Dynamics.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+             This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <IsPackable>false</IsPackable>
+	<NoWarn>$(NoWarn);NU1701</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.CookiePolicy" Version="2.2.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.21" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.21" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="3.1.21" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.21" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.21" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="Xunit.Priority" Version="1.1.6" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Firjan.Integracao.Dynamics.Service\Firjan.Integracao.Dynamics.API\Firjan.Integracao.Dynamics.API.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="environment.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="FirjanTests.runsettings">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FirjanTests.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="FirjanTests.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FirjanTests.runsettings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
